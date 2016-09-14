@@ -8,28 +8,34 @@
  *
  * Main module of the application.
  */
-angular
-  .module('numinousUiApp', [
+angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
-    'ngRoute',
+    'ui.router',
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/login');
+
+    var loginState = {
+      name:'login',
+      url:'/login',
+      templateUrl:'/views/login.html'
+
+    }
+
+    var dashboardState = {
+      name: 'dashboard',
+      url: '/dashboard',
+      templateUrl:'/views/dashboard.html'
+
+    }
+
+    $stateProvider.state(dashboardState);
+    $stateProvider.state(loginState);
+
+
   });
+

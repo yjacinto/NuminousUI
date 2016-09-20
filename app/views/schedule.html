@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<!-- jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<body>   
+    
+
+    <form class="form-inline">
+        <div class="text-center">
+            <label>Title of Event:</label>
+            <input class="form-control" type="text" name="eventname">
+        </div>
+    </form>
+    
+    <form class="form-inline">
+        <div class="text-center">
+            <label>Date of Event:</label>
+            <input class="form-control" type="text" name="eventdate">
+        </div>
+    </form>
+    
+    <form class="form-inline">
+        <div class="text-center">
+            <label>Starting Time:</label>
+            <input class="form-control" type="text" name="starttime">
+        </div>
+    </form>
+    
+    <form class="form-inline">
+        <div class="text-center">
+            <label>Ending Time:</label>
+            <input class="form-control" type="text" name="endtime"> 
+        </div>
+    </form>
+    
+    
+    <div class="bootstrap-iso">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <form method="post">
+                        <div class="form-group">
+                            <label class="contro;-label" for="date">
+                                Date
+                            </label>
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <button class="btn btn-primary" name="submit" type="submit">
+                                Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- FOOTER SECTION END-->
+    <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+    <!-- CORE JQUERY SCRIPTS -->
+    <script src="assets/js/jquery-1.11.1.js"></script>
+    
+    
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="assets/js/bootstrap.js"></script>
+</body>
+</html>    

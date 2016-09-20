@@ -43,7 +43,7 @@ angular.module('numinousUiApp', [
     var scheduleState = {
       name: 'schedule',
       url: '/schedule',
-      templateUrl:'/views/schedule.hmtl'
+      templateUrl:'/views/schedule.html'
     }
     
         var extraState = {

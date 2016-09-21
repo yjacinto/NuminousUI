@@ -2,13 +2,13 @@
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
-    <link href="src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
-    <script src="src/js/angular-datepicker.js"></script>
+    <link href="../../bower_components/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
+    <script src="../../bower_components/angularjs-datepicker/src/js/angular-datepicker.js"></script>
 </head>
 
 
-<body ng-app="app">   
-    
+<body ng-app="numinousUiApp">
+
 
     <form class="form-inline">
         <div class="text-center">
@@ -16,36 +16,36 @@
             <input class="form-control" type="text" name="eventname">
         </div>
     </form>
-    
+
     <form class="form-inline">
         <div class="text-center">
-            <datepicker>
-            <label>Date of Event:</label>
-            <input ng-model="date" type="text"/>
-            </datepicker>    
+          <label>Date of Event:</label>
+          <datepicker>
+              <input ng-model="date" type="text"/>
+            </datepicker>
         </div>
     </form>
-    
+
     <form class="form-inline">
         <div class="text-center">
             <label>Starting Time:</label>
             <input class="form-control" type="text" name="starttime">
         </div>
     </form>
-    
+
     <form class="form-inline">
         <div class="text-center">
             <label>Ending Time:</label>
-            <input class="form-control" type="text" name="endtime"> 
+            <input class="form-control" type="text" name="endtime">
         </div>
     </form>
-    
-    
+
+
 
     <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-    <!-- CORE JQUERY SCRIPTS -->    
+    <!-- CORE JQUERY SCRIPTS -->
     <!-- BOOTSTRAP SCRIPTS  -->
-    <script src="assets/js/bootstrap.js"></script>
+    <!--<script src="assets/js/bootstrap.js"></script>-->
 </body>
-</html>    
+</html>

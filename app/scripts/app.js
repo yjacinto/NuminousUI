@@ -14,7 +14,8 @@ angular.module('numinousUiApp', [
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    '720kb.datepicker'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -33,20 +34,20 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/dashboard.html'
 
     }
-    
+
     var aboutState = {
       name: 'about',
       url: '/about',
       templateUrl:'/views/about.html'
 
     }
-    
+
     var scheduleState = {
       name: 'schedule',
       url: '/schedule',
       templateUrl:'/views/schedule.html'
     }
-    
+
         var extraState = {
       name: 'extra',
       url: '/extra',
@@ -63,6 +64,6 @@ angular.module('numinousUiApp', [
 
   });
 
-angular.module('app', [
+/*angular.module('app', [
     '720kb.datepicker'
-]);
+]);*/

@@ -37,7 +37,6 @@ angular.module('numinousUiApp', [
       name: 'dashboard',
       url: '/dashboard',
       templateUrl:'/views/dashboard.html'
-
     };
 
     $stateProvider.state(dashboardState);

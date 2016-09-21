@@ -16,6 +16,7 @@ angular.module('numinousUiApp', [
     'ngSanitize',
     'ngTouch'
   ])
+
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 
@@ -62,3 +63,6 @@ angular.module('numinousUiApp', [
 
   });
 
+angular.module('app', [
+    '720kb.datepicker'
+]);

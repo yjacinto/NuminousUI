@@ -14,8 +14,10 @@ angular.module('numinousUiApp', [
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    '720kb.datepicker'
   ])
+
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 
@@ -26,6 +28,7 @@ angular.module('numinousUiApp', [
       controller:'LoginCtrl',
       controllerAs:'login'
     };
+
     var signState = {
       name: 'signup',
       url:'/signup',
@@ -38,11 +41,32 @@ angular.module('numinousUiApp', [
       url: '/dashboard',
       templateUrl:'/views/dashboard.html'
     };
+    var aboutState = {
+      name: 'about',
+      url: '/about',
+      templateUrl:'/views/about.html'
+    };
+    var scheduleState = {
+      name: 'schedule',
+      url: '/schedule',
+      templateUrl:'/views/schedule.html'
+    };
+    var extraState = {
+      name: 'extra',
+      url: '/extra',
+      templateUrl:'/views/extra.html'
+
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
-
+    $stateProvider.state(aboutState);
+    $stateProvider.state(scheduleState);
+    $stateProvider.state(extraState);
 
   });
 
+/*angular.module('app', [
+    '720kb.datepicker'
+]);*/

@@ -67,6 +67,3 @@ angular.module('numinousUiApp', [
 
   });
 
-/*angular.module('app', [
-    '720kb.datepicker'
-]);*/

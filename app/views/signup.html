@@ -23,40 +23,42 @@
     <div class="row">
       <div class="col-md-12">
         <div class="panel panel-default">
-          <div class="panel-heading">
-            NEW MEMBER FORM
-          </div>
+          <div class="panel-heading"> NEW MEMBER FORM </div>
           <div class="panel-body">
-            <form>
+            <form name="signupForm" class="form-horizontal" novalidate>
               <div class="form-group col-md-12">
-                <div class="col-md-6">
-                  <label for="exampleInputEmail1">First Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="First Name" />
+                <div class="col-md-4" ng-class="{'has-error' : (signupForm.fname.$invalid && !signupForm.fname.$pristine)}">
+                  <label><font color = "red">*</font> First Name</label>
+                  <input type="text" class="form-control" name="fname" placeholder="First Name" ng-mode="fname" required />
                 </div>
-                <div class="col-md-6">
-                  <label for="exampleInputEmail1">Last Name</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Last Name" />
+                <div class="col-md-4" ng-class="{'has-error' : (signupForm.lname.$invalid && !signupForm.lname.$pristine)}">
+                  <label><font color = "red">*</font> Last Name</label>
+                  <input type="text" class="form-control" name="lname" placeholder="Last Name" ng-model="lname" required />
+                </div>
+                <div class="col-md-4" ng-class="{'has-error' : (signupForm.username.$invalid && !signupForm.username.$pristine)}">
+                  <label><font color = "red">*</font> Username</label>
+                  <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username" required />
                 </div>
               </div>
               <div class="form-group col-md-12">
-                <div class="col-md-6">
-                  <label for="exampleInputEmail1">Email Address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" />
+                <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
+                  <label><font color = "red">*</font> Email Address</label>
+                  <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email" ng-pattern="/^.*[@].*[.com]/" required />
                 </div>
-                <div class="col-md-6">
-                  <label for="exampleInputEmail1">Confirm Email Address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Confirm email" />
+                <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
+                  <label><font color = "red">*</font> Confirm Email Address</label>
+                  <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2" ng-pattern="/^.*[@].*[.com]/" required />
                 </div>
               </div>
               <div class="form-group col-md-12">
-                <div class="col-md-6">
-                  <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+                <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
+                  <label><font color = "red">*</font> Password</label>
+                  <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required />
                 </div>
               </div>
               <div class="form-group col-md-12">
                 <div style="text-align: center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" ng-disabled="signupForm.$invalid" >Submit</button>
                   <a ui-sref="login" class="btn btn-danger"> Cancel </a>
                 </div>
               </div>

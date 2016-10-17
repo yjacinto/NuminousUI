@@ -12,6 +12,7 @@ angular.module('numinousUiApp')
       $scope.email = '';
       $scope.email2 = '';
       $scope.password = '';
+      $scope.createResult = 1;
     };
 
     /** Function: to check if user exists already based on email provided **/
@@ -27,6 +28,7 @@ angular.module('numinousUiApp')
           if(confirm('Are you sure you want to create an account?')) {
             //Todo: pass password as a hash or store as a hash
             $scope.create($scope.fname,$scope.lname,$scope.username,$scope.email,$scope.password);
+            window.location.href = '#/login/';
           }
         })
         .error(function (response) {
@@ -50,9 +52,9 @@ angular.module('numinousUiApp')
        console.log(command);
 
        $http.get(command)
-         .success(function (response) {
-          $scope.createResult = response;
-          console.log(response);
+         .success(function(response) {
+           $scope.createResult = response;
+           console.log(createResult + ": test!!");
          })
          .error(function (response) {
           console.log("Error notification");

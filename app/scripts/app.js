@@ -17,7 +17,18 @@ angular.module('numinousUiApp', [
     'ngTouch',
     '720kb.datepicker'
   ])
-
+  .config(['$httpProvider', function ($httpProvider) { //intercepts all http requests
+    $httpProvider.interceptors.push(function () {
+      return {
+        responseError: function (rejection) { //if the request is rejected
+          if (rejection.status === 403) { // HTTP status 403 Forbidden
+            window.location.href = '#/forbidden/'; //route to forbidden
+          }
+          return rejection;
+        }
+      };
+    });
+  }])
   .config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/login');
 

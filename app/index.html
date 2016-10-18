@@ -15,7 +15,7 @@
     <!-- endbuild -->
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
-    <link href="styles/font-awesome.css" rel="stylesheet" />
+    <!--<link href="styles/font-awesome.css" rel="stylesheet" />-->
     <!-- CUSTOM STYLE  -->
     <link href="styles/style.css" rel="stylesheet" />
     <base href="/">
@@ -147,14 +147,19 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+    <script src="bower_components/auth0-lock/build/lock.js"></script>
+    <script src="bower_components/angular-lock/angular-lock.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
     <script src="assets/js/sharedFunctions.js"></script>
-    <script src="assets/img/logo.png"></script>
+    <!--<script src="assets/img/logo.png"></script>-->
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/auth.service.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>

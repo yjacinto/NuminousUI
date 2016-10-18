@@ -11,7 +11,10 @@
     "angular-sanitize": "^1.5.8",
     "angular-touch": "^1.5.8",
     "angular-ui-router": "^0.3.1",
-    "angularjs-datepicker": "^2.1.6"
+    "angularjs-datepicker": "^2.1.6",
+    "auth0-lock": "^10.4.0",
+    "angular-lock": "^1.0.3",
+    "angular-jwt": "^0.1.6"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8"

@@ -11,13 +11,19 @@
 angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
+    'ngRoute',
     'ngResource',
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    '720kb.datepicker'
+    '720kb.datepicker',
+    'auth0.lock',
+    'angular-jwt'
   ])
-  .config(['$httpProvider', function ($httpProvider) { //intercepts all http requests
+  .config(['$httpProvider', function ($httpProvider, jwtInterceptor) { //intercepts all http requests
+    // Add the jwtInterceptor to the array of HTTP interceptors
+    // so that JWTs are attached as Authorization headers
+    $httpProvider.interceptors.push('jwtInterceptor');
     $httpProvider.interceptors.push(function () {
       return {
         responseError: function (rejection) { //if the request is rejected
@@ -29,7 +35,23 @@ angular.module('numinousUiApp', [
       };
     });
   }])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, lockProvider, jwtOptionsProvider) {
+
+    // Initialization for the Lock widget
+    lockProvider.init({
+      clientID: '', //do not commit this
+      domain: '' //do not commit this
+    });
+
+    // Configuration for angular-jwt
+    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('id_token');
+      },
+      whiteListedDomains: ['localhost'],
+      unauthenticatedRedirectPath: '/login'
+    });
+
     $urlRouterProvider.otherwise('/login');
 
     var loginState = {
@@ -78,6 +100,4 @@ angular.module('numinousUiApp', [
 
   });
 
-/*angular.module('app', [
-    '720kb.datepicker'
-]);*/
+

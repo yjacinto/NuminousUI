@@ -15,7 +15,8 @@ angular.module('numinousUiApp', [
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    '720kb.datepicker'
+    '720kb.datepicker',
+    'ui.calendar'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -54,7 +55,8 @@ angular.module('numinousUiApp', [
     var extraState = {
       name: 'extra',
       url: '/extra',
-      templateUrl:'/views/extra.html'
+      templateUrl:'/views/extra.html',
+      controller: 'CalendarCtrl'    
 
     };
 

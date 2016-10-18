@@ -33,6 +33,3 @@ var myApp = angular.module('numinousUiApp')
 
   })
 
-
-
-

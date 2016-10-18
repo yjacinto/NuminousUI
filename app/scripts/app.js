@@ -49,6 +49,8 @@ angular.module('numinousUiApp', [
     var scheduleState = {
       name: 'schedule',
       url: '/schedule',
+      controller:'ScheduleCtrl',
+      controllerAs:'schedule',
       templateUrl:'/views/schedule.html'
     };
     var extraState = {
@@ -67,6 +69,3 @@ angular.module('numinousUiApp', [
 
   });
 
-/*angular.module('app', [
-    '720kb.datepicker'
-]);*/

@@ -52,11 +52,12 @@ angular.module('numinousUiApp', [
       url: '/schedule',
       templateUrl:'/views/schedule.html'
     };
-    var extraState = {
-      name: 'extra',
-      url: '/extra',
-      templateUrl:'/views/extra.html',
-      controller: 'CalendarCtrl'    
+    var calendarState = {
+      name: 'calendar',
+      url: '/calendar',
+      templateUrl:'/views/calendar.html',
+      controller: 'calendarCtrl',
+      controlleras: 'calendar'    
 
     };
 
@@ -65,7 +66,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(signState);
     $stateProvider.state(aboutState);
     $stateProvider.state(scheduleState);
-    $stateProvider.state(extraState);
+    $stateProvider.state(calendarState);
 
   });
 

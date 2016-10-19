@@ -43,8 +43,8 @@
 /**
  * calendarDemoApp - 0.9.0
  */
-angular.module('numinousUiApp');
-    .controller('CalendarCtrl',
+angular.module('numinousUiApp')
+    .controller('calendarCtrl',
    function($scope, $compile, $timeout, uiCalendarConfig) {
     var date = new Date();
     var d = date.getDate();

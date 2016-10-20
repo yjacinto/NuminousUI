@@ -42,6 +42,6 @@ angular.module('numinousUiApp')
       userProfile: userProfile,
       login: login,
       logout: logout,
-      registerAuthenticationListener: registerAuthenticationListener,
-    }
+      registerAuthenticationListener: registerAuthenticationListener
+    };
   });

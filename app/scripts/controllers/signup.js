@@ -6,9 +6,6 @@ angular.module('numinousUiApp')
     var init = function () {
 
       //Declaring Signup Form variables
-      $scope.fname = '';
-      $scope.lname = '';
-      $scope.username = '';
       $scope.email = '';
       $scope.email2 = '';
       $scope.password = '';
@@ -27,7 +24,7 @@ angular.module('numinousUiApp')
           //Adding basic confirm prompt
           if(confirm('Are you sure you want to create an account?')) {
             //Todo: pass password as a hash or store as a hash
-            $scope.create($scope.fname,$scope.lname,$scope.username,$scope.email,$scope.password);
+            $scope.create($scope.email,$scope.password);
             window.location.href = '#/login/';
           }
         })
@@ -42,12 +39,9 @@ angular.module('numinousUiApp')
     //Todo: Password minimum requirements
 
      //http://localhost:1337/user/create?fname=test&lname=test&username=test&email=test&password=test
-     $scope.create = function (fname, lname, username, email, password) {
+     $scope.create = function (email, password) {
        var command = encodeURI('http://localhost:1337/user/create?' +
-         'fname=' + fname +
-         '&lname=' + lname +
-         '&username=' + username +
-         '&email=' + email +
+         'email=' + email +
          '&password=' + password);
        console.log(command);
 

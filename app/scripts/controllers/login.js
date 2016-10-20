@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('numinousUiApp')
-  .controller('LoginCtrl', function ($scope, $http, authService) {
+  .controller('LoginCtrl', function ($scope, authService) {
+
     // Put the authService on $scope to access
     // the login method in the view
     $scope.authService = authService;
 
-    var init = function () {
+  /*  var init = function () {
       $scope.promise = $scope.getIds();
       $scope.userIds = [];
     };
@@ -16,5 +17,5 @@ angular.module('numinousUiApp')
       });
     };
     init();
-    console.log('hello');
+    console.log('hello');*/
 });

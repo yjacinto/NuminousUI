@@ -20,10 +20,9 @@ angular.module('numinousUiApp', [
     'auth0.lock',
     'angular-jwt'
   ])
-  .config(['$httpProvider', function ($httpProvider, jwtInterceptor) { //intercepts all http requests
+  .config(['$httpProvider', function ($httpProvider) { //intercepts all http requests
     // Add the jwtInterceptor to the array of HTTP interceptors
     // so that JWTs are attached as Authorization headers
-    $httpProvider.interceptors.push('jwtInterceptor');
     $httpProvider.interceptors.push(function () {
       return {
         responseError: function (rejection) { //if the request is rejected
@@ -35,22 +34,23 @@ angular.module('numinousUiApp', [
       };
     });
   }])
-  .config(function ($stateProvider, $urlRouterProvider, lockProvider, jwtOptionsProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, lockProvider) {
 
     // Initialization for the Lock widget
     lockProvider.init({
-      clientID: '', //do not commit this
-      domain: '' //do not commit this
+      clientID: 'HZhipvzmjLdJLZPmLszHEILaEhVvHHlw', //do not commit this
+      domain: 'numinous.auth0.com', //do not commit this
+      loginUrl: '/login'
     });
 
     // Configuration for angular-jwt
-    jwtOptionsProvider.config({
+/*    jwtOptionsProvider.config({
       tokenGetter: function() {
         return localStorage.getItem('id_token');
       },
       whiteListedDomains: ['localhost'],
-      unauthenticatedRedirectPath: '/login'
-    });
+      //unauthenticatedRedirectPath: '/login'
+    });*/
 
     $urlRouterProvider.otherwise('/login');
 
@@ -72,7 +72,10 @@ angular.module('numinousUiApp', [
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
-      templateUrl:'/views/dashboard.html'
+      templateUrl:'/views/dashboard.html',
+      data: {
+        requiresLogin: true
+      }
     };
     var aboutState = {
       name: 'about',

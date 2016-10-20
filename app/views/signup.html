@@ -27,20 +27,6 @@
           <div class="panel-body">
             <form name="signupForm" class="form-horizontal" novalidate>
               <div class="form-group col-md-12">
-                <div class="col-md-4" ng-class="{'has-error' : (signupForm.fname.$invalid && !signupForm.fname.$pristine)}">
-                  <label><font color = "red">*</font> First Name</label>
-                  <input type="text" class="form-control" name="fname" placeholder="First Name" ng-model="fname" required />
-                </div>
-                <div class="col-md-4" ng-class="{'has-error' : (signupForm.lname.$invalid && !signupForm.lname.$pristine)}">
-                  <label><font color = "red">*</font> Last Name</label>
-                  <input type="text" class="form-control" name="lname" placeholder="Last Name" ng-model="lname" required />
-                </div>
-                <div class="col-md-4" ng-class="{'has-error' : (signupForm.username.$invalid && !signupForm.username.$pristine)}">
-                  <label><font color = "red">*</font> Username</label>
-                  <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username" required />
-                </div>
-              </div>
-              <div class="form-group col-md-12">
                 <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
                   <label><font color = "red">*</font> Email Address</label>
                   <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email" ng-pattern="/^.*[@].*[.com]/" required />
@@ -59,7 +45,7 @@
               <div class="form-group col-md-12">
                 <div style="text-align: center">
                   <button type="submit" class="btn btn-primary" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid" >Submit</button>
-                  <a ui-sref="login" class="btn btn-danger"> Cancel </a>
+                  <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
                 </div>
               </div>
               <hr />

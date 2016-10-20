@@ -48,26 +48,54 @@
             </form>
           </div>
         </div>
-      </div>
+            <!--List the trips here-->
 
-      <script src="../../bower_components/moment/moment.js"></script>
-      <script>
+              <div ng-controller="ScheduleCtrl">
+                <div ng-repeat="trip in trips">
+                  <div class = "panel panel-default">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">{{trip.originCity}}
+                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                        <b>{{trip.destinationCity}}</b>
+                      </h3>
+                      <button class="btn btn-sm ">
+                        <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                      </button>
+                    </div>
+                    <div class="panel-body">
+                      <p class="text-left"></p>
+                      <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
+                      <p class = "text-middle destinationCity"></p>
+                  {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
 
-        $(document).ready(function() {
-          var date = moment(new Date());
-          $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-          var endDate = date.add(1, 'weeks');
-
-          $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-        });
-      </script>
-<!-- FOOTER SECTION END-->
-<!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+                    </div>
+                  <div>
+                </div>
+              </div>
 
 
-<!-- CORE JQUERY SCRIPTS -->
-<!-- BOOTSTRAP SCRIPTS  -->
-<!--<script src="assets/js/bootstrap.js"></script>-->
+
+
+        </div>
+
+          <script> //src="../../bower_components/moment/moment.js"></script>
+          <script>
+
+            $(document).ready(function() {
+              var date = moment(new Date());
+              $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+              var endDate = date.add(1, 'weeks');
+
+              $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+            });
+          </script>
+          <!-- FOOTER SECTION END-->
+          <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
+
+
+          <!-- CORE JQUERY SCRIPTS -->
+          <!-- BOOTSTRAP SCRIPTS  -->
+          <!--<script src="assets/js/bootstrap.js"></script>-->
 

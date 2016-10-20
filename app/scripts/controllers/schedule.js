@@ -2,7 +2,6 @@
 
 var myApp = angular.module('numinousUiApp')
   .controller('ScheduleCtrl', function($scope, $http){
-    $scope.greeting = 'What up playa';
 
     var init = function () {
 
@@ -11,6 +10,7 @@ var myApp = angular.module('numinousUiApp')
       $scope.destinationCity = '';
       $scope.startDate = '';
       $scope.endDate = '';
+      $scope.trips = '';
     };
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
@@ -30,6 +30,17 @@ var myApp = angular.module('numinousUiApp')
           console.log("Error notification");
         });
     };
+
+    var getTrips = function (){
+
+      var command = encodeURI('http://localhost:1337/trip/index');
+      $http.get(command)
+        .then(function(res){
+          $scope.trips = res.data;
+        });
+    };
+
+    getTrips();
 
   })
 

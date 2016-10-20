@@ -15,7 +15,8 @@ angular.module('numinousUiApp', [
     'ui.router',
     'ngSanitize',
     'ngTouch',
-    '720kb.datepicker'
+    '720kb.datepicker',
+    'uiRouterStyles'
   ])
 
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -51,7 +52,10 @@ angular.module('numinousUiApp', [
       url: '/schedule',
       controller:'ScheduleCtrl',
       controllerAs:'schedule',
-      templateUrl:'/views/schedule.html'
+      templateUrl:'/views/schedule.html',
+      data:{
+        css:'/styles/schedule.css'
+      }
     };
     var extraState = {
       name: 'extra',

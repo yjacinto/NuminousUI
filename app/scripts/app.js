@@ -57,6 +57,18 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/extra.html'
 
     };
+    var googlemapState = {
+      name: 'googlemap',
+      url: '/googlemap',
+      templateUrl:'/views/googlemap.html'
+
+    };
+    var placeState = {
+      name: 'place',
+      url: '/place',
+      templateUrl:'/views/place.html'
+
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
@@ -64,6 +76,8 @@ angular.module('numinousUiApp', [
     $stateProvider.state(aboutState);
     $stateProvider.state(scheduleState);
     $stateProvider.state(extraState);
+    $stateProvider.state(googlemapState);
+    $stateProvider.state(placeState);
 
   });
 

@@ -18,7 +18,8 @@ angular.module('numinousUiApp', [
     'ngTouch',
     '720kb.datepicker',
     'auth0.lock',
-    'angular-jwt'
+    'angular-jwt',
+    'ui.calendar'
   ])
   .config(['$httpProvider', function ($httpProvider) { //intercepts all http requests
     // Add the jwtInterceptor to the array of HTTP interceptors
@@ -87,11 +88,13 @@ angular.module('numinousUiApp', [
       url: '/schedule',
       templateUrl:'/views/schedule.html'
     };
-    var extraState = {
-      name: 'extra',
-      url: '/extra',
-      templateUrl:'/views/extra.html'
 
+    var calendarState = {
+      name: 'calendar',
+      url: '/calendar',
+      templateUrl:'/views/calendar.html',
+      controller: 'calendarCtrl',
+      controllerAs: 'calendar'
     };
 
     $stateProvider.state(dashboardState);
@@ -99,7 +102,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(signState);
     $stateProvider.state(aboutState);
     $stateProvider.state(scheduleState);
-    $stateProvider.state(extraState);
+    $stateProvider.state(calendarState);
 
   });
 

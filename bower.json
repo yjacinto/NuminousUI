@@ -14,7 +14,8 @@
     "angularjs-datepicker": "^2.1.6",
     "auth0-lock": "^10.4.0",
     "angular-lock": "^1.0.3",
-    "angular-jwt": "^0.1.6"
+    "angular-jwt": "^0.1.6",
+    "angular-ui-calendar": "^1.0.2"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8"
@@ -31,6 +32,7 @@
     }
   },
   "resolutions": {
-    "angular": "1.5.8"
+    "angular": "1.5.8",
+    "fullcalendar": "^3.0.1"
   }
 }

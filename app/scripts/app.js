@@ -73,10 +73,7 @@ angular.module('numinousUiApp', [
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
-      templateUrl:'/views/dashboard.html',
-      data: {
-        requiresLogin: true
-      }
+      templateUrl:'/views/dashboard.html'
     };
     var aboutState = {
       name: 'about',

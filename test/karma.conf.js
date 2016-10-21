@@ -31,15 +31,12 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angularjs-datepicker/dist/angular-datepicker.min.js',
-<<<<<<< HEAD
       'bower_components/auth0-lock/build/lock.js',
       'bower_components/angular-lock/angular-lock.js',
       'bower_components/angular-jwt/dist/angular-jwt.js',
-=======
       'bower_components/moment/moment.js',
       'bower_components/fullcalendar/dist/fullcalendar.js',
       'bower_components/angular-ui-calendar/src/calendar.js',
->>>>>>> development
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

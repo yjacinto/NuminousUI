@@ -17,6 +17,7 @@ angular.module('numinousUiApp', [
     'ngSanitize',
     'ngTouch',
     '720kb.datepicker',
+    'uiRouterStyles',
     'auth0.lock',
     'angular-jwt',
     'ui.calendar'
@@ -83,7 +84,12 @@ angular.module('numinousUiApp', [
     var scheduleState = {
       name: 'schedule',
       url: '/schedule',
-      templateUrl:'/views/schedule.html'
+      controller:'ScheduleCtrl',
+      controllerAs:'schedule',
+      templateUrl:'/views/schedule.html',
+      data:{
+        css:'/styles/schedule.css'
+      }
     };
 
     var calendarState = {
@@ -102,5 +108,4 @@ angular.module('numinousUiApp', [
     $stateProvider.state(calendarState);
 
   });
-
 

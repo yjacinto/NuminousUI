@@ -1,78 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head>
-    <link href="../../bower_components/angularjs-datepicker/src/css/angular-datepicker.css" rel="stylesheet" type="text/css" />
-    <script src="../../bower_components/angularjs-datepicker/src/js/angular-datepicker.js"></script>
-</head>
-
-
+<html>
 <body ng-app="numinousUiApp">
 
-    <div class="row">
-        <div class="col-md-4"> 
-            <div class="text-right">
-            <label>Name of Trip:</label>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <input class="form-control" type="text" name="tripname">
-        </div>
+<form name="signupForm" class="form-horizontal" novalidate>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-right">
+        <label>Name of Trip:</label>
+      </div>
     </div>
-    
-    <div class="row">
-        <div class="col-md-4"> 
-            <div class="text-right">
-            <label>Location of Trip:</label>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <input class="form-control" type="text" name="triplocation">
-        </div>
+    <div class="col-md-5">
+      <input class="form-control" type="text" name="tripname">
     </div>
-    
-    <div class="row">
-        <div class="col-md-4">
-            <div class="text-right">
-            <label>Start Date:</label>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <datepicker>
-                <!--<input ng-model="date" type="text"/>-->
-                <input class="form-control" type="text" name="startdate">
-            </datepicker>
-        </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-right">
+        <label>Location of Trip:</label>
+      </div>
     </div>
-    
-        <div class="row">
-        <div class="col-md-4">
-            <div class="text-right">
-            <label>End Date:</label>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <datepicker>
-                <!--<input ng-model="date" type="text"/>-->
-                <input class="form-control" type="text" name="enddate">
-            </datepicker>
-        </div>
+    <div class="col-md-5">
+      <input class="form-control" type="text" name="triplocation">
     </div>
-    
-    
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-center">
-            <button type="button">Create Trip!</button>
-            </div>    
-        </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-right">
+        <label>Start Date:</label>
+      </div>
     </div>
+    <div class="col-md-5">
+      <datepicker>
+        <!--<input ng-model="date" type="text"/>-->
+        <input class="form-control" type="text" name="startdate">
+      </datepicker>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="text-right">
+        <label>End Date:</label>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <datepicker>
+        <!--<input ng-model="date" type="text"/>-->
+        <input class="form-control" type="text" name="enddate">
+      </datepicker>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="text-center">
+        <button type="button" class="btn btn-primary">Primary</button>
+      </div>
+    </div>
+  </div>
+</form>
+
 
 
     <!-- FOOTER SECTION END-->
     <!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
     <!-- CORE JQUERY SCRIPTS -->
     <!-- BOOTSTRAP SCRIPTS  -->
-    <!--<script src="assets/js/bootstrap.js"></script>-->
+    <script src="assets/js/bootstrap.js"></script>
 </body>
 </html>

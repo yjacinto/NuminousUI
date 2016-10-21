@@ -48,35 +48,31 @@
             </form>
           </div>
         </div>
-            <!--List the trips here-->
+        <!--List the trips here-->
 
-              <div ng-controller="ScheduleCtrl">
-                <div ng-repeat="trip in trips">
-                  <div class = "panel panel-default">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">{{trip.originCity}}
-                        <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                        <b>{{trip.destinationCity}}</b>
-                      </h3>
-                      <button class="btn btn-sm ">
-                        <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-                      </button>
-                    </div>
-                    <div class="panel-body">
-                      <p class="text-left"></p>
-                      <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
-                      <p class = "text-middle destinationCity"></p>
-                  {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-
-                    </div>
-                  <div>
-                </div>
+        <div ng-controller="ScheduleCtrl">
+          <div ng-repeat="trip in trips">
+            <div class = "panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title">{{trip.originCity}}
+                  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                  <b>{{trip.destinationCity}}</b>
+                </h3>
+                <button class="btn btn-sm ">
+                  <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                </button>
               </div>
+              <div class="panel-body">
+                <p class="text-left"></p>
+                <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
+                <p class = "text-middle destinationCity"></p>
+                {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
 
-
-
-
-        </div>
+              </div>
+              <div>
+              </div>
+            </div>
+          </div>
 
           <script> //src="../../bower_components/moment/moment.js"></script>
           <script>
@@ -98,4 +94,3 @@
           <!-- CORE JQUERY SCRIPTS -->
           <!-- BOOTSTRAP SCRIPTS  -->
           <!--<script src="assets/js/bootstrap.js"></script>-->
-

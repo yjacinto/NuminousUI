@@ -33,6 +33,11 @@ module.exports = function(config) {
       'bower_components/angularjs-datepicker/dist/angular-datepicker.min.js',
       'bower_components/moment/moment.js',
       'bower_components/angular-ui-router-styles/ui-router-styles.js',
+      'bower_components/auth0-lock/build/lock.js',
+      'bower_components/angular-lock/angular-lock.js',
+      'bower_components/angular-jwt/dist/angular-jwt.js',
+      'bower_components/fullcalendar/dist/fullcalendar.js',
+      'bower_components/angular-ui-calendar/src/calendar.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

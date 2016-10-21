@@ -11,11 +11,12 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/angularjs-datepicker/dist/angular-datepicker.min.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME ICONS  -->
-    <link href="styles/font-awesome.css" rel="stylesheet" />
+    <!--<link href="styles/font-awesome.css" rel="stylesheet" />-->
     <!-- CUSTOM STYLE  -->
     <link href="styles/style.css" rel="stylesheet" />
     <base href="/">
@@ -38,7 +39,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">
 
-                    <img src="assets/img/logo.png" />
+                    <img src="assets/img/Logo1.5.png" />
                 </a>
 
             </div>
@@ -91,7 +92,7 @@
                             <li><a ui-sref="login">Login Page</a></li>
                             <!--<li><a href="blank.html">Blank Page</a></li>-->
                             <li><a ui-sref="about">About Page</a></li>
-                            <li><a ui-sref="extra">Extra Page</a></li>
+                            <li><a ui-sref="calendar">Calendar</a></li>
 
                         </ul>
                     </div>
@@ -149,19 +150,27 @@
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
+    <script src="bower_components/auth0-lock/build/lock.js"></script>
+    <script src="bower_components/angular-lock/angular-lock.js"></script>
+    <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="assets/js/jquery-1.11.1.js"></script>
     <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/img/logo.png"></script>
+    <script src="assets/js/sharedFunctions.js"></script>
+    <!--<script src="assets/img/logo.png"></script>-->
+
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/auth.service.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/signup.js"></script>
         <script src="scripts/controllers/schedule.js"></script>
-
+        <script src="scripts/controllers/calendar.js"></script>
 
         <!-- endbuild -->
 </body>

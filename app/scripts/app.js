@@ -11,15 +11,49 @@
 angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
+    'ngRoute',
     'ngResource',
     'ui.router',
     'ngSanitize',
     'ngTouch',
     '720kb.datepicker',
-    'uiRouterStyles'
+    'uiRouterStyles',
+    'auth0.lock',
+    'angular-jwt',
+    'ui.calendar'
   ])
+  .config(['$httpProvider', function ($httpProvider) { //intercepts all http requests
+    // Add the jwtInterceptor to the array of HTTP interceptors
+    // so that JWTs are attached as Authorization headers
+    $httpProvider.interceptors.push(function () {
+      return {
+        responseError: function (rejection) { //if the request is rejected
+          if (rejection.status === 403) { // HTTP status 403 Forbidden
+            window.location.href = '#/forbidden/'; //route to forbidden
+          }
+          return rejection;
+        }
+      };
+    });
+  }])
+  .config(function ($stateProvider, $urlRouterProvider, lockProvider) {
 
-  .config(function ($stateProvider, $urlRouterProvider) {
+    // Initialization for the Lock widget
+    lockProvider.init({
+      clientID: 'HZhipvzmjLdJLZPmLszHEILaEhVvHHlw', //do not commit this
+      domain: 'numinous.auth0.com', //do not commit this
+      loginUrl: '/login'
+    });
+
+    // Configuration for angular-jwt
+/*    jwtOptionsProvider.config({
+      tokenGetter: function() {
+        return localStorage.getItem('id_token');
+      },
+      whiteListedDomains: ['localhost'],
+      //unauthenticatedRedirectPath: '/login'
+    });*/
+
     $urlRouterProvider.otherwise('/login');
 
     var loginState = {
@@ -57,11 +91,13 @@ angular.module('numinousUiApp', [
         css:'/styles/schedule.css'
       }
     };
-    var extraState = {
-      name: 'extra',
-      url: '/extra',
-      templateUrl:'/views/extra.html'
 
+    var calendarState = {
+      name: 'calendar',
+      url: '/calendar',
+      templateUrl:'/views/calendar.html',
+      controller: 'calendarCtrl',
+      controllerAs: 'calendar'
     };
 
     $stateProvider.state(dashboardState);
@@ -69,7 +105,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(signState);
     $stateProvider.state(aboutState);
     $stateProvider.state(scheduleState);
-    $stateProvider.state(extraState);
+    $stateProvider.state(calendarState);
 
   });
 

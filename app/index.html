@@ -21,7 +21,7 @@
     <link href="styles/style.css" rel="stylesheet" />
     <base href="/">
   </head>
-  <body ng-app="numinousUiApp">
+  <body ng-app="numinousUiApp" ui-router-styles>
 
     <header>
         <div class="container">
@@ -110,7 +110,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    &copy; 2016 Numinous | By : <a href="http://www.designbootstrap.com/" target="_blank">Numinous Team</a>
+                    &copy; 2016 Numinous | By : <a>Numinous Team</a>
                 </div>
 
             </div>
@@ -148,10 +148,11 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
     <script src="bower_components/auth0-lock/build/lock.js"></script>
     <script src="bower_components/angular-lock/angular-lock.js"></script>
     <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
     <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
     <!-- endbower -->
@@ -168,6 +169,7 @@
         <script src="scripts/controllers/about.js"></script>
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/signup.js"></script>
+        <script src="scripts/controllers/schedule.js"></script>
         <script src="scripts/controllers/calendar.js"></script>
 
         <!-- endbuild -->

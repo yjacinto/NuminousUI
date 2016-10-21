@@ -2,19 +2,25 @@
   "name": "numinous-ui",
   "version": "0.0.0",
   "dependencies": {
-    "angular": "^1.4.0",
+    "angular": "^1.5.8",
     "bootstrap": "^3.2.0",
-    "angular-animate": "^1.4.0",
-    "angular-cookies": "^1.4.0",
-    "angular-resource": "^1.4.0",
-    "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0",
+    "angular-animate": "^1.5.8",
+    "angular-cookies": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-sanitize": "^1.5.8",
+    "angular-touch": "^1.5.8",
     "angular-ui-router": "^0.3.1",
-    "angularjs-datepicker": "^2.1.6"
+    "angularjs-datepicker": "^2.1.6",
+    "moment": "^2.15.1",
+    "angular-ui-router-styles": "^1.1.0",
+    "auth0-lock": "^10.4.0",
+    "angular-lock": "^1.0.3",
+    "angular-jwt": "^0.1.6",
+    "angular-ui-calendar": "^1.0.2"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.0"
+    "angular-mocks": "^1.5.8"
   },
   "appPath": "app",
   "moduleName": "numinousUiApp",
@@ -26,5 +32,10 @@
         "dist/js/bootstrap.js"
       ]
     }
+  },
+  "resolutions": {
+    "angular-ui-router": "^0.3.1",
+    "angular": "1.5.8",
+    "fullcalendar": "^3.0.1"
   }
 }

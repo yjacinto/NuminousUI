@@ -54,7 +54,8 @@ angular.module('numinousUiApp', [
       //unauthenticatedRedirectPath: '/login'
     });*/
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/');
+
 
     var loginState = {
       name:'login',
@@ -99,7 +100,7 @@ angular.module('numinousUiApp', [
       controller: 'calendarCtrl',
       controllerAs: 'calendar'
     };
-
+    $stateProvider.state(homeState);
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);

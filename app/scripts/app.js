@@ -54,8 +54,18 @@ angular.module('numinousUiApp', [
       //unauthenticatedRedirectPath: '/login'
     });*/
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/home');
 
+    var homeState = {
+      name:'home',
+      url:'/home',
+      templateUrl:'/views/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'home',
+      data: {
+        css:'/assets/css/main.css'
+      }
+    };
 
     var loginState = {
       name:'login',

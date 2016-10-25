@@ -40,12 +40,12 @@ angular.module('numinousUiApp')
 
      //http://localhost:1337/user/create?fname=test&lname=test&username=test&email=test&password=test
      $scope.create = function (email, password) {
-       var command = encodeURI('http://localhost:1337/user/create?' +
+       var command = encodeURI('http://localhost:1337/user' +
          'email=' + email +
          '&password=' + password);
        console.log(command);
 
-       $http.get(command)
+       $http.post(command)
          .success(function(response) {
            $scope.createResult = response;
            console.log(createResult + ": test!!");

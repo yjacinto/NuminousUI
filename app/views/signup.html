@@ -1,18 +1,5 @@
-<!DOCTYPE html>
-<body>
-<!--    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
-                    &nbsp;&nbsp;
-                    <strong>Support: </strong>+90-897-678-44
-                </div>
 
-            </div>
-        </div>
-    </header>-->
-<!-- MENU SECTION END-->
+
 <div class="content-wrapper">
   <div class="container">
     <div class="row">
@@ -24,12 +11,12 @@
       <div class="col-md-12">
         <div class="panel panel-default">
           <div class="panel-heading"> NEW MEMBER FORM </div>
-          <div class="panel-body">
+          <div class="panel-body" ng-controller="RegisterCtrl">
             <form name="signupForm" class="form-horizontal" novalidate>
               <div class="form-group col-md-12">
                 <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
                   <label><font color = "red">*</font> Email Address</label>
-                  <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email" ng-pattern="/^.*[@].*[.com]/" required />
+                  <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" ng-pattern="/^.*[@].*[.com]/" required />
                 </div>
                 <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
                   <label><font color = "red">*</font> Confirm Email Address</label>
@@ -39,12 +26,12 @@
               <div class="form-group col-md-12">
                 <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
                   <label><font color = "red">*</font> Password</label>
-                  <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required />
+                  <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
                 </div>
               </div>
               <div class="form-group col-md-12">
                 <div style="text-align: center">
-                  <button type="submit" class="btn btn-primary" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid" >Submit</button>
+                  <button type="submit" class="btn btn-primary" ng-click="signup()" ng-disabled="signupForm.$invalid" >Submit</button>
                   <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
                 </div>
               </div>
@@ -53,54 +40,6 @@
           </div>
         </div>
       </div>
-      <!--<div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            OTHER  FORM ELEMENTS
-          </div>
-          <div class="panel-body">
-            <form role="form">
-              <div class="form-group has-success">
-                <label class="control-label" for="success">SUCCESS EXAMPLE</label>
-                <input type="text" class="form-control" id="success" />
-              </div>
-              <div class="form-group has-warning">
-                <label class="control-label" for="warning">WARNING EXAMPLE</label>
-                <input type="text" class="form-control" id="warning" />
-              </div>
-              <div class="form-group has-error">
-                <label class="control-label" for="error">ERROR EXAMPLE</label>
-                <input type="text" class="form-control" id="error" />
-              </div>
-            </form>
-            <hr />
-            <div class="form-group">
-              <label>Select Example</label>
-              <select class="form-control">
-                <option>One Vale</option>
-                <option>Two Vale</option>
-                <option>Three Vale</option>
-                <option>Four Vale</option>
-              </select>
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>Multiple Select Example</label>
-              <select multiple="" class="form-control">
-                <option>One Vale</option>
-                <option>Two Vale</option>
-                <option>Three Vale</option>
-                <option>Four Vale</option>
-              </select>
-            </div>
-            <hr />
-            For more customization for this template or its components please
-            visit official bootstrap website i.e <strong> getbootstrap.com </strong> or
-            <a href="http://getbootstrap.com/css/#forms" target="_blank">click here</a>
-
-          </div>
-        </div>
-      </div>-->
     </div>
   </div>
 </div>
@@ -111,8 +50,7 @@
 <script src="assets/js/jquery-1.11.1.js"></script>
 <!-- BOOTSTRAP SCRIPTS  -->
 <script src="assets/js/bootstrap.js"></script>
-</body>
-</html>
+
 
 
 

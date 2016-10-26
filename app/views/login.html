@@ -24,23 +24,18 @@
     <div class="row">
       <div class="col-md-6">
         <a ui-sref="signup" class="btn btn-primary"><span class="glyphicon glyphicon-thumbs-up"></span> &nbsp;Sign Up </a>
-        <!--
-         <h4> Login with facebook <strong> / </strong>Google :</h4>
-         <br />
-         <a href="index.html" class="btn btn-social btn-facebook">
-                 <i class="fa fa-facebook"></i>&nbsp; Facebook Account</a>
-         &nbsp;OR&nbsp;
-         <a href="index.html" class="btn btn-social btn-google">
-                 <i class="fa fa-google-plus"></i>&nbsp; Google Account</a>
-         -->
         <hr />
-        <h4> Or Login to your <strong>Numinous Account  :</strong></h4>
-        <label>Enter Email ID : </label>
-        <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username" required />
-        <label>Enter Password :  </label>
-        <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required />
-        <hr />
-        <a ui-sref="dashboard" class="btn btn-primary" ng-click="authService.login()">Log In</a>
+        <div ng-controller = LoginCtrl>
+          <form name = loginForm class="form-horizontal">
+            <h4> Or Login to your <strong>Numinous Account :</strong></h4>
+            <label>Enter Email ID : </label>
+            <input type="text" class="form-control" name="email" placeholder="email" ng-model="user.email" required />
+            <label>Enter Password :  </label>
+            <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
+            <hr />
+            <button type="submit" class="btn btn-primary" ng-click="login()" >Submit</button>
+          </form>
+        </div>
       </div>
       <div class="col-md-6">
         <div class="alert alert-info">

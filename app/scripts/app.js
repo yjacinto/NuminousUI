@@ -79,10 +79,10 @@ angular.module('numinousUiApp', [
     $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
-        /*if (next.name !== 'outside.login' && next.name !== 'outside.register') {
+        if (next.name !== 'login' && next.name !== 'singup') {
           event.preventDefault();
-          $state.go('outside.login');
-        }*/
+          $state.go('login');
+        }
       }
     });
   });

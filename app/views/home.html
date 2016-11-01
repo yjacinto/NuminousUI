@@ -2,8 +2,8 @@
 
 <body ng-app="numinousUiApp" ui-router-styles>
 <!-- Wrapper -->
-<ui-view></ui-view>
 <div id="wrapper">
+  <ui-view></ui-view>
   <!-- Main -->
   <div id="main">
     <div class="inner">
@@ -28,7 +28,7 @@
           <p>Numinous aims to provide our users a simple method to generate upcoming trips and vacations. Our tool helps by organizing
             and displaying trip information in various views. We allow offer the ability to share and invite other users to any create trips.</p>
           <ul class="actions">
-            <li><a href="#" class="button big">Learn More</a></li>
+            <li><a ui-sref="signup" class="button big">Sign up!</a></li>
           </ul>
         </div>
         <span class="image object">
@@ -113,8 +113,6 @@
     </div>
   </div>
 </div>
-
-
 
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>

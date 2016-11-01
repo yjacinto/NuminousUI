@@ -1,119 +1,66 @@
-<!DOCTYPE html>
-<body>
-<!--    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <strong>Email: </strong>info@yourdomain.com
-                    &nbsp;&nbsp;
-                    <strong>Support: </strong>+90-897-678-44
-                </div>
+<!-----Modified on 10/31 -- FUnctionality works but sidebar does not ---->
+<!--todo: 10-31: Fix SideBar-->
 
-            </div>
-        </div>
-    </header>-->
-<!-- MENU SECTION END-->
-<div class="content-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h1 class="page-head-line">Create an Account </h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="panel panel-default">
-          <div class="panel-heading"> NEW MEMBER FORM </div>
-          <div class="panel-body">
-            <form name="signupForm" class="form-horizontal" novalidate>
-              <div class="form-group col-md-12">
-                <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
-                  <label><font color = "red">*</font> Email Address</label>
-                  <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email" ng-pattern="/^.*[@].*[.com]/" required />
-                </div>
-                <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
-                  <label><font color = "red">*</font> Confirm Email Address</label>
-                  <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2" ng-pattern="/^.*[@].*[.com]/" required />
-                </div>
-              </div>
-              <div class="form-group col-md-12">
-                <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
-                  <label><font color = "red">*</font> Password</label>
-                  <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required />
-                </div>
-              </div>
-              <div class="form-group col-md-12">
-                <div style="text-align: center">
-                  <button type="submit" class="btn btn-primary" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid" >Submit</button>
-                  <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
-                </div>
-              </div>
-              <hr />
-            </form>
-          </div>
-        </div>
-      </div>
-      <!--<div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            OTHER  FORM ELEMENTS
-          </div>
-          <div class="panel-body">
-            <form role="form">
-              <div class="form-group has-success">
-                <label class="control-label" for="success">SUCCESS EXAMPLE</label>
-                <input type="text" class="form-control" id="success" />
-              </div>
-              <div class="form-group has-warning">
-                <label class="control-label" for="warning">WARNING EXAMPLE</label>
-                <input type="text" class="form-control" id="warning" />
-              </div>
-              <div class="form-group has-error">
-                <label class="control-label" for="error">ERROR EXAMPLE</label>
-                <input type="text" class="form-control" id="error" />
-              </div>
-            </form>
-            <hr />
-            <div class="form-group">
-              <label>Select Example</label>
-              <select class="form-control">
-                <option>One Vale</option>
-                <option>Two Vale</option>
-                <option>Three Vale</option>
-                <option>Four Vale</option>
-              </select>
-            </div>
-            <hr />
-            <div class="form-group">
-              <label>Multiple Select Example</label>
-              <select multiple="" class="form-control">
-                <option>One Vale</option>
-                <option>Two Vale</option>
-                <option>Three Vale</option>
-                <option>Four Vale</option>
-              </select>
-            </div>
-            <hr />
-            For more customization for this template or its components please
-            visit official bootstrap website i.e <strong> getbootstrap.com </strong> or
-            <a href="http://getbootstrap.com/css/#forms" target="_blank">click here</a>
+<!DOCTYPE HTML>
+<body ng-app="numinousUiApp" ui-router-styles>
+<!-- Wrapper -->
+<div id="wrapper">
+  <!-- Main -->
+  <div id="main">
+    <div class="inner">
 
+
+      <!-- Content -->
+      <section>
+        <header class="main">
+          <h1>Sign Up - New Account</h1>
+        </header>
+
+        <form name="signupForm" novalidate>
+          <div class="form-group col-md-12">
+            <div class="col-md-6"
+                 ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
+              <label><font color="red">*</font> Email Address</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email"
+                     ng-pattern="/^.*[@].*[.com]/" required/>
+            </div>
+            <div class="col-md-6"
+                 ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
+              <label><font color="red">*</font> Confirm Email Address</label>
+              <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2"
+                     ng-pattern="/^.*[@].*[.com]/" required/>
+            </div>
           </div>
-        </div>
-      </div>-->
+          <div class="form-group col-md-12">
+            <div class="col-md-6"
+                 ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
+              <label><font color="red">*</font> Password</label>
+              <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password"
+                     required/>
+            </div>
+          </div>
+          <div class="form-group col-md-12">
+            <div style="text-align: center">
+              <button type="submit" class="button" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid">
+                Submit
+              </button>
+              <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
+            </div>
+          </div>
+        </form>
+        <hr class="major"/>
+      </section>
     </div>
   </div>
 </div>
 
-<!-- FOOTER SECTION END-->
-<!-- JAVASCRIPT AT THE BOTTOM TO REDUCE THE LOADING TIME  -->
-<!-- CORE JQUERY SCRIPTS -->
-<script src="assets/js/jquery-1.11.1.js"></script>
-<!-- BOOTSTRAP SCRIPTS  -->
-<script src="assets/js/bootstrap.js"></script>
+<!-- Scripts -->
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+
 </body>
 </html>
-
-
 
 

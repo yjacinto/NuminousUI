@@ -80,7 +80,10 @@ angular.module('numinousUiApp', [
       url:'/signup',
       templateUrl:'/views/signup.html',
       controller:'SignCtrl',
-      controllerAs:'signup'
+      controllerAs:'signup',
+      data: {
+        css:'/assets/css/main.css'
+      }
     };
     var dashboardState = {
       name: 'dashboard',

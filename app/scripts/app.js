@@ -101,7 +101,7 @@ angular.module('numinousUiApp', [
     };
     var googlemapState = {
       name: 'googlemap',
-      url: '/googlemap',    
+      url: '/googlemap',
       templateUrl:'/views/googlemap.html'
 
     };
@@ -125,11 +125,10 @@ angular.module('numinousUiApp', [
     $stateProvider.state(scheduleState);
     $stateProvider.state(googlemapState);
     $stateProvider.state(placeState);
-<<<<<<< Updated upstream
+
     $stateProvider.state(calendarState);
-=======
+
     $stateProvider.state(tempState);
->>>>>>> Stashed changes
 
   });
 

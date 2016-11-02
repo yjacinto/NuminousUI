@@ -24,7 +24,18 @@ angular.module('numinousUiApp', [
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
+
+    var homeState = {
+      name:'home',
+      url:'/home',
+      templateUrl:'/views/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'home',
+      data: {
+        css:'/assets/css/main.css'
+      }
+    };
 
     var loginState = {
       name:'login',
@@ -36,10 +47,13 @@ angular.module('numinousUiApp', [
 
     var signState = {
       name: 'signup',
-      url:'/signup',
-      templateUrl:'/views/signup.html',
-      controller:'RegisterCtrl',
-      controllerAs:'signup'
+      url: '/signup',
+      templateUrl: '/views/signup.html',
+      controller: 'RegisterCtrl',
+      controllerAs: 'signup',
+      data: {
+        css: '/assets/css/main.css'
+      }
     };
 
     var dashboardState = {
@@ -66,6 +80,7 @@ angular.module('numinousUiApp', [
       controller: 'calendarCtrl',
       controllerAs: 'calendar'
     };
+
     var googlemapState = {
       name: 'googlemap',
       url: '/googlemap',
@@ -91,6 +106,7 @@ angular.module('numinousUiApp', [
 
     };
 
+
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
@@ -100,6 +116,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(calendarState);
     $stateProvider.state(tempState);
     $stateProvider.state(aboutState);
+    $stateProvider.state(homeState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

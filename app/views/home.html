@@ -1,4 +1,5 @@
-<!DOCTYPE HTML>
+<!doctype html>
+
 <body ng-app="numinousUiApp" ui-router-styles>
 <ui-view></ui-view>
 <!-- Wrapper -->
@@ -7,8 +8,6 @@
   <!-- Main -->
   <div id="main">
     <div class="inner">
-
-      <!-- Header -->
       <header id="header">
         <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
         <ul class="icons">
@@ -19,89 +18,98 @@
           <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
         </ul>
       </header>
-
-      <!-- Content -->
-      <section>
-        <header class="main">
-          <h2>Sign Up - New Account</h2>
-        </header>
-
-        <div class="col-md-12">
-          <div class="panel panel-default">
-            <div class="panel-heading"> Registration</div>
-            <div class="panel-body" ng-controller="RegisterCtrl">
-              <form name="signupForm" class="form-horizontal" novalidate>
-                <div class="form-group col-md-12">
-                  <div class="col-md-6">
-                    <label><font color = "red">*</font> First Name</label>
-                    <input type="text" class="form-control" name="first_name" placeholder="First Name" ng-model="user.first_name" required />
-                  </div>
-                  <div class="col-md-6">
-                    <label><font color = "red">*</font> Last Name</label>
-                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" ng-model="user.last_name" required />
-                  </div>
-                </div>
-                <div class="form-group col-md-12">
-                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
-                    <label><font color = "red">*</font> Email Address</label>
-                    <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" ng-pattern="/^.*[@].*[.com]/" required />
-                  </div>
-                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
-                    <label><font color = "red">*</font> Confirm Email Address</label>
-                    <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2" ng-pattern="/^.*[@].*[.com]/" required />
-                  </div>
-                </div>
-                <div class="form-group col-md-12">
-                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
-                    <label><font color = "red">*</font> Password</label>
-                    <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
-                  </div>
-                </div>
-                <div class="form-group col-md-12">
-                  <div style="text-align: center">
-                    <button type="submit" class="btn btn-primary" ng-click="signup()" ng-disabled="signupForm.$invalid" >Submit</button>
-                    <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
-                  </div>
-                </div>
-                <hr />
-              </form>
-            </div>
-          </div>
+      <!-- Banner -->
+      <section id="banner">
+        <div class="content">
+          <header>
+            <h1>Welcome to<br />
+              <img src="assets/img/logo.png"> </h1>
+            <p>A collaborative travel itinerary application </p>
+          </header>
+          <p>Numinous aims to provide our users a simple method to generate upcoming trips and vacations. Our tool helps by organizing
+            and displaying trip information in various views. We allow offer the ability to share and invite other users to any create trips.</p>
+          <ul class="actions">
+            <li><a ui-sref="signup" class="button big">Sign up!</a></li>
+          </ul>
         </div>
+        <span class="image object">
+										<img src="images/pic10.jpg" alt="" />
+									</span>
+      </section>
 
-        <form name="signupForm" novalidate>
-          <div class="form-group col-md-12">
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
-              <label><font color="red">*</font> Email Address</label>
-              <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email"
-                     ng-pattern="/^.*[@].*[.com]/" required/>
+      <!-- Section -->
+      <section>
+        <header class="major">
+          <h2>Features</h2>
+        </header>
+        <div class="features">
+          <article>
+            <span class="icon fa-diamond"></span>
+            <div class="content">
+              <h3>Google Map's API</h3>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
             </div>
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
-              <label><font color="red">*</font> Confirm Email Address</label>
-              <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2"
-                     ng-pattern="/^.*[@].*[.com]/" required/>
+          </article>
+          <article>
+            <span class="icon fa-paper-plane"></span>
+            <div class="content">
+              <h3>Yelp's API</h3>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
             </div>
-          </div>
-          <div class="form-group col-md-12">
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
-              <label><font color="red">*</font> Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password"
-                     required/>
+          </article>
+          <article>
+            <span class="icon fa-rocket"></span>
+            <div class="content">
+              <h3>Social Platforms</h3>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
             </div>
-          </div>
-          <div class="form-group col-md-12">
-            <div style="text-align: center">
-              <button type="submit" class="button" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid">
-                Submit
-              </button>
-              <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
+          </article>
+          <article>
+            <span class="icon fa-signal"></span>
+            <div class="content">
+              <h3>AngularJS</h3>
+              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
             </div>
-          </div>
-        </form>
-        <hr class="major"/>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section -->
+      <section>
+        <header class="major">
+          <h2>Meet the Team</h2>
+        </header>
+        <div class="posts">
+          <article>
+            <a href="#" class="image"><img src="images/edwin.png" alt="" /></a>
+            <h3>Edwin Mak <br> Software Engineer</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+              <!--<li><a href="#" class="button">More</a></li>-->
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="images/elaine1.png" alt="" /></a>
+            <h3>Elaine Yu <br> Computer Engineer</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="images/eevee.png" alt="" /></a>
+            <h3>Yvonne Jacinto <br> Computer Engineer</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+            </ul>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
+            <h3>Professor Tarng <br> Senior Project Advisor</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <ul class="actions">
+            </ul>
+          </article>
+        </div>
       </section>
     </div>
   </div>

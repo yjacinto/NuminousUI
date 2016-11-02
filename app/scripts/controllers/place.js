@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name numinousUiApp.controller:MainCtrl
+ * @name numinousUiApp.controller:AboutCtrl
  * @description
- * # MainCtrl
+ * # AboutCtrl
  * Controller of the numinousUiApp
  */
 angular.module('numinousUiApp')
-  .controller('MainCtrl', function () {
+  .controller('PlaceCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

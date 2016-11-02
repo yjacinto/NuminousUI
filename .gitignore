@@ -3,3 +3,11 @@
 /.tmp
 /.sass-cache
 /bower_components
+
+.idea/workspace.xml
+
+.idea/modules.xml
+
+.idea/NuminousUI.iml
+
+.idea/vcs.xml

@@ -8,7 +8,7 @@
  * Controller of the numinousUiApp
  */
 angular.module('numinousUiApp')
-  .controller('GooglemapCtrl', function () {
+  .controller('AboutCtrl', function () {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

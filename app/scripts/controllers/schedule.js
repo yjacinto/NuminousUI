@@ -14,7 +14,6 @@ var myApp = angular.module('numinousUiApp')
     };
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
-      //change to post
       var command = encodeURI('http://localhost:1337/trip/create?' +
         'originCity=' + originCity +
         '&destinationCity=' + destinationCity +

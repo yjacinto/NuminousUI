@@ -1,0 +1,70 @@
+'use strict';
+
+
+angular.module('numinousUiApp')
+
+  .controller('LoginCtrl', function($scope, AuthService, $state) {
+
+    $scope.user = {
+      id:'',
+      first_name: '',
+      last_name: '',
+      email: '',
+      password: ''
+    };
+
+    $scope.login = function() {
+      AuthService.login($scope.user).then(function(msg) {
+        $state.go('dashboard');
+      }, function(err) {
+        console.log(err);
+        console.log('Login failed');
+      });
+    };
+  })
+
+  .controller('RegisterCtrl', function($scope, AuthService, $state) {
+    $scope.user = {
+      first_name : '',
+      last_name : '',
+      email: '',
+      password: ''
+    };
+
+    $scope.signup = function() {
+      AuthService.register($scope.user).then(function(msg) {
+        $state.go('login');
+        console.log('Register Success!');
+
+      }, function(errMsg) {
+        console.log('register failed');
+        console.log(errMsg);
+      });
+    };
+  })
+
+  .controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $state) {
+    $scope.destroySession = function() {
+      AuthService.logout();
+    };
+
+    $scope.getInfo = function() {
+      $http.get(API_ENDPOINT.url + '/user/getInfo').then(function(result) {
+        $scope.user = result.data;
+        console.log($scope.user);
+      });
+    };
+
+    $scope.logout = function() {
+      AuthService.logout();
+      $state.go('login');
+    };
+  })
+
+  .controller('AppCtrl', function($scope, $state, AuthService, AUTH_EVENTS) {
+    $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
+      AuthService.logout();
+      $state.go('login');
+      console.log('session lost');
+    });
+  });

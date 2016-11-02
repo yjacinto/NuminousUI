@@ -26,6 +26,49 @@
           <h2>Sign Up - New Account</h2>
         </header>
 
+        <div class="col-md-12">
+          <div class="panel panel-default">
+            <div class="panel-heading"> Registration</div>
+            <div class="panel-body" ng-controller="RegisterCtrl">
+              <form name="signupForm" class="form-horizontal" novalidate>
+                <div class="form-group col-md-12">
+                  <div class="col-md-6">
+                    <label><font color = "red">*</font> First Name</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="First Name" ng-model="user.first_name" required />
+                  </div>
+                  <div class="col-md-6">
+                    <label><font color = "red">*</font> Last Name</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Last Name" ng-model="user.last_name" required />
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
+                    <label><font color = "red">*</font> Email Address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" ng-pattern="/^.*[@].*[.com]/" required />
+                  </div>
+                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
+                    <label><font color = "red">*</font> Confirm Email Address</label>
+                    <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2" ng-pattern="/^.*[@].*[.com]/" required />
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
+                    <label><font color = "red">*</font> Password</label>
+                    <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
+                  </div>
+                </div>
+                <div class="form-group col-md-12">
+                  <div style="text-align: center">
+                    <button type="submit" class="btn btn-primary" ng-click="signup()" ng-disabled="signupForm.$invalid" >Submit</button>
+                    <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
+                  </div>
+                </div>
+                <hr />
+              </form>
+            </div>
+          </div>
+        </div>
+
         <form name="signupForm" novalidate>
           <div class="form-group col-md-12">
             <div class="col-md-6"
@@ -60,7 +103,6 @@
         </form>
         <hr class="major"/>
       </section>
-
     </div>
   </div>
 

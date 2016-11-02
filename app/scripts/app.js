@@ -84,6 +84,12 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/temp.html'
 
     };
+    var aboutState = {
+      name: 'about',
+      url: '/about',
+      templateUrl:'/views/about.html'
+
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
@@ -93,6 +99,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(placeState);
     $stateProvider.state(calendarState);
     $stateProvider.state(tempState);
+    $stateProvider.state(aboutState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

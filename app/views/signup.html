@@ -59,48 +59,16 @@
                 </div>
                 <div class="form-group col-md-12">
                   <div style="text-align: center">
-                    <button type="submit" class="btn btn-primary" ng-click="signup()" ng-disabled="signupForm.$invalid" >Submit</button>
-                    <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
+                    <button type="submit" class=" button" ng-click="signup()" ng-disabled="signupForm.$invalid" >Submit</button>
+                    <a ui-sref="home" class="btn btn-danger"> Cancel </a>
                   </div>
                 </div>
-                <hr />
+
               </form>
             </div>
           </div>
         </div>
 
-        <form name="signupForm" novalidate>
-          <div class="form-group col-md-12">
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
-              <label><font color="red">*</font> Email Address</label>
-              <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="email"
-                     ng-pattern="/^.*[@].*[.com]/" required/>
-            </div>
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
-              <label><font color="red">*</font> Confirm Email Address</label>
-              <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2"
-                     ng-pattern="/^.*[@].*[.com]/" required/>
-            </div>
-          </div>
-          <div class="form-group col-md-12">
-            <div class="col-md-6"
-                 ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
-              <label><font color="red">*</font> Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password"
-                     required/>
-            </div>
-          </div>
-          <div class="form-group col-md-12">
-            <div style="text-align: center">
-              <button type="submit" class="button" ng-click="doesUserExist(email)" ng-disabled="signupForm.$invalid">
-                Submit
-              </button>
-              <a ui-sref="dashboard" class="btn btn-danger"> Cancel </a>
-            </div>
-          </div>
-        </form>
         <hr class="major"/>
       </section>
     </div>
@@ -126,6 +94,7 @@
           <li><a ui-sref="home">Homepage</a></li>
           <li><a ui-sref="signup">SignUp</a></li>
           <li><a ui-sref="login">Login</a></li>
+          <li><a ui-sref="dashboard">Dashboard</a></li>
           <li>
             <span class="opener">Trips Views</span>
             <ul>
@@ -134,7 +103,7 @@
               <li><a href="#">Google View</a></li>
             </ul>
           </li>
-          <li><a href="#">Etiam Dolore</a></li>
+          <li><a ui-sref="schedule">Schedule</a></li>
           <li><a href="#">Adipiscing</a></li>
           <li>
             <span class="opener">Another Submenu</span>

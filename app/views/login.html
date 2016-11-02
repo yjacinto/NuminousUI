@@ -22,31 +22,25 @@
 
       <!-- Content -->
       <section>
-        <header class="main">
-          <h2>Login - Returning User</h2>
-        </header>
-
-        <label>Enter Email ID : </label>
-        <input type="text" class="form-control" name="username" placeholder="Username" ng-model="username" required />
-        <br>
-        <label>Enter Password :  </label>
-        <input type="password" class="form-control" name="password" placeholder="Password" ng-model="password" required />
 
         <div ng-controller = LoginCtrl>
           <form name = loginForm class="form-horizontal">
-            <h4> Or Login to your <strong>Numinous Account :</strong></h4>
-            <label>Enter Email ID : </label>
-            <input type="text" class="form-control" name="email" placeholder="email" ng-model="user.email" required />
+            <header class="main">
+              <h2>Login - Returning User</h2>
+            </header>
+
+            <label> Enter Email ID : </label>
+            <input type="text" class="form-control" name="email" placeholder="Email" ng-model="user.email" required />
+            <br>
             <label>Enter Password :  </label>
             <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
-            <hr />
-            <button type="submit" class="btn btn-primary" ng-click="login()" >Submit</button>
-          </form>
-        </div>
 
-        <div style="text-align: center">
-          <br>
-          <a ui-sref="dashboard" class="btn btn-primary" ng-click="authService.login()">Log In</a>
+            <br>
+            <div style="text-align: center">
+              <button type="submit" class="btn" ng-click="login()" >Submit</button>
+            </div>
+
+          </form>
         </div>
 
         <hr class="major"/>
@@ -74,6 +68,7 @@
           <li><a ui-sref="home">Homepage</a></li>
           <li><a ui-sref="signup">SignUp</a></li>
           <li><a ui-sref="login">Login</a></li>
+          <li><a ui-sref="dashboard">Dashboard</a></li>
           <li>
             <span class="opener">Trips Views</span>
             <ul>
@@ -82,7 +77,7 @@
               <li><a href="#">Google View</a></li>
             </ul>
           </li>
-          <li><a href="#">Etiam Dolore</a></li>
+          <li><a ui-sref="schedule">Schedule</a></li>
           <li><a href="#">Adipiscing</a></li>
           <li>
             <span class="opener">Another Submenu</span>

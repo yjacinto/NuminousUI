@@ -66,13 +66,40 @@ angular.module('numinousUiApp', [
       controller: 'calendarCtrl',
       controllerAs: 'calendar'
     };
+    var googlemapState = {
+      name: 'googlemap',
+      url: '/googlemap',
+      templateUrl:'/views/googlemap.html'
+
+    };
+    var placeState = {
+      name: 'place',
+      url: '/place',
+      templateUrl:'/views/place.html'
+
+    };
+    var tempState = {
+      name: 'temp',
+      url: '/temp',
+      templateUrl:'/views/temp.html'
+
+    };
+    var aboutState = {
+      name: 'about',
+      url: '/about',
+      templateUrl:'/views/about.html'
+
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
     $stateProvider.state(scheduleState);
+    $stateProvider.state(googlemapState);
+    $stateProvider.state(placeState);
     $stateProvider.state(calendarState);
-
+    $stateProvider.state(tempState);
+    $stateProvider.state(aboutState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

@@ -86,12 +86,15 @@
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a ui-sref="dashboard" ui-sref-active="active">Dashboard</a></li>
                             <li><a ui-sref="schedule">Schedule</a></li>
-                            <!--<li><a href="table.html">Data Tables</a></li>-->
+                            <li><a ui-sref="about">About</a></li>
                             <!--<li><a href="forms.html">Forms</a></li>-->
                             <li><a ui-sref="login">Login Page</a></li>
                             <!--<li><a href="blank.html">Blank Page</a></li>-->
-                            <li><a ui-sref="about">About Page</a></li>
+                            <li><a ui-sref="extra">Extra Page</a></li>
+                            <li><a ui-sref="googlemap">Google Map</a></li>
+                            <li><a ui-sref="place">Places</a></li>
                             <li><a ui-sref="calendar">Calendar</a></li>
+                            <li><a ui-sref="temp">Temp</a></li>
 
                         </ul>
                     </div>
@@ -163,9 +166,10 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/schedule.js"></script>
         <script src="scripts/controllers/calendar.js"></script>
+        <script src="scripts/controllers/googlemap.js"></script>
+        <script src="scripts/controllers/googlemapdirection.js"></script>
         <script src="scripts/controllers/services.js"></script>
         <script src="scripts/controllers/auth_controllers.js"></script>
         <script src="scripts/constants.js"></script>

@@ -1,100 +1,5 @@
-<!--
-<!DOCTYPE html>
-<html lang="en" ng-app="numinouUiApp" id="top">
-
-<body>
-    <div class="row">
-
-    </div>
-
-    <div class="content-wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <h1 class="page-head-line">Schedule</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                Calendar View
-              </div>
-              <div class="panel-body">
-
-                <div class="col-md-6">
-                  <div class="span8">
-                    <tabset>
-                      <tab select="renderCalendar('myCalendar');">
-                        <div class="btn-toolbar">
-                          <div class="btn-group">
-                            <button class="btn btn-success" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
-                            <button class="btn btn-success" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
-                            <button class="btn btn-success" ng-click="changeView('month', 'myCalendar')">Month</button>
-                            <button class="btn btn-success" ng-click="changeView('listMonth', 'myCalendar')">ListView</button>
-                          </div>
-                        </div>
-
-                      </tab>
-
-                    </tabset>
-                  </div>
-
-
-                  <div class="calendar" ng-model="eventSources" calendar="myCalendar" ui-calendar="uiConfig.calendar"></div>
-                </div>
-
-                <div class="col-md-6">
-                  <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-                    <h4>{{alertMessage}}</h4>
-                  </div>
-
-                  <div class="btn-group calTools">
-                    <button type="button" class="btn btn-primary" ng-click="addEvent()">
-                      Add Event
-                    </button>
-                  </div>
-
-                  <u1 class="unstyled">
-                    <li ng-repeat="e in events">
-                      <div class="alert alert-info">
-                        <a class="close" ng-click="remove($index)">Remove</a>
-                        <b><input ng-model="e.title"></b>
-                        {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
-                      </div>
-                    </li>
-                  </u1>
-
-
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-</body>
-</html>
--->
-
-
-
 <!DOCTYPE HTML>
-<head>
-  <link rel="stylesheet" href="../../bower_components/fullcalendar/dist/fullcalendar.css"/>
-  <!-- jquery, moment, and angular have to get included before fullcalendar -->
-  <script type="text/javascript" src="../../bower_components/jquery/dist/jquery.min.js"></script>
-  <script type="text/javascript" src="../../bower_components/moment/min/moment.min.js"></script>
-  <script type="text/javascript" src="../../bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="../../bower_components/angular-ui-calendar/src/calendar.js"></script>
-  <script type="text/javascript" src="../../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
-  <script type="text/javascript" src="../../bower_components/fullcalendar/dist/gcal.js"></script>
-</head>
+
 
 <body ng-app="numinousUiApp" ui-router-styles>
 <ui-view></ui-view>
@@ -121,18 +26,10 @@
       <section>
         <div class="row">
           <div class="col-md-12">
-            <h1 class="page-head-line">Schedule</h1>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
             <div class="panel panel-default">
-              <div class="panel-heading">
-                Calendar View
-              </div>
               <div class="panel-body">
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="span8">
                     <tabset>
                       <tab select="renderCalendar('myCalendar');">
@@ -141,30 +38,26 @@
                             <button class="button small" ng-click="changeView('agendaDay', 'myCalendar')">Day</button>
                             <button class="button small" ng-click="changeView('agendaWeek', 'myCalendar')">Week</button>
                             <button class="button small" ng-click="changeView('month', 'myCalendar')">Month</button>
-                            <button class="button small" ng-click="changeView('listMonth', 'myCalendar')">ListView</button>
+                            <!--<button class="button small" ng-click="changeView('listMonth', 'myCalendar')">ListView</button>-->
                           </div>
                         </div>
-
                       </tab>
-
                     </tabset>
                   </div>
-
-
-                  <div class="calendar" ng-model="eventSources" calendar="myCalendar" ui-calendar="uiConfig.calendar"></div>
+                  <p></p>
+                  <div class="calendar" ng-model="eventSources" calendar="myCalendar"
+                       ui-calendar="uiConfig.calendar"></div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
                     <h4>{{alertMessage}}</h4>
                   </div>
 
                   <div class="btn-group calTools">
-                    <button type="button" class="button special small" ng-click="addEvent()">
-                      Add Event
-                    </button>
+                    <button type="button" class="button special small" ng-click="addEvent()">Add Event</button>
                   </div>
-
+                  <p></p>
                   <u1 class="unstyled">
                     <li ng-repeat="e in events">
                       <div class="alert alert-info">
@@ -194,7 +87,7 @@
       <!-- Search -->
       <section id="search" class="alt">
         <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search" />
+          <input type="text" name="query" id="query" placeholder="Search"/>
         </form>
       </section>
 
@@ -211,7 +104,7 @@
             <span class="opener">Trips Views</span>
             <ul>
               <li><a href="#">List Itinerary</a></li>
-              <li><a href="#">Calendar</a></li>
+              <li><a ui-sref="calendar">Calendar</a></li>
               <li><a href="#">Google View</a></li>
             </ul>
           </li>
@@ -239,15 +132,15 @@
         </header>
         <div class="mini-posts">
           <article>
-            <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+            <a href="#" class="image"><img src="images/pic07.jpg" alt=""/></a>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
           </article>
           <article>
-            <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+            <a href="#" class="image"><img src="images/pic08.jpg" alt=""/></a>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
           </article>
           <article>
-            <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+            <a href="#" class="image"><img src="images/pic09.jpg" alt=""/></a>
             <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
           </article>
         </div>
@@ -261,18 +154,21 @@
         <header class="major">
           <h2>Get in touch</h2>
         </header>
-        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper
+          dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
         <ul class="contact">
           <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
           <li class="fa-phone">(000) 000-0000</li>
-          <li class="fa-home">1234 Somewhere Road #8254<br />
-            Nashville, TN 00000-0000</li>
+          <li class="fa-home">1234 Somewhere Road #8254<br/>
+            Nashville, TN 00000-0000
+          </li>
         </ul>
       </section>
 
       <!-- Footer -->
       <footer id="footer">
-        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
+          href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
       </footer>
 
     </div>
@@ -298,7 +194,8 @@
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+<!--[if lte IE 8]>
+<script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
 
 </body>

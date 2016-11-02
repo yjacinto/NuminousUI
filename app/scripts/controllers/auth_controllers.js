@@ -6,12 +6,14 @@ angular.module('numinousUiApp')
   .controller('LoginCtrl', function($scope, AuthService, $state) {
 
     $scope.user = {
+      id:'',
+      first_name: '',
+      last_name: '',
       email: '',
       password: ''
     };
 
     $scope.login = function() {
-      console.log($scope.user);
       AuthService.login($scope.user).then(function(msg) {
         $state.go('dashboard');
       }, function(err) {
@@ -23,6 +25,8 @@ angular.module('numinousUiApp')
 
   .controller('RegisterCtrl', function($scope, AuthService, $state) {
     $scope.user = {
+      first_name : '',
+      last_name : '',
       email: '',
       password: ''
     };
@@ -46,8 +50,8 @@ angular.module('numinousUiApp')
 
     $scope.getInfo = function() {
       $http.get(API_ENDPOINT.url + '/user/getInfo').then(function(result) {
-        $scope.email = result.data.msg;
-        console.log(result);
+        $scope.user = result.data;
+        console.log($scope.user);
       });
     };
 

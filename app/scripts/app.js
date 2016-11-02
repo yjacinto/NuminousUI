@@ -20,7 +20,7 @@ angular.module('numinousUiApp', [
     'uiRouterStyles',
     'auth0.lock',
     'angular-jwt',
-    'ui.calendar',
+    'ui.calendar'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -79,7 +79,7 @@ angular.module('numinousUiApp', [
     $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
-        if (next.name !== 'login' && next.name !== 'singup') {
+        if (next.name !== 'login' && next.name !== 'signup') {
           event.preventDefault();
           $state.go('login');
         }

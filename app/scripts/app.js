@@ -81,28 +81,22 @@ angular.module('numinousUiApp', [
       controllerAs: 'calendar'
     };
 
-    var googlemapState = {
-      name: 'googlemap',
-      url: '/googlemap',
-      templateUrl:'/views/googlemap.html'
+    var googlePlaceState = {
+      name: 'googlePlace',
+      url: '/googlePlace',
+      templateUrl:'/views/googlePlace.html'
 
     };
-    var placeState = {
-      name: 'place',
-      url: '/place',
-      templateUrl:'/views/place.html'
+    var googleDrawState = {
+      name: 'googleDraw',
+      url: '/googleDraw',
+      templateUrl:'/views/googleDraw.html'
 
     };
-    var tempState = {
-      name: 'temp',
-      url: '/temp',
-      templateUrl:'/views/temp.html'
-
-    };
-    var aboutState = {
-      name: 'about',
-      url: '/about',
-      templateUrl:'/views/about.html'
+    var directionsState = {
+      name: 'directions',
+      url: '/directions',
+      templateUrl:'/views/directions.html'
 
     };
 
@@ -111,11 +105,10 @@ angular.module('numinousUiApp', [
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
     $stateProvider.state(scheduleState);
-    $stateProvider.state(googlemapState);
-    $stateProvider.state(placeState);
+    $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
-    $stateProvider.state(tempState);
-    $stateProvider.state(aboutState);
+    $stateProvider.state(googleDrawState);
+    $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
   })
 

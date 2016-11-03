@@ -1,5 +1,67 @@
-<!doctype html>
+<!DOCTYPE html>
+<head>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
 
+    #map {
+      height: 100%;
+    }
+
+    .controls {
+      margin-top: 10px;
+      border: 1px solid transparent;
+      border-radius: 2px 0 0 2px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      height: 32px;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #map-outer {
+      height: 500px;
+    }
+
+    #pac-input {
+      background-color: #fff;
+      font-family: Roboto;
+      font-size: 15px;
+      font-weight: 300;
+      margin-left: 12px;
+      padding: 0 11px 0 13px;
+      text-overflow: ellipsis;
+      width: 300px;
+    }
+
+    #pac-input:focus {
+      border-color: #4d90fe;
+    }
+
+    .pac-container {
+      font-family: Roboto;
+    }
+
+    #type-selector {
+      color: #fff;
+      background-color: #4d90fe;
+      padding: 5px 11px 0px 11px;
+    }
+
+    #type-selector label {
+      font-family: Roboto;
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    #target {
+      width: 345px;
+    }
+  </style>
+</head>
 <body ng-app="numinousUiApp" ui-router-styles>
 <ui-view></ui-view>
 <!-- Wrapper -->
@@ -8,6 +70,8 @@
   <!-- Main -->
   <div id="main">
     <div class="inner">
+
+      <!-- Header -->
       <header id="header">
         <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
         <ul class="icons">
@@ -18,103 +82,26 @@
           <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
         </ul>
       </header>
-      <!-- Banner -->
-      <section id="banner">
-        <div class="content">
-          <header>
-            <h1>Welcome to<br />
-              <img src="assets/img/logo.png"> </h1>
-            <p>A collaborative travel itinerary application </p>
-          </header>
-          <p>Numinous aims to provide our users a simple method to generate upcoming trips and vacations. Our tool helps by organizing
-            and displaying trip information in various views. We allow offer the ability to share and invite other users to any create trips.</p>
-          <ul class="actions">
-            <li><a ui-sref="signup" class="button big">Sign up!</a></li>
-          </ul>
-        </div>
-        <span class="image object">
-										<img src="images/pic10.jpg" alt="" />
-									</span>
-      </section>
 
-      <!-- Section -->
+      <!-- Content -->
       <section>
-        <header class="major">
-          <h2>Features</h2>
+        <header class="main">
+          <h2>Add Events</h2>
         </header>
-        <div class="features">
-          <article>
-            <span class="icon fa-diamond"></span>
-            <div class="content">
-              <h3>Google Map's API</h3>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            </div>
-          </article>
-          <article>
-            <span class="icon fa-paper-plane"></span>
-            <div class="content">
-              <h3>Yelp's API</h3>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            </div>
-          </article>
-          <article>
-            <span class="icon fa-rocket"></span>
-            <div class="content">
-              <h3>Social Platforms</h3>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            </div>
-          </article>
-          <article>
-            <span class="icon fa-signal"></span>
-            <div class="content">
-              <h3>AngularJS</h3>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            </div>
-          </article>
-        </div>
-      </section>
 
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Meet the Team</h2>
-        </header>
-        <div class="posts">
-          <article>
-            <a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-            <h3>Edwin Mak <br> Software Engineer</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            <ul class="actions">
-              <!--<li><a href="#" class="button">More</a></li>-->
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-            <h3>Elaine Yu <br> Computer Engineer</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            <ul class="actions">
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-            <h3>Yvonne Jacinto <br> Computer Engineer</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            <ul class="actions">
-            </ul>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-            <h3>Professor Tarng <br> Senior Project Advisor</h3>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-            <ul class="actions">
-            </ul>
-          </article>
+        <div class="container">
+          <div class="row">
+            <div id="map-outer" class="col-md-12">
+              <div id="map"></div>
+              <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            </div>
+          </div>
+
         </div>
+
       </section>
     </div>
   </div>
-
-  <!-- Sidebar -->
   <div id="sidebar">
     <div class="inner">
 
@@ -205,13 +192,91 @@
   </div>
 
 </div>
-
 <!-- Scripts -->
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/skel.min.js"></script>
 <script src="assets/js/util.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 <script src="assets/js/main.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ0jzoI27mjDnk2dLBAhq0QbYA0Zx9P4U&libraries=places&callback=initAutocomplete"
+  async defer></script>
+
+<script>
+
+  // This example requires the Places library. Include the libraries=places
+  // parameter when you first load the API. For example:
+  // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+  function initAutocomplete() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.8688, lng: 151.2195},
+      zoom: 13,
+      mapTypeId: 'roadmap'
+    });
+
+
+    // Create the search box and link it to the UI element.
+    var input = document.getElementById('pac-input');
+    var searchBox = new google.maps.places.SearchBox(input);
+    map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+    // Bias the SearchBox results towards current map's viewport.
+    map.addListener('bounds_changed', function () {
+      searchBox.setBounds(map.getBounds());
+    });
+
+    var markers = [];
+    // Listen for the event fired when the user selects a prediction and retrieve
+    // more details for that place.
+    searchBox.addListener('places_changed', function () {
+      var places = searchBox.getPlaces();
+
+      if (places.length == 0) {
+        return;
+      }
+
+      // Clear out the old markers.
+      markers.forEach(function (marker) {
+        marker.setMap(null);
+      });
+      markers = [];
+
+      // For each place, get the icon, name and location.
+      var bounds = new google.maps.LatLngBounds();
+      places.forEach(function (place) {
+        if (!place.geometry) {
+          console.log("Returned place contains no geometry");
+          return;
+        }
+        var icon = {
+          url: place.icon,
+          size: new google.maps.Size(71, 71),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(17, 34),
+          scaledSize: new google.maps.Size(25, 25)
+        };
+
+        // Create a marker for each place.
+        markers.push(new google.maps.Marker({
+          map: map,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        }));
+
+        if (place.geometry.viewport) {
+          // Only geocodes have viewport.
+          bounds.union(place.geometry.viewport);
+        } else {
+          bounds.extend(place.geometry.location);
+        }
+      });
+      map.fitBounds(bounds);
+    });
+  }
+
+</script>
 
 </body>
 

@@ -1,250 +1,100 @@
-<!DOCTYPE HTML>
+<!-- Content -->
+<section>
+  <header class="main">
+    <h2>Create a Trip</h2>
+  </header>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"> New Trip Form</div>
+        <div class="panel-body">
+          <form name="createTripForm" class="form-horizontal" novalidate>
 
-<body ng-app="numinousUiApp" ui-router-styles>
-<ui-view></ui-view>
-<!-- Wrapper -->
-<div id="wrapper">
-
-  <!-- Main -->
-  <div id="main">
-    <div class="inner">
-
-      <!-- Header -->
-      <header id="header">
-        <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
-        <ul class="icons">
-          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
-        </ul>
-      </header>
-
-      <!-- Content -->
-      <section>
-        <header class="main">
-          <h2>Create a Trip</h2>
-        </header>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="panel panel-default">
-              <div class="panel-heading"> New Trip Form</div>
-              <div class="panel-body">
-                <form name="createTripForm" class="form-horizontal" novalidate>
-
-                  <div class="form-group col-md-12">
-                    <div class="col-md-6"
-                         ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
-                      <label><font color="red">*</font> Origin </label>
-                      <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
-                             ng-model="originCity" required/>
-                    </div>
-                    <div class="col-md-6"
-                         ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
-                      <label><font color="red">*</font> Destination</label>
-                      <input type="text" class="form-control" name="destinationCity"
-                             placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-12">
-                    <div class="col-md-6"
-                         ng-class="{'has-error' : (createTripForm.startDate.$invalid && !createTripForm.startDate.$pristine)}">
-                      <label><font color="red">*</font> Trip Start Date</label>
-                      <datepicker date-format="EEE MM-dd-yyyy">
-                        <input class="form-control" id="startDate" name="startDate" placeholder ng-model="startDate"
-                               required/>
-                      </datepicker>
-                    </div>
-                    <div class="col-md-6"
-                         ng-class="{'has-error' : (createTripForm.endDate.$invalid && !createTripForm.endDate.$pristine)}">
-                      <label><font color="red">*</font> Trip End Date</label>
-                      <datepicker date-format="EEE MM-dd-yyyy">
-                        <input class="form-control" id="endDate" name="endDate" placeholder ng-model="endDate"
-                               required/>
-                      </datepicker>
-                    </div>
-                  </div>
-
-                  <div class="form-group col-md-12">
-                    <div style="text-align: center">
-                      <button type="submit" class="btn btn-primary"
-                              ng-click="createTrip(originCity, destinationCity,startDate,endDate)">Submit
-                      </button>
-                      <a ui-sref="login" class="btn btn-danger"> Cancel </a>
-                    </div>
-                  </div>
-                  <hr/>
-                </form>
+            <div class="form-group col-md-12">
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
+                <label><font color="red">*</font> Origin </label>
+                <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
+                       ng-model="originCity" required/>
+              </div>
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
+                <label><font color="red">*</font> Destination</label>
+                <input type="text" class="form-control" name="destinationCity"
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
               </div>
             </div>
-            <!--List the trips here-->
 
-            <div ng-controller="ScheduleCtrl">
-              <div ng-repeat="trip in trips">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <h3 class="panel-title">{{trip.originCity}}
-                      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                      <b>{{trip.destinationCity}}</b>
-                    </h3>
-                    <button class="btn btn-sm ">
-                      <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-                    </button>
-                  </div>
-                  <div class="panel-body">
-                    <p class="text-left"></p>
-                    <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
-                    <p class="text-middle destinationCity"></p>
-                    {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-
-                  </div>
-                  <div>
-                  </div>
-                </div>
+            <div class="form-group col-md-12">
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.startDate.$invalid && !createTripForm.startDate.$pristine)}">
+                <label><font color="red">*</font> Trip Start Date</label>
+                <datepicker date-format="EEE MM-dd-yyyy">
+                  <input class="form-control" id="startDate" name="startDate" placeholder ng-model="startDate"
+                         required/>
+                </datepicker>
               </div>
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.endDate.$invalid && !createTripForm.endDate.$pristine)}">
+                <label><font color="red">*</font> Trip End Date</label>
+                <datepicker date-format="EEE MM-dd-yyyy">
+                  <input class="form-control" id="endDate" name="endDate" placeholder ng-model="endDate"
+                         required/>
+                </datepicker>
+              </div>
+            </div>
 
-              <script>
+            <div class="form-group col-md-12">
+              <div style="text-align: center">
+                <button type="submit" class="btn btn-primary"
+                        ng-click="createTrip(originCity, destinationCity,startDate,endDate)">Submit
+                </button>
+                <a ui-sref="login" class="btn btn-danger"> Cancel </a>
+              </div>
+            </div>
+            <hr/>
+          </form>
+        </div>
+      </div>
+      <!--List the trips here-->
 
-                $(document).ready(function () {
-                  var date = moment(new Date());
-                  $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+      <div ng-controller="ScheduleCtrl">
+        <div ng-repeat="trip in trips">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">{{trip.originCity}}
+                <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                <b>{{trip.destinationCity}}</b>
+              </h3>
+              <button class="btn btn-sm ">
+                <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+              </button>
+            </div>
+            <div class="panel-body">
+              <p class="text-left"></p>
+              <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
+              <p class="text-middle destinationCity"></p>
+              {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
 
-                  var endDate = date.add(1, 'weeks');
-
-                  $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-                });
-              </script>
+            </div>
+            <div>
             </div>
           </div>
         </div>
-      </section>
+
+        <script>
+
+          $(document).ready(function () {
+            var date = moment(new Date());
+            $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+            var endDate = date.add(1, 'weeks');
+
+            $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+          });
+        </script>
+      </div>
     </div>
   </div>
-
-  <!-- Sidebar -->
-  <div id="sidebar">
-    <div class="inner">
-
-      <!-- Search -->
-      <section id="search" class="alt">
-        <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search"/>
-        </form>
-      </section>
-
-      <!-- Menu -->
-      <nav id="menu">
-        <header class="major">
-          <h2>Menu</h2>
-        </header>
-        <ul>
-          <li><a ui-sref="home">Homepage</a></li>
-          <li><a ui-sref="signup">SignUp</a></li>
-          <li><a ui-sref="login">Login</a></li>
-          <li><a ui-sref="dashboard">Dashboard</a></li>
-          <li>
-            <span class="opener">Plan a Trip</span>
-            <ul>
-              <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
-              <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
-              <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
-            </ul>
-          </li>
-          <li>
-            <span class="opener">Itinerary Options</span>
-            <ul>
-              <li><a href="#">List View</a></li>  <!--feature 1>-->
-              <li><a ui-sref="calendar">Calendar View</a></li> <!--feature 2 -->
-              <li><a ui-sref="googleDraw">Google Maps Draw</a></li> <!--feature 3 -->
-            </ul>
-          </li>
-          <li><a ui-sref="directions">Directions and ETA</a></li>
-          <li><a href="#">Maximus Erat</a></li>
-          <li><a href="#">Sapien Mauris</a></li>
-          <li><a href="#">Amet Lacinia</a></li>
-        </ul>
-      </nav>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Ante interdum</h2>
-        </header>
-        <div class="mini-posts">
-          <article>
-            <a href="#" class="image"><img src="images/pic07.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic08.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic09.jpg" alt=""/></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-        </div>
-        <ul class="actions">
-          <li><a href="#" class="button">More</a></li>
-        </ul>
-      </section>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Get in touch</h2>
-        </header>
-        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper
-          dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-        <ul class="contact">
-          <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
-          <li class="fa-phone">(000) 000-0000</li>
-          <li class="fa-home">1234 Somewhere Road #8254<br/>
-            Nashville, TN 00000-0000
-          </li>
-        </ul>
-      </section>
-
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a
-          href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-      </footer>
-
-    </div>
-  </div>
-
-</div>
-
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-17352735-3']);
-  _gaq.push(['_trackPageview']);
-  (function () {
-    var ga = document.createElement('script');
-    ga.type = 'text/javascript';
-    ga.async = true
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]>
-<script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
-
-</body>
-
-
-
-
-
-
+</section>

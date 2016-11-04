@@ -67,4 +67,9 @@ angular.module('numinousUiApp')
       $state.go('home');
       console.log('session lost');
     });
+
+    $scope.isAuthenticated = function(){
+      console.log(AuthService.isAuthenticated());
+      return AuthService.isAuthenticated();
+    };
   });

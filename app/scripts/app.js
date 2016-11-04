@@ -116,5 +116,6 @@ angular.module('numinousUiApp', [
         }
       }
     });
+
   });
 

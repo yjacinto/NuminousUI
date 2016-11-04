@@ -4,20 +4,20 @@
     <h2>Create a Trip</h2>
   </header>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-lg-12">
       <div class="panel panel-default">
         <div class="panel-heading"> New Trip Form</div>
         <div class="panel-body">
           <form name="createTripForm" class="form-horizontal" novalidate>
 
             <div class="form-group col-md-12">
-              <div class="col-md-6"
+              <div class="col-sm-12"
                    ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                 <label><font color="red">*</font> Origin </label>
                 <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
                        ng-model="originCity" required/>
               </div>
-              <div class="col-md-6"
+              <div class="col-sm-12"
                    ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
                 <label><font color="red">*</font> Destination</label>
                 <input type="text" class="form-control" name="destinationCity"

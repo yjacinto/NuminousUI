@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('numinousUiApp')
-  .controller('HomeCtrl', function () {
+  .controller('HomeCtrl', function (AuthService) {
 
 
   });

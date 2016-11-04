@@ -1,284 +1,170 @@
-<!DOCTYPE HTML>
-<head>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    #map {
-      height: 100%;
-    }
-    .controls {
-      margin-top: 10px;
-      border: 1px solid transparent;
-      border-radius: 2px 0 0 2px;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      height: 32px;
-      outline: none;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    }
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-    #map-outer{
+  #map {
+    height: 100%;
+  }
+
+  .controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  #map-outer {
+    height: 500px;
+  }
+
+  #origin-input,
+  #destination-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 200px;
+  }
+
+  #origin-input:focus,
+  #destination-input:focus {
+    border-color: #4d90fe;
+  }
+
+  #mode-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    margin-left: 12px;
+    padding: 5px 11px 0px 11px;
+  }
+
+  #mode-selector label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
+
+  /*    Display Route*/
+  #floating-panel {
+    position: relative;
+    top: 10px;
+    left: 50%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+  #right-panel {
+    font-family: 'Roboto', 'sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
+
+  #right-panel select, #right-panel input {
+    font-size: 15px;
+  }
+
+  #right-panel select {
+    width: 100%;
+  }
+
+  #right-panel i {
+    font-size: 12px;
+  }
+
+  #right-panel {
+    height: 100%;
+    float: right;
+    width: 300px;
+    overflow: auto;
+  }
+
+  #map {
+    margin-right: 0px;
+  }
+
+  #floating-panel {
+    background: #fff;
+    padding: 5px;
+    font-size: 14px;
+    font-family: Arial;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+    display: none;
+  }
+
+  @media print {
+    #map {
       height: 500px;
+      margin: 0;
     }
 
-
-    #origin-input,
-    #destination-input {
-      background-color: #fff;
-      font-family: Roboto;
-      font-size: 15px;
-      font-weight: 300;
-      margin-left: 12px;
-      padding: 0 11px 0 13px;
-      text-overflow: ellipsis;
-      width: 200px;
-    }
-
-    #origin-input:focus,
-    #destination-input:focus {
-      border-color: #4d90fe;
-    }
-
-    #mode-selector {
-      color: #fff;
-      background-color: #4d90fe;
-      margin-left: 12px;
-      padding: 5px 11px 0px 11px;
-    }
-
-    #mode-selector label {
-      font-family: Roboto;
-      font-size: 13px;
-      font-weight: 300;
-    }
-
-    /*    Display Route*/
-    #floating-panel {
-      position: relative;
-      top: 10px;
-      left: 50%;
-      z-index: 5;
-      background-color: #fff;
-      padding: 5px;
-      border: 1px solid #999;
-      text-align: center;
-      font-family: 'Roboto','sans-serif';
-      line-height: 30px;
-      padding-left: 10px;
-    }
     #right-panel {
-      font-family: 'Roboto','sans-serif';
-      line-height: 30px;
-      padding-left: 10px;
+      float: none;
+      width: auto;
     }
+  }
 
-    #right-panel select, #right-panel input {
-      font-size: 15px;
-    }
+</style>
 
-    #right-panel select {
-      width: 100%;
-    }
 
-    #right-panel i {
-      font-size: 12px;
-    }
-    #right-panel {
-      height: 100%;
-      float: right;
-      width: 300px;
-      overflow: auto;
-    }
-    #map {
-      margin-right: 0px;
-    }
-    #floating-panel {
-      background: #fff;
-      padding: 5px;
-      font-size: 14px;
-      font-family: Arial;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-      display: none;
-    }
-    @media print {
-      #map {
-        height: 500px;
-        margin: 0;
-      }
-      #right-panel {
-        float: none;
-        width: auto;
-      }
-    }
+<!-- Content -->
+<section>
+  <header class="main">
+    <h2>Directions</h2>
+  </header>
 
-  </style>
+  <div class="row">
+    <div id="map-outer" class="col-md-12">
 
-</head>
-<body ng-app="numinousUiApp" ui-router-styles>
-<ui-view></ui-view>
-<!-- Wrapper -->
-<div id="wrapper">
+      <div id="map" class="col-md-8"></div>
 
-  <!-- Main -->
-  <div id="main">
-    <div class="inner">
+      <div class="input-group col-md-4">
+        <input id="origin-input" class="controls form-control" type="text"
+               placeholder="Enter an origin location">
+      </div>
 
-      <!-- Header -->
-      <header id="header">
-        <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
-        <ul class="icons">
-          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-          <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
-        </ul>
-      </header>
+      <div class="input-group col-md-4">
+        <input id="destination-input" class="controls form-control" type="text"
+               placeholder="Enter a destination location">
+      </div>
 
-      <!-- Content -->
-      <section>
-        <header class="main">
-          <h2>Directions</h2>
-        </header>
+      <div id="mode-selector" class="controls">
+        <input type="radio" name="type" id="changemode-walking" checked="checked">
+        <label for="changemode-walking">Walking</label>
 
-        <div class="row">
-          <div id="map-outer" class="col-md-12">
+        <input type="radio" name="type" id="changemode-transit">
+        <label for="changemode-transit">Transit</label>
 
-            <div id="map" class="col-md-8"></div>
-
-            <div class="input-group col-md-4">
-              <input id="origin-input" class="controls form-control" type="text"
-                     placeholder="Enter an origin location">
-            </div>
-
-            <div class="input-group col-md-4">
-              <input id="destination-input" class="controls form-control" type="text"
-                     placeholder="Enter a destination location">
-            </div>
-
-            <div id="mode-selector" class="controls">
-              <input type="radio" name="type" id="changemode-walking" checked="checked">
-              <label for="changemode-walking">Walking</label>
-
-              <input type="radio" name="type" id="changemode-transit">
-              <label for="changemode-transit">Transit</label>
-
-              <input type="radio" name="type" id="changemode-driving">
-              <label for="changemode-driving">Driving</label>
-            </div>
-            <div id="right-panel" class="col-md-4"></div>
-
-          </div>
-        </div>
-
-      </section>
-    </div>
-  </div>
-
-  <!-- Sidebar -->
-  <div id="sidebar">
-    <div class="inner">
-
-      <!-- Search -->
-      <section id="search" class="alt">
-        <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search" />
-        </form>
-      </section>
-
-      <!-- Menu -->
-      <nav id="menu">
-        <header class="major">
-          <h2>Menu</h2>
-        </header>
-        <ul>
-          <li><a ui-sref="home">Homepage</a></li>
-          <li><a ui-sref="signup">SignUp</a></li>
-          <li><a ui-sref="login">Login</a></li>
-          <li><a ui-sref="dashboard">Dashboard</a></li>
-          <li>
-            <span class="opener">Plan a Trip</span>
-            <ul>
-              <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
-              <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
-              <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
-            </ul>
-          </li>
-          <li>
-            <span class="opener">Itinerary Options</span>
-            <ul>
-              <li><a href="#">List View</a></li>  <!--feature 1>-->
-              <li><a ui-sref="calendar">Calendar View</a></li> <!--feature 2 -->
-              <li><a ui-sref="googleDraw">Google Maps Draw</a></li> <!--feature 3 -->
-            </ul>
-          </li>
-          <li><a ui-sref="directions">Directions and ETA</a></li>
-          <li><a href="#">Maximus Erat</a></li>
-          <li><a href="#">Sapien Mauris</a></li>
-          <li><a href="#">Amet Lacinia</a></li>
-        </ul>
-      </nav>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Ante interdum</h2>
-        </header>
-        <div class="mini-posts">
-          <article>
-            <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-          <article>
-            <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-          </article>
-        </div>
-        <ul class="actions">
-          <li><a href="#" class="button">More</a></li>
-        </ul>
-      </section>
-
-      <!-- Section -->
-      <section>
-        <header class="major">
-          <h2>Get in touch</h2>
-        </header>
-        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
-        <ul class="contact">
-          <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
-          <li class="fa-phone">(000) 000-0000</li>
-          <li class="fa-home">1234 Somewhere Road #8254<br />
-            Nashville, TN 00000-0000</li>
-        </ul>
-      </section>
-
-      <!-- Footer -->
-      <footer id="footer">
-        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-      </footer>
+        <input type="radio" name="type" id="changemode-driving">
+        <label for="changemode-driving">Driving</label>
+      </div>
+      <div id="right-panel" class="col-md-4"></div>
 
     </div>
   </div>
 
-</div>
+</section>
 
-<!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js"></script>
-<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-<script src="assets/js/main.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ0jzoI27mjDnk2dLBAhq0QbYA0Zx9P4U&libraries=places&callback=initMap"
-        async defer></script>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ0jzoI27mjDnk2dLBAhq0QbYA0Zx9P4U&libraries=places&callback=initMap"
+  async defer></script>
 
 <script>
   // This example requires the Places library. Include the libraries=places
@@ -316,10 +202,11 @@
     // Autocomplete.
     function setupClickListener(id, mode) {
       var radioButton = document.getElementById(id);
-      radioButton.addEventListener('click', function() {
+      radioButton.addEventListener('click', function () {
         travel_mode = mode;
       });
     }
+
     setupClickListener('changemode-walking', 'WALKING');
     setupClickListener('changemode-transit', 'TRANSIT');
     setupClickListener('changemode-driving', 'DRIVING');
@@ -333,7 +220,7 @@
       }
     }
 
-    origin_autocomplete.addListener('place_changed', function() {
+    origin_autocomplete.addListener('place_changed', function () {
       var place = origin_autocomplete.getPlace();
       if (!place.geometry) {
         window.alert("Autocomplete's returned place contains no geometry");
@@ -348,7 +235,7 @@
         directionsService, directionsDisplay);
     });
 
-    destination_autocomplete.addListener('place_changed', function() {
+    destination_autocomplete.addListener('place_changed', function () {
       var place = destination_autocomplete.getPlace();
       if (!place.geometry) {
         window.alert("Autocomplete's returned place contains no geometry");
@@ -372,7 +259,7 @@
         origin: {'placeId': origin_place_id},
         destination: {'placeId': destination_place_id},
         travelMode: travel_mode
-      }, function(response, status) {
+      }, function (response, status) {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
         } else {
@@ -395,12 +282,13 @@
       control.style.display = 'block';
       map.controls[google.maps.ControlPosition.TOP_CENTER].push(control);
 
-      var onChangeHandler = function() {
+      var onChangeHandler = function () {
         calculateAndDisplayRoute(directionsService, directionsDisplay);
       };
       document.getElementById('origin_place_id').addEventListener('change', onChangeHandler);
       document.getElementById('destination_place_id').addEventListener('change', onChangeHandler);
     }
+
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       var start = document.getElementById('origin_place_id').value;
       var end = document.getElementById('destination_place_id').value;
@@ -409,7 +297,7 @@
         origin: start,
         destination: end,
         travelMode: google.maps.TravelMode[selectMode]
-      }, function(response, status) {
+      }, function (response, status) {
         if (status === 'OK') {
           directionsDisplay.setDirections(response);
         } else {
@@ -421,5 +309,4 @@
   }
 </script>
 
-</body>
 

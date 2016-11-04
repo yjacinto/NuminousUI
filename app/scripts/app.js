@@ -24,17 +24,14 @@ angular.module('numinousUiApp', [
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/');
 
     var homeState = {
       name:'home',
-      url:'/home',
+      url:'/',
       templateUrl:'/views/home.html',
       controller: 'HomeCtrl',
-      controllerAs: 'home',
-      data: {
-        css:'/assets/css/main.css'
-      }
+      controllerAs: 'home'
     };
 
     var loginState = {
@@ -50,10 +47,7 @@ angular.module('numinousUiApp', [
       url: '/signup',
       templateUrl: '/views/signup.html',
       controller: 'RegisterCtrl',
-      controllerAs: 'signup',
-      data: {
-        css: '/assets/css/main.css'
-      }
+      controllerAs: 'signup'
     };
 
     var dashboardState = {
@@ -116,7 +110,7 @@ angular.module('numinousUiApp', [
     $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
-        if (next.name !== 'login' && next.name !== 'signup') {
+        if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
           event.preventDefault();
           $state.go('login');
         }

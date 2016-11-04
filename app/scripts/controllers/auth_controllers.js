@@ -57,14 +57,14 @@ angular.module('numinousUiApp')
 
     $scope.logout = function() {
       AuthService.logout();
-      $state.go('login');
+      $state.go('home');
     };
   })
 
   .controller('AppCtrl', function($scope, $state, AuthService, AUTH_EVENTS) {
     $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
       AuthService.logout();
-      $state.go('login');
+      $state.go('home');
       console.log('session lost');
     });
   });

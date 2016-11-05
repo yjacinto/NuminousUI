@@ -3,30 +3,39 @@
   <header class="main">
     <h2>Create a Trip</h2>
   </header>
-  <div class="row">
-    <div class="col-lg-12">
+
+  <style>
+    .panel-heading h3 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: normal;
+      width: 75%;
+      padding-top: 8px;
+    }
+  </style>
+
+
       <div class="panel panel-default">
-        <div class="panel-heading"> New Trip Form</div>
+        <div class="panel-heading clearfix"> New Trip Form</div>
         <div class="panel-body">
           <form name="createTripForm" class="form-horizontal" novalidate>
-
-            <div class="form-group col-md-12">
-              <div class="col-sm-12"
-                   ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
-                <label><font color="red">*</font> Origin </label>
-                <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
-                       ng-model="originCity" required/>
+              <div class="form-group">
+                <div class="col-lg-6"
+                     ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
+                  <label><font color="red">*</font> Origin </label>
+                  <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
+                         ng-model="originCity" required/>
+                </div>
+                <div class="col-lg-6"
+                     ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
+                  <label><font color="red">*</font> Destination</label>
+                  <input type="text" class="form-control" name="destinationCity"
+                         placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
+                </div>
               </div>
+            <div class="form-group">
               <div class="col-sm-12"
-                   ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
-                <label><font color="red">*</font> Destination</label>
-                <input type="text" class="form-control" name="destinationCity"
-                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
-              </div>
-            </div>
-
-            <div class="form-group col-md-12">
-              <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.startDate.$invalid && !createTripForm.startDate.$pristine)}">
                 <label><font color="red">*</font> Trip Start Date</label>
                 <datepicker date-format="EEE MM-dd-yyyy">
@@ -34,7 +43,7 @@
                          required/>
                 </datepicker>
               </div>
-              <div class="col-md-6"
+              <div class="col-sm-12"
                    ng-class="{'has-error' : (createTripForm.endDate.$invalid && !createTripForm.endDate.$pristine)}">
                 <label><font color="red">*</font> Trip End Date</label>
                 <datepicker date-format="EEE MM-dd-yyyy">
@@ -52,7 +61,6 @@
                 <a ui-sref="login" class="btn btn-danger"> Cancel </a>
               </div>
             </div>
-            <hr/>
           </form>
         </div>
       </div>
@@ -61,19 +69,18 @@
       <div ng-controller="ScheduleCtrl">
         <div ng-repeat="trip in trips">
           <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">{{trip.originCity}}
+            <div class="panel-heading clearfix">
+              <h3 class="panel-title pull-left">{{trip.originCity}}
                 <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
                 <b>{{trip.destinationCity}}</b>
               </h3>
-              <button class="btn btn-sm ">
+              <button class="btn btn-sm pull-right" ng-click="remove(trip)">
                 <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
               </button>
             </div>
             <div class="panel-body">
-              <p class="text-left"></p>
-              <button type="submit" class="btn btn-primary pull-right planNow">Plan Now!</button>
-              <p class="text-middle destinationCity"></p>
+              <button type="submit" class="btn btn-primary btn-sm pull-right planNow">Plan Now!</button>
+              <p class="text-middle destinationCity pull-left"></p>
               {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
 
             </div>
@@ -94,7 +101,8 @@
 
           });
         </script>
+
+
       </div>
-    </div>
-  </div>
+
 </section>

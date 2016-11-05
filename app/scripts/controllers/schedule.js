@@ -32,6 +32,16 @@ var myApp = angular.module('numinousUiApp')
         });
     };
 
+    $scope.remove = function(item){
+      var index = $scope.trips.indexOf(item);
+      $scope.trips.splice(index, 1);
+      $http.delete('http://localhost:1337/trip/'+item.id)
+        .success(function(response){
+          console.log('deleted trip successfully.')
+        })
+
+    };
+
     var getTrips = function (){
 
       var command = encodeURI('http://localhost:1337/trip/index');

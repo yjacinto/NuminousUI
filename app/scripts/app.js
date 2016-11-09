@@ -53,7 +53,10 @@ angular.module('numinousUiApp', [
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
-      templateUrl:'/views/dashboard.html'
+      templateUrl:'/views/dashboard.html',
+      data:{
+        css:'/styles/friends-panel.css'
+      }
     };
 
     var scheduleState = {

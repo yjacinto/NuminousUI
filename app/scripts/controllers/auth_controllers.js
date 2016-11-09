@@ -69,7 +69,6 @@ angular.module('numinousUiApp')
     });
 
     $scope.isAuthenticated = function(){
-      console.log(AuthService.isAuthenticated());
       return AuthService.isAuthenticated();
     };
   });

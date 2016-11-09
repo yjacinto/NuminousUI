@@ -17,7 +17,8 @@
     "auth0-lock": "^10.4.0",
     "angular-lock": "^1.0.3",
     "angular-jwt": "^0.1.6",
-    "angular-ui-calendar": "^1.0.2"
+    "angular-ui-calendar": "^1.0.2",
+    "angular-openweathermap-api-factory": "^0.6.0"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8"

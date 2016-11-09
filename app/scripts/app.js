@@ -20,7 +20,8 @@ angular.module('numinousUiApp', [
     'uiRouterStyles',
     'auth0.lock',
     'angular-jwt',
-    'ui.calendar'
+    'ui.calendar',
+    'jtt_openweathermap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -53,7 +54,9 @@ angular.module('numinousUiApp', [
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
-      templateUrl:'/views/dashboard.html'
+      templateUrl:'/views/dashboard.html',
+      controller: 'DashboardCtrl',
+      controllerAs: 'dashboard'
     };
 
     var scheduleState = {

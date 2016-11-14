@@ -42,12 +42,14 @@
               </div>
             </div>
 
+            <!--WORKING ON THE ORIGIN INPUT FIELD FIRST -- TRYING TO SET THE NG-MODEL TO BIND WITH THE RESULT FROM THE
+            DROPDOWN -->
             <div class="form-group col-md-12">
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                 <label>Origin </label>
-                <input id="autocomplete" type="text" class="form-control" name="originCity" placeholder="Starting Location"
-                       ng-model="autocomplete.value" ng-change="updateLocation()" required/> {{originCity}}
+                <input id="originCity" type="text" class="form-control" name="originCity" placeholder="Starting Location"
+                       ng-model="originCity" ng-change="" required/> {{originCity}}
               </div>
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
@@ -108,43 +110,6 @@
     </div>
   </div>
 
-  <div id="locationField">
-    <input id="autocomplete" placeholder="Enter your address"
-           onFocus="geolocate()" type="text"/>
-  </div>
-
-  <table id="address">
-    <tr>
-      <td class="label">Street address</td>
-      <td class="slimField"><input class="field" id="street_number"
-                                   disabled="true"/></td>
-      <td class="wideField" colspan="2"><input class="field" id="route"
-                                               disabled="true"/></td>
-    </tr>
-    <tr>
-      <td class="label">City</td>
-      <!-- Note: Selection of address components in this example is typical.
-           You may need to adjust it for the locations relevant to your app. See
-           https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
-      -->
-      <td class="wideField" colspan="3"><input class="field" id="locality"
-                                               disabled="true"/></td>
-    </tr>
-    <tr>
-      <td class="label">State</td>
-      <td class="slimField"><input class="field"
-                                   id="administrative_area_level_1" disabled="true"/></td>
-      <td class="label">Zip code</td>
-      <td class="wideField"><input class="field" id="postal_code"
-                                   disabled="true"/></td>
-    </tr>
-    <tr>
-      <td class="label">Country</td>
-      <td class="wideField" colspan="3"><input class="field"
-                                               id="country" disabled="true"/></td>
-    </tr>
-  </table>
-
   <script>
     // This example displays an address form, using the autocomplete feature
     // of the Google Places API to help users fill in the information.
@@ -153,7 +118,7 @@
     // parameter when you first load the API. For example:
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
-    var placeSearch, autocomplete;
+    var placeSearch, originCity;
     var componentForm = {
       street_number: 'short_name',
       route: 'long_name',
@@ -166,18 +131,18 @@
     function initAutocomplete() {
       // Create the autocomplete object, restricting the search to geographical
       // location types.
-      autocomplete = new google.maps.places.Autocomplete(
-        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      originCity = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('originCity')),
         {types: ['geocode']});
 
       // When the user selects an address from the dropdown, populate the address
       // fields in the form.
-      autocomplete.addListener('place_changed', fillInAddress);
+      originCity.addListener('place_changed', fillInAddress);
     }
 
     function fillInAddress() {
       // Get the place details from the autocomplete object.
-      var place = autocomplete.getPlace();
+      var place = originCity.getPlace();
 
       for (var component in componentForm) {
         document.getElementById(component).value = '';
@@ -217,6 +182,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
           async defer></script>
 
-  
+
 </section>
 

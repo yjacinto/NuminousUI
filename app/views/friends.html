@@ -1,0 +1,107 @@
+<h3>Users and Friends</h3>
+
+<div class="container" ng-controller="FriendCtrl">
+  <div class="row">
+    <section class="content">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="pull-right">
+              <!--
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
+                <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
+                <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
+                <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+              </div>-->
+            </div>
+            <div class="table-container">
+              <table class="table table-filter" >
+                <tbody>
+                  <p><input type="text" ng-model="user_filter"></p>
+                  <tr ng-repeat = " user in users | filter : user_filter">
+                    <td>
+                      <div class="ckbox">
+                        <input type="checkbox" id="checkbox5">
+                        <label for="checkbox5"></label>
+                      </div>
+                    </td>
+                    <td>
+                      <button ng-click = "addFriend(user, $index)">
+                        <i class="fa fa-plus"></i>
+                      </button>
+                    </td>
+                    <td>
+                      <div class="media">
+                        <div class="media-body">
+                          <h4 class="title">
+                            {{user.first_name}} {{user.last_name}}
+                            <span class="pull-right">{{user.email}}</span>
+                          </h4>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <button class="btn btn-sm">
+                    Add Users
+                  </button>
+                  </br>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="pull-right">
+              <!--
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
+                <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
+                <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
+                <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+              </div>-->
+            </div>
+            <div class="table-container">
+              <table class="table table-filter" >
+                <tbody>
+                <p><input type="text" ng-model="friends_filter"></p>
+                <tr ng-repeat = " friend in friends | filter : friends_filter">
+                  <td>
+                    <div class="ckbox">
+                      <input type="checkbox" id="checkbox5">
+                      <label for="checkbox5"></label>
+                    </div>
+                  </td>
+                  <td>
+                    <button>
+                      Message!
+                    </button>
+                  </td>
+                  <td>
+                    <div class="media">
+                      <div class="media-body">
+                        <h4 class="title">
+                          {{friend.first_name}} {{friend.last_name}}
+                          <span class="pull-right">{{friend.email}}</span>
+                        </h4>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                </br>
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>

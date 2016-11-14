@@ -50,13 +50,18 @@ angular.module('numinousUiApp', [
       controllerAs: 'signup'
     };
 
+    var friendState = {
+      name: 'friend',
+      url: '/friend',
+      templateUrl: '/views/friends.html',
+      controller: 'FriendCtrl',
+      controllerAs: 'friend'
+    };
+
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
       templateUrl:'/views/dashboard.html',
-      data:{
-        css:'/styles/friends-panel.css'
-      }
     };
 
     var scheduleState = {
@@ -95,7 +100,8 @@ angular.module('numinousUiApp', [
       url: '/directions',
       templateUrl:'/views/directions.html'
 
-    };
+    }
+
 
 
     $stateProvider.state(dashboardState);
@@ -107,6 +113,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(googleDrawState);
     $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
+    $stateProvider.state(friendState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

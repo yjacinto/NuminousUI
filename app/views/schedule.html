@@ -1,27 +1,25 @@
 <!-- Content -->
+<!-- Replace the value of the key parameter with your own API key. -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+
 <section>
   <header class="main">
-    <h2>Create a Trip</h2>
+    <br>
+    <h2>Create a New Trip</h2>
   </header>
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
-        <div class="panel-heading"> New Trip Form</div>
+
         <div class="panel-body">
           <form name="createTripForm" class="form-horizontal" novalidate>
 
             <div class="form-group col-md-12">
-              <div class="col-md-6"
-                   ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
-                <label><font color="red">*</font> Origin </label>
-                <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
-                       ng-model="originCity" required/>
-              </div>
-              <div class="col-md-6"
-                   ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
-                <label><font color="red">*</font> Destination</label>
-                <input type="text" class="form-control" name="destinationCity"
-                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
+              <div class="col-md-12">
+                <label> <font color="red">*</font> Name</label>
+                <input type="text" class="form-control" name="tripName" placeholder="Name This Trip..." ng-model="tripName" required/>
               </div>
             </div>
 
@@ -45,6 +43,21 @@
             </div>
 
             <div class="form-group col-md-12">
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
+                <label>Origin </label>
+                <input id="autocomplete" type="text" class="form-control" name="originCity" placeholder="Starting Location"
+                       ng-model="autocomplete.value" ng-change="updateLocation()" required/> {{originCity}}
+              </div>
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
+                <label>Destination</label>
+                <input type="text" class="form-control" name="destinationCity"
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
               <div style="text-align: center">
                 <button type="submit" class="btn btn-primary"
                         ng-click="createTrip(originCity, destinationCity,startDate,endDate)">Submit
@@ -52,7 +65,7 @@
                 <a ui-sref="login" class="btn btn-danger"> Cancel </a>
               </div>
             </div>
-            <hr/>
+
           </form>
         </div>
       </div>
@@ -83,18 +96,127 @@
         </div>
 
         <script>
-
           $(document).ready(function () {
             var date = moment(new Date());
             $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
 
             var endDate = date.add(1, 'weeks');
-
             $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
           });
         </script>
       </div>
     </div>
   </div>
+
+  <div id="locationField">
+    <input id="autocomplete" placeholder="Enter your address"
+           onFocus="geolocate()" type="text"/>
+  </div>
+
+  <table id="address">
+    <tr>
+      <td class="label">Street address</td>
+      <td class="slimField"><input class="field" id="street_number"
+                                   disabled="true"/></td>
+      <td class="wideField" colspan="2"><input class="field" id="route"
+                                               disabled="true"/></td>
+    </tr>
+    <tr>
+      <td class="label">City</td>
+      <!-- Note: Selection of address components in this example is typical.
+           You may need to adjust it for the locations relevant to your app. See
+           https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+      -->
+      <td class="wideField" colspan="3"><input class="field" id="locality"
+                                               disabled="true"/></td>
+    </tr>
+    <tr>
+      <td class="label">State</td>
+      <td class="slimField"><input class="field"
+                                   id="administrative_area_level_1" disabled="true"/></td>
+      <td class="label">Zip code</td>
+      <td class="wideField"><input class="field" id="postal_code"
+                                   disabled="true"/></td>
+    </tr>
+    <tr>
+      <td class="label">Country</td>
+      <td class="wideField" colspan="3"><input class="field"
+                                               id="country" disabled="true"/></td>
+    </tr>
+  </table>
+
+  <script>
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+    var placeSearch, autocomplete;
+    var componentForm = {
+      street_number: 'short_name',
+      route: 'long_name',
+      locality: 'long_name',
+      administrative_area_level_1: 'short_name',
+      country: 'long_name',
+      postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+      // Create the autocomplete object, restricting the search to geographical
+      // location types.
+      autocomplete = new google.maps.places.Autocomplete(
+        /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+        {types: ['geocode']});
+
+      // When the user selects an address from the dropdown, populate the address
+      // fields in the form.
+      autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+      // Get the place details from the autocomplete object.
+      var place = autocomplete.getPlace();
+
+      for (var component in componentForm) {
+        document.getElementById(component).value = '';
+        document.getElementById(component).disabled = false;
+      }
+
+      // Get each component of the address from the place details
+      // and fill the corresponding field on the form.
+      for (var i = 0; i < place.address_components.length; i++) {
+        var addressType = place.address_components[i].types[0];
+        if (componentForm[addressType]) {
+          var val = place.address_components[i][componentForm[addressType]];
+          document.getElementById(addressType).value = val;
+        }
+      }
+    }
+
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+    function geolocate() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var geolocation = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          var circle = new google.maps.Circle({
+            center: geolocation,
+            radius: position.coords.accuracy
+          });
+          autocomplete.setBounds(circle.getBounds());
+        });
+      }
+    }
+  </script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
+          async defer></script>
+
+  
 </section>
+

@@ -8,7 +8,7 @@
     <div class="panel panel-default">
       <div class="panel-heading"> Registration</div>
       <div class="panel-body" ng-controller="RegisterCtrl">
-        <form name="signupForm" class="form-horizontal" novalidate>
+        <form name="signupForm" data-toggle="validator" class="form-horizontal" novalidate>
           <div class="form-group col-md-12">
             <div class="col-md-6">
               <label><font color = "red">*</font> First Name</label>
@@ -22,17 +22,21 @@
           <div class="form-group col-md-12">
             <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
               <label><font color = "red">*</font> Email Address</label>
-              <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" ng-pattern="/^.*[@].*[.com]/" required />
+              <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" id="email" ng-pattern="/^.*[@].*[.com]/" required />
+                <div class="help-block with errors"></div>
             </div>
             <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
               <label><font color = "red">*</font> Confirm Email Address</label>
-              <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="email2" ng-pattern="/^.*[@].*[.com]/" required />
+              <input type="email" class="form-control" name="email2" placeholder="Confirm email" ng-model="user.email2" data-match="#email" data-match-error="Does not match" ng-pattern="/^.*[@].*[.com]/" required />
+                <div class="help-block with-errors"></div>
+
             </div>
           </div>
           <div class="form-group col-md-12">
             <div class="col-md-6" ng-class="{'has-error' : (signupForm.password.$invalid && !signupForm.password.$pristine)}">
               <label><font color = "red">*</font> Password</label>
-              <input type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required />
+              <input type="password" class="form-control" name="password" placeholder="Password" id="password" data-minlength="8" data-error="Minimum of 8 characters!" ng-model="user.password" required />
+                <div class="help-block with-errors"></div>
             </div>
           </div>
           <div class="form-group col-md-12">

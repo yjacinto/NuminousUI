@@ -49,5 +49,6 @@ angular.module('numinousUiApp')
           console.log("Error notification");
          });
      };
+    
      init();
   });

@@ -38,6 +38,7 @@ module.exports = function(config) {
       'bower_components/angular-jwt/dist/angular-jwt.js',
       'bower_components/fullcalendar/dist/fullcalendar.js',
       'bower_components/angular-ui-calendar/src/calendar.js',
+      'bower_components/bootstrap-validator/dist/validator.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

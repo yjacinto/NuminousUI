@@ -61,7 +61,7 @@ angular.module('numinousUiApp', [
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
-      templateUrl:'/views/dashboard.html',
+      templateUrl:'/views/dashboard.html'
     };
 
     var scheduleState = {
@@ -80,7 +80,8 @@ angular.module('numinousUiApp', [
       url: '/calendar',
       templateUrl:'/views/calendar.html',
       controller: 'calendarCtrl',
-      controllerAs: 'calendar'
+      controllerAs: 'calendar',
+      params: {trip_id : null}
     };
 
     var googlePlaceState = {
@@ -101,8 +102,6 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/directions.html'
 
     }
-
-
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);

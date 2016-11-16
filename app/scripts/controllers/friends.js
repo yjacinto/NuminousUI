@@ -34,7 +34,7 @@ angular.module('numinousUiApp')
       $http.post(API_ENDPOINT.url + '/friend/addFriend', data ).then(function(result){
         if (result.status) {
           console.log('added');
-          $scope.users.splice(index, 1)
+          $scope.users.splice(index, 1);
           $scope.friends.push(friend);
         } else {
           reject(result.data.msg);
@@ -47,6 +47,21 @@ angular.module('numinousUiApp')
         if (result.status) {
           console.log(result.data);
           $scope.friends = result.data;
+        } else {
+          reject(result.data.msg);
+        }
+      });
+    };
+
+    $scope.deleteFriend = function(friend, index){
+      var data = {
+        friend_id : friend.id
+      };
+      $http.post(API_ENDPOINT.url + '/friend/deleteFriend', data).then(function (result) {
+        if (result.status) {
+          console.log(result.data);
+          $scope.friends.splice(index, 1);
+          $scope.users.push(friend);
         } else {
           reject(result.data.msg);
         }

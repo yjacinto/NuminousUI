@@ -37,15 +37,14 @@
 //
 //<div ui-calendar="uiConfig.calendar" ng-model="eventSources">
 
-
-
-    
 /**
  * calendarDemoApp - 0.9.0
  */
 angular.module('numinousUiApp')
     .controller('calendarCtrl',
-   function($scope, $compile, $timeout, uiCalendarConfig) {
+   function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams) {
+     console.log($stateParams);
+     $scope.trip_id = $stateParams.trip_id;
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -111,13 +110,35 @@ angular.module('numinousUiApp')
       }
     };
     /* add custom event*/
-    $scope.addEvent = function() {
+    $scope.addEvent = function(name, startTime, endTime, location, expectedCost) {
+      console.log('trip id in addEvent is ' + $scope.trip_id);
+      var data = {
+        name: 'test',
+        trip_id : $scope.trip_id,
+        startTime : moment('11-29-2016', "MM-DD-YYYY"),
+        endTime : moment('12-03-2016', "MM-DD-YYYY"),
+        location: 'test',
+        expectedCost: 50
+      };
+      $http.post(API_ENDPOINT.url + '/event/create', data ).then(function(result){
+        if (result.status) {
+          console.log(result.data);
+        } else {
+          reject(result.data.msg);
+        }
+      });
       $scope.events.push({
+        title: 'test',
+        start: moment("11-29-2016", "MM-DD-YYYY").toDate(),
+        end: moment("12-03-2016", "MM-DD-YYYY").toDate(),
+        allDay: false});
+
+      /*$scope.events.push({
         title: 'Open Sesame',
         start: new Date(y, m, 28),
         end: new Date(y, m, 29),
         className: ['openSesame']
-      });
+      });*/
     };
     /* remove event */
     $scope.remove = function(index) {
@@ -158,19 +179,36 @@ angular.module('numinousUiApp')
       }
     };
 
-    $scope.changeLang = function() {
-      if($scope.changeTo === 'Hungarian'){
-        $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
-        $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
-        $scope.changeTo= 'English';
-      } else {
-        $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-        $scope.changeTo = 'Hungarian';
-      }
+
+    var getAllEvents = function(trip_id){
+      var data = {
+        trip_id : $scope.trip_id
+      };
+      $http.post(API_ENDPOINT.url + '/trip/getEventsById', data ).then(function(result){
+        if (result.status) {
+          console.log(result.data);
+          $scope.events = result.data;
+        } else {
+          reject(result.data.msg);
+        }
+      });
     };
+    getAllEvents();
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
     $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
 });
 /* EOF */
+
+/*
+ $scope.changeLang = function() {
+ if($scope.changeTo === 'Hungarian'){
+ $scope.uiConfig.calendar.dayNames = ["Vasárnap", "Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat"];
+ $scope.uiConfig.calendar.dayNamesShort = ["Vas", "Hét", "Kedd", "Sze", "Csüt", "Pén", "Szo"];
+ $scope.changeTo= 'English';
+ } else {
+ $scope.uiConfig.calendar.dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+ $scope.uiConfig.calendar.dayNamesShort = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+ $scope.changeTo = 'Hungarian';
+ }
+ };*/

@@ -38,7 +38,7 @@ var myApp = angular.module('numinousUiApp')
       $http.delete('http://localhost:1337/trip/'+item.id)
         .success(function(response){
           console.log('deleted trip successfully.')
-        })
+        });
       getTrips();
 
     };

@@ -22,8 +22,8 @@
                   <tr ng-repeat = " user in users | filter : user_filter">
                     <td>
                       <div class="ckbox">
-                        <input type="checkbox" id="checkbox5">
-                        <label for="checkbox5"></label>
+                        <input type="checkbox" id="checkbox">
+                        <label for="checkbox"></label>
                       </div>
                     </td>
                     <td>
@@ -64,17 +64,26 @@
                 <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
                 <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
                 <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
-              </div>-->
+              </div>
+              -->
             </div>
             <div class="table-container">
-              <table class="table table-filter" >
+              <table class="table" >
                 <tbody>
                 <p><input type="text" ng-model="friends_filter"></p>
                 <tr ng-repeat = " friend in friends | filter : friends_filter">
                   <td>
-                    <div class="ckbox">
-                      <input type="checkbox" id="checkbox5">
-                      <label for="checkbox5"></label>
+                    <!--<div class="ckbox">
+                      <input type="checkbox" id="checkbox">
+                      <label for="checkbox"></label>
+                    </div>-->
+                    <button ng-click = "deleteFriend(friend, $index)">
+                      Delete
+                    </button>
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                      </label>
                     </div>
                   </td>
                   <td>

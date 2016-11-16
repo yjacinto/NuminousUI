@@ -57,65 +57,67 @@
       </section>
 
       <!-- Menu -->
-      <nav id="menu">
+      <nav id="menu" ng-if="!isAuthenticated()">
         <header class="major">
           <h2>Menu</h2>
         </header>
         <ul>
-          <div ng-if="!isAuthenticated()">
-            <li><a ui-sref="home">Homepage</a></li>
-            <li><a ui-sref="signup">SignUp</a></li>
-            <li><a ui-sref="login">Login</a></li>
-          </div>
-          <div ng-if="isAuthenticated()">
-            <li><a ui-sref="dashboard">Dashboard</a></li>
-            <li><a ui-sref="friend">Friends</a></li>
-            <li>
-              <span class="opener">Plan a Trip</span>
-              <ul>
-                <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
-                <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
-                <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
-              </ul>
-            </li>
-            <li>
-              <span class="opener">Itinerary Options</span>
-              <ul>
-                <li><a href="#">List View</a></li>  <!--feature 1>-->
-                <li><a ui-sref="calendar">Calendar View</a></li> <!--feature 2 -->
-                <li><a ui-sref="googleDraw">Google Maps Draw</a></li> <!--feature 3 -->
-              </ul>
-            </li>
-            <li><a ui-sref="directions">Directions and ETA</a></li>
-        </div>
+          <li><a ui-sref="home">Homepage</a></li>
+          <li><a ui-sref="signup">SignUp</a></li>
+          <li><a ui-sref="login">Login</a></li>
+        </ul>
+      </nav>
+
+      <nav id="menu" ng-if="isAuthenticated()">
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+        <ul>
+          <li><a ui-sref="dashboard">Dashboard</a></li>
+          <li><a ui-sref="friend">Friends</a></li>
+          <li>
+            <span class="opener">Plan a Trip</span>
+            <ul>
+              <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
+              <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
+              <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
+            </ul>
+          </li>
+          <li>
+            <span class="opener">Itinerary Options</span>
+            <ul>
+              <li><a href="#">List View</a></li>  <!--feature 1>-->
+              <li><a ui-sref="calendar">Calendar View</a></li> <!--feature 2 -->
+              <li><a ui-sref="googleDraw">Google Maps Draw</a></li> <!--feature 3 -->
+            </ul>
+          </li>
+          <li><a ui-sref="directions">Directions and ETA</a></li>
         </ul>
       </nav>
 
       <!-- Section -->
-      <div ng-show="isAuthenticated()">
-        <section>
-          <header class="major">
-            <h2>Ante interdum</h2>
-          </header>
-          <div class="mini-posts">
-            <article>
-              <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-            </article>
-            <article>
-              <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
-              <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-            </article>
-          </div>
-          <ul class="actions">
-            <li><a href="#" class="button">More</a></li>
-          </ul>
-        </section>
-      </div>
+      <section ng-show="isAuthenticated()">
+        <header class="major">
+          <h2>Ante interdum</h2>
+        </header>
+        <div class="mini-posts">
+          <article>
+            <a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+          </article>
+          <article>
+            <a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+          </article>
+        </div>
+        <ul class="actions">
+          <li><a href="#" class="button">More</a></li>
+        </ul>
+      </section>
 
       <!-- Section -->
       <section>

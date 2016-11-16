@@ -43,5 +43,5 @@ var myApp = angular.module('numinousUiApp')
 
     getTrips();
 
-  })
+  });
 

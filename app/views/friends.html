@@ -21,10 +21,6 @@
                   <p><input type="text" ng-model="user_filter"></p>
                   <tr ng-repeat = " user in users | filter : user_filter">
                     <td>
-                      <div class="ckbox">
-                        <input type="checkbox" id="checkbox">
-                        <label for="checkbox"></label>
-                      </div>
                     </td>
                     <td>
                       <button ng-click = "addFriend(user, $index)">

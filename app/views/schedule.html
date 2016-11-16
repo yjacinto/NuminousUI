@@ -21,13 +21,13 @@
         <div class="panel-body">
           <form name="createTripForm" class="form-horizontal" novalidate>
               <div class="form-group">
-                <div class="col-lg-6"
+                <div class="col-sm-6"
                      ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                   <label><font color="red">*</font> Origin </label>
                   <input type="text" class="form-control" name="originCity" placeholder="Where are you flying from?"
                          ng-model="originCity" required/>
                 </div>
-                <div class="col-lg-6"
+                <div class="col-sm-6"
                      ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
                   <label><font color="red">*</font> Destination</label>
                   <input type="text" class="form-control" name="destinationCity"
@@ -43,6 +43,8 @@
                          required/>
                 </datepicker>
               </div>
+              </div>
+            <div class="form-group">
               <div class="col-sm-12"
                    ng-class="{'has-error' : (createTripForm.endDate.$invalid && !createTripForm.endDate.$pristine)}">
                 <label><font color="red">*</font> Trip End Date</label>

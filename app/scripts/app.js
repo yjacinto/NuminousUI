@@ -20,7 +20,8 @@ angular.module('numinousUiApp', [
     'uiRouterStyles',
     'auth0.lock',
     'angular-jwt',
-    'ui.calendar'
+    'ui.calendar',
+    'ui.bootstrap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -84,6 +85,14 @@ angular.module('numinousUiApp', [
       params: {trip_id : null}
     };
 
+    var createEventState = {
+      name: 'calendar.event',
+      url: '',
+      controller: 'calendarCtrl',
+      controllerAs:'event',
+      templateUrl:'/views/event.html'
+    };
+
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
@@ -100,8 +109,9 @@ angular.module('numinousUiApp', [
       name: 'directions',
       url: '/directions',
       templateUrl:'/views/directions.html'
+    };
 
-    }
+
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
@@ -113,6 +123,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
     $stateProvider.state(friendState);
+    $stateProvider.state(createEventState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

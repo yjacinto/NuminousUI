@@ -26,14 +26,19 @@
           </div>
 
           <div class="col-md-12">
+
             <div class="alert-success calAlert" ng-show="alertMessage != undefined && alertMessage != ''">
-              <h4>{{alertMessage}}</h4>
+              <h4> {{alertMessage}} </h4>
             </div>
 
             <div class="btn-group calTools">
-              <button type="button" class="button special small" ng-click="addEvent()">Add Event</button>
+              <a ui-sref = "calendar.event">
+                <button type="button" class="button special small"> <!--ng-click="addEvent()"-->Add Event</button>
+              </a>
             </div>
-            <p></p>
+
+            <br>
+            <ui-view></ui-view>
             <u1 class="unstyled">
               <li ng-repeat="e in events">
                 <div class="alert alert-info">
@@ -43,11 +48,7 @@
                 </div>
               </li>
             </u1>
-
-
           </div>
-
-
         </div>
       </div>
     </div>

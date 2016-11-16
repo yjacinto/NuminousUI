@@ -62,8 +62,6 @@ angular.module('numinousUiApp')
       });
     };
 
-
-
     $scope.logout = function() {
       AuthService.logout();
       $state.go('home');

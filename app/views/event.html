@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading clearfix"> Create a New Event</div>
+  <div class="panel-body">
+    <form name="createEventForm" class="form-horizontal" novalidate>
+      <div class="form-group">
+        <div class="col-sm-6">
+          <label><font color="red">*</font> Name </label>
+          <input type="text" class="form-control" name="name" placeholder="Name of the Event"
+                 required/>
+        </div>
+        <div class="col-sm-6">
+          <label><font color="red">*</font> Expected Cost per Person</label>
+          <input type="text" class="form-control" name="expectedCost"
+                 placeholder="30"  required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-6">
+        <label><font color="red">*</font> Event Start Time</label>
+          <datepicker date-format="EEE MM-dd-yyyy">
+            <input class="form-control" id="startTime" name="startTime" placeholder
+                   required/>
+          </datepicker>
+        </div>
+        <div ng-controller="TimepickerDemoCtrl" class="col-sm-6">
+          <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+        </div>
+      </div>
+
+        <div class="form-group">
+        <div class="col-sm-6">
+          <label><font color="red">*</font> Event End Time</label>
+          <datepicker date-format="EEE MM-dd-yyyy">
+            <input class="form-control" id="endTime" name="endTime" placeholder
+                   required/>
+          </datepicker>
+        </div>
+          <div ng-controller="TimepickerDemoCtrl" class="col-sm-6">
+            <div uib-timepicker ng-model="mytime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian"></div>
+          </div>
+      </div>
+
+      <div class="form-group col-md-12">
+        <div style="text-align: center">
+          <button type="submit" class="btn "
+                  ng-click="createEvent(name, expectedCost,startDate,endDate)">Submit
+          </button>
+          <a ui-sref="login" class="btn " ng-click = "getInfo()"> Cancel </a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

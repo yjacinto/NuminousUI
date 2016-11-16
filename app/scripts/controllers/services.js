@@ -6,14 +6,14 @@ angular.module('numinousUiApp')
     var authToken;
 
     function loadUserCredentials() {
-      var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+      var token = window.sessionStorage.getItem(LOCAL_TOKEN_KEY);
       if (token) {
         useCredentials(token);
       }
     }
 
     function storeUserCredentials(token) {
-      window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
+      window.sessionStorage.setItem(LOCAL_TOKEN_KEY, token);
       useCredentials(token);
     }
 
@@ -29,7 +29,7 @@ angular.module('numinousUiApp')
       authToken = undefined;
       isAuthenticated = false;
       $http.defaults.headers.common.Authorization = undefined;
-      window.localStorage.removeItem(LOCAL_TOKEN_KEY);
+      window.sessionStorage.removeItem(LOCAL_TOKEN_KEY);
     }
 
     var register = function(user) {

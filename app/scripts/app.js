@@ -21,6 +21,7 @@ angular.module('numinousUiApp', [
     'auth0.lock',
     'angular-jwt',
     'ui.calendar',
+    'ui.bootstrap',
     'jtt_openweathermap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -51,6 +52,14 @@ angular.module('numinousUiApp', [
       controllerAs: 'signup'
     };
 
+    var friendState = {
+      name: 'friend',
+      url: '/friend',
+      templateUrl: '/views/friends.html',
+      controller: 'FriendCtrl',
+      controllerAs: 'friend'
+    };
+
     var dashboardState = {
       name: 'dashboard',
       url: '/dashboard',
@@ -75,7 +84,16 @@ angular.module('numinousUiApp', [
       url: '/calendar',
       templateUrl:'/views/calendar.html',
       controller: 'calendarCtrl',
-      controllerAs: 'calendar'
+      controllerAs: 'calendar',
+      params: {trip_id : null}
+    };
+
+    var createEventState = {
+      name: 'calendar.event',
+      url: '',
+      controller: 'calendarCtrl',
+      controllerAs:'event',
+      templateUrl:'/views/event.html'
     };
 
     var googlePlaceState = {
@@ -94,8 +112,8 @@ angular.module('numinousUiApp', [
       name: 'directions',
       url: '/directions',
       templateUrl:'/views/directions.html'
-
     };
+
 
 
     $stateProvider.state(dashboardState);
@@ -107,6 +125,8 @@ angular.module('numinousUiApp', [
     $stateProvider.state(googleDrawState);
     $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
+    $stateProvider.state(friendState);
+    $stateProvider.state(createEventState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
@@ -119,5 +139,6 @@ angular.module('numinousUiApp', [
         }
       }
     });
+
   });
 

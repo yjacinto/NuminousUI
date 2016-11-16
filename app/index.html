@@ -24,7 +24,7 @@
   <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 </head>
 
-<body ng-app="numinousUiApp" ui-router-styles>
+<body ng-app="numinousUiApp" ng-controller="AppCtrl" ui-router-styles>
 
 
 <div id="wrapper">
@@ -59,7 +59,7 @@
       </section>
 
       <!-- Menu -->
-      <nav id="menu">
+      <nav id="menu" ng-if="!isAuthenticated()">
         <header class="major">
           <h2>Menu</h2>
         </header>
@@ -67,7 +67,16 @@
           <li><a ui-sref="home">Homepage</a></li>
           <li><a ui-sref="signup">SignUp</a></li>
           <li><a ui-sref="login">Login</a></li>
+        </ul>
+      </nav>
+
+      <nav id="menu" ng-if="isAuthenticated()">
+        <header class="major">
+          <h2>Menu</h2>
+        </header>
+        <ul>
           <li><a ui-sref="dashboard">Dashboard</a></li>
+          <li><a ui-sref="friend">Friends</a></li>
           <li>
             <span class="opener">Plan a Trip</span>
             <ul>
@@ -85,14 +94,11 @@
             </ul>
           </li>
           <li><a ui-sref="directions">Directions and ETA</a></li>
-          <li><a href="#">Maximus Erat</a></li>
-          <li><a href="#">Sapien Mauris</a></li>
-          <li><a href="#">Amet Lacinia</a></li>
         </ul>
       </nav>
 
       <!-- Section -->
-      <section>
+      <section ng-show="isAuthenticated()">
         <header class="major">
           <h2>Ante interdum</h2>
         </header>
@@ -168,6 +174,7 @@
 <script src="bower_components/angular-lock/angular-lock.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
 <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/bootstrap-validator/dist/validator.js"></script>
 <script src="bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js"></script>
 <script src="bower_components/ngPlacesAutocomplete/ngPlacesAutocomplete.min.js"></script>
@@ -187,6 +194,7 @@
 <script src="scripts/controllers/schedule.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
 <script src="scripts/controllers/services.js"></script>
+<script src="scripts/controllers/friends.js"></script>
 <script src="scripts/controllers/auth_controllers.js"></script>
 <script src="scripts/constants.js"></script>
 

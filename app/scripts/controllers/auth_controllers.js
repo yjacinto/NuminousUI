@@ -55,6 +55,13 @@ angular.module('numinousUiApp')
       });
     };
 
+    $scope.getUserTrips = function(){
+      $http.get(API_ENDPOINT.url + '/user/getUserTrips').then(function(result) {
+        $scope.trips = result.data;
+        console.log($scope.trip);
+      });
+    };
+
     $scope.logout = function() {
       AuthService.logout();
       $state.go('home');
@@ -67,4 +74,8 @@ angular.module('numinousUiApp')
       $state.go('home');
       console.log('session lost');
     });
+
+    $scope.isAuthenticated = function(){
+      return AuthService.isAuthenticated();
+    };
   });

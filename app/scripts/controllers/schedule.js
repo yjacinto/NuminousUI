@@ -24,12 +24,27 @@ var myApp = angular.module('numinousUiApp')
 
       $http.post(command)
         .success(function(response) {
-          $scope.createResult = response;
-          console.log(createResult + ": test!!");
+          console.log(response + ": test!!");
         })
         .error(function (response) {
           console.log("Error notification");
         });
+      getTrips();
+    };
+
+    $scope.remove = function(item){
+      var index = $scope.trips.indexOf(item);
+      $scope.trips.splice(index, 1);
+      $http.delete('http://localhost:1337/trip/'+item.id)
+        .success(function(response){
+          console.log('deleted trip successfully.')
+        });
+      getTrips();
+
+    };
+
+    $scope.getInfo = function(){
+      console.log($scope.id);
     };
 
     var getTrips = function (){

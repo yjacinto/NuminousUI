@@ -23,7 +23,6 @@
             <div class="col-md-6" ng-class="{'has-error' : (signupForm.email.$invalid && !signupForm.email.$pristine)}">
               <label><font color = "red">*</font> Email Address</label>
               <input type="email" class="form-control" name="email" placeholder="Enter email" ng-model="user.email" id="email" ng-pattern="/^.*[@].*[.com]/" required />
-                <div class="help-block with errors"></div>
             </div>
             <div class="col-md-6" ng-class="{'has-error' : (signupForm.email2.$invalid && !signupForm.email2.$pristine)}">
               <label><font color = "red">*</font> Confirm Email Address</label>

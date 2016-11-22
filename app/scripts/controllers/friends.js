@@ -5,7 +5,8 @@ angular.module('numinousUiApp')
     $scope.users = '';
     $scope.friends = '';
 
-    var getUserFriends = function () {
+    //may delete
+    /*var getUserFriends = function () {
       $http.get(API_ENDPOINT.url + '/user/getUserFriends').then(function (result) {
         if (result.status) {
           console.log(result.data.msg);
@@ -13,7 +14,7 @@ angular.module('numinousUiApp')
           reject(result.data.msg);
         }
       });
-    };
+    };*/
 
     //gets all users that have been registered in the database.
     var getUsers = function(){
@@ -66,6 +67,20 @@ angular.module('numinousUiApp')
           reject(result.data.msg);
         }
       });
+    };
+
+    $scope.addCompanion= function(trip_id, companion_id){
+      console.log('fired');
+      var data = {
+        trip_id : trip_id,
+        companion_id : companion_id
+      };
+      var command = encodeURI(API_ENDPOINT.url + '/travelCompanion/addCompanion');
+      $http.post(command, data)
+        .then(function(res){
+          console.log('added friend');
+        });
+
     };
 
     //working on displaying get users  and get user friends.

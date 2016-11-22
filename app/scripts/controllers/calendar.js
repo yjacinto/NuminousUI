@@ -43,8 +43,9 @@
 angular.module('numinousUiApp')
     .controller('calendarCtrl',
    function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams) {
-     console.log($stateParams);
+     //console.log($stateParams);
      $scope.trip_id = $stateParams.trip_id;
+     console.log('scope trip id: ' + $scope.trip_id);
     var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
@@ -193,6 +194,8 @@ angular.module('numinousUiApp')
         }
       });
     };
+
+
     getAllEvents();
     /* event sources array*/
     $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];

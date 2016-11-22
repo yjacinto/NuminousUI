@@ -1,3 +1,5 @@
+'use strict'
+
 angular.module('numinousUiApp')
 
   .service('AuthService', function($q, $http, API_ENDPOINT) {

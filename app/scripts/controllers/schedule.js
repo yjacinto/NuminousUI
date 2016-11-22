@@ -1,7 +1,7 @@
 'use strict';
 
-var myApp = angular.module('numinousUiApp')
-  .controller('ScheduleCtrl', function($scope, $http){
+angular.module('numinousUiApp')
+  .controller('ScheduleCtrl', function ($scope, $http) {
 
     var init = function () {
 
@@ -11,6 +11,15 @@ var myApp = angular.module('numinousUiApp')
       $scope.startDate = '';
       $scope.endDate = '';
       $scope.trips = '';
+      $scope.org_id = '';
+      $scope.des_id = '';
+    };
+
+    $scope.newVal = function () {
+      $scope.originCity = document.getElementById('autocomplete').value;
+      $scope.org_id = document.getElementById('id1').value;
+      $scope.destinationCity = document.getElementById('autocomplete1').value;
+      $scope.des_id = document.getElementById('id2').value;
     };
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
@@ -23,7 +32,7 @@ var myApp = angular.module('numinousUiApp')
       console.log(command);
 
       $http.post(command)
-        .success(function(response) {
+        .success(function (response) {
           console.log(response + ": test!!");
         })
         .error(function (response) {
@@ -32,26 +41,26 @@ var myApp = angular.module('numinousUiApp')
       getTrips();
     };
 
-    $scope.remove = function(item){
+    $scope.remove = function (item) {
       var index = $scope.trips.indexOf(item);
       $scope.trips.splice(index, 1);
-      $http.delete('http://localhost:1337/trip/'+item.id)
-        .success(function(response){
+      $http.delete('http://localhost:1337/trip/' + item.id)
+        .success(function (response) {
           console.log('deleted trip successfully.')
         });
       getTrips();
 
     };
 
-    $scope.getInfo = function(){
+    $scope.getInfo = function () {
       console.log($scope.id);
     };
 
-    var getTrips = function (){
+    var getTrips = function () {
 
       var command = encodeURI('http://localhost:1337/trip/index');
       $http.get(command)
-        .then(function(res){
+        .then(function (res) {
           $scope.trips = res.data;
         });
     };

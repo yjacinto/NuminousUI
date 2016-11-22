@@ -47,17 +47,37 @@
 
             <div class="form-group col-md-12">
               <div style="text-align: center">
-                <button type="submit" class="btn"
+                <button type="submit" class="btn btn-default" data-toggle="confirmation"
                         ng-click="createTrip(originCity, destinationCity,startDate,endDate)">Submit
                 </button>
                 <a ui-sref="login" type="submit" class="btn"> Cancel </a>
               </div>
             </div>
+              
+              
+<!--            Modal Section  -->
+<div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div ng-controller="ScheduleCtrl" class="modal-header">
+            <h3 class="modal-title" id="modal-title">Warning</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <p>Are you sure you want to delete?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+   
+</div> 
 
+              <!--        End of Modal Section-->
+              
           </form>
         </div>
       </div>
-
+        
       <!--List the trips here-->
 
       <div ng-controller="ScheduleCtrl">
@@ -75,7 +95,7 @@
                       <b>{{trip.destinationCity}}</b><br>
                       {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
                     </h3>
-                    <button class="btn btn-sm pull-right" ng-click="remove(trip)">
+                    <button class="btn btn-sm pull-right" ng-click="$ctrl.open()">
                       <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
                     </button>
                     <div class="profile-icons">
@@ -130,8 +150,10 @@
           <div>
           </div>
         </div>-->
+          
+          
       </div>
-
+        
       <script>
 
         $(document).ready(function () {
@@ -143,6 +165,24 @@
           $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
 
         });
+          
+//Javascript for Delete Confirmation Module Pop Up
+//        $('#confirmDelete').on('show.bs.modal', function(e) {
+//            $message = $(e.relatedTarget).attr('data-message');
+//            $(this).find('.modal-body p').text($message);
+//            $title = $(e.relatedTarget).attr('data-title');
+//            $(this).find('.modal-title').text($title);
+//            
+//            var form = $(e.relatedTarget).closest('form');
+//            $(this).find('.modal-footer #confirm').data('form', form);
+//        }); 
+//          
+//        $('#confirmDelete').find('.modal-footer #confirm').on('click', function() {
+//            $(this).data('form').submit();
+//        });  
+          
+
+          
       </script>
 
 

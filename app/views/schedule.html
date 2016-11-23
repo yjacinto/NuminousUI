@@ -3,7 +3,7 @@
     <br>
     <h2>Create a New Trip</h2>
   </header>
-  <div class="row">
+  <div ng-controller="ModalDemoCtrl as $ctrl" class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
 
@@ -54,8 +54,8 @@
               </div>
             </div>
               
-              
-<!--            Modal Section  -->
+                                  <!--            Modal Section  -->
+<!--
 <div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
     <script type="text/ng-template" id="myModalContent.html">
         <div ng-controller="ScheduleCtrl" class="modal-header">
@@ -69,10 +69,14 @@
             <button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cancel</button>
         </div>
     </script>
-   
-</div> 
+   <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open</button>
 
-              <!--        End of Modal Section-->
+                      
+</div> 
+-->
+
+              <!--        End of Modal Section-->  
+
               
           </form>
         </div>
@@ -95,9 +99,35 @@
                       <b>{{trip.destinationCity}}</b><br>
                       {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
                     </h3>
+                      
+                      <!--            Modal Section  -->
+<div ng-controller="ModalDemoCtrl as $ctrl" class="modal-demo">
+    <script type="text/ng-template" id="myModalContent.html">
+        <div ng-controller="ScheduleCtrl" class="modal-header">
+            <h3 class="modal-title" id="modal-title">Warning</h3>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <p>Are you sure you want to delete?</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button" ng-click="$ctrl.ok()">OK</button>
+            <button class="btn btn-default" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+        </div>
+    </script>
+<!--   <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open</button>-->
                     <button class="btn btn-sm pull-right" ng-click="$ctrl.open()">
                       <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
                     </button>
+                      
+</div> 
+
+              <!--        End of Modal Section-->
+                      
+<!--
+                    <button class="btn btn-sm pull-right" ng-click="$ctrl.open()">
+                      <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                    </button>
+-->
                     <div class="profile-icons">
                       <span><i class="fa fa-users"></i> 4 people</span>
                       <span><i class="fa fa-photo"></i> 43</span>
@@ -145,7 +175,6 @@
             <button type="submit" class="btn btn-primary btn-sm pull-right planNow">Plan Now!</button>
             <p class="text-middle destinationCity pull-left"></p>
             {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-
           </div>
           <div>
           </div>
@@ -155,38 +184,17 @@
       </div>
         
       <script>
-
         $(document).ready(function () {
           var date = moment(new Date());
           $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
           var endDate = date.add(1, 'weeks');
-
           $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
         });
-          
-//Javascript for Delete Confirmation Module Pop Up
-//        $('#confirmDelete').on('show.bs.modal', function(e) {
-//            $message = $(e.relatedTarget).attr('data-message');
-//            $(this).find('.modal-body p').text($message);
-//            $title = $(e.relatedTarget).attr('data-title');
-//            $(this).find('.modal-title').text($title);
-//            
-//            var form = $(e.relatedTarget).closest('form');
-//            $(this).find('.modal-footer #confirm').data('form', form);
-//        }); 
-//          
-//        $('#confirmDelete').find('.modal-footer #confirm').on('click', function() {
-//            $(this).data('form').submit();
-//        });  
-          
-
           
       </script>
 
 
     </div>
-
+    </div>
 </section>
 

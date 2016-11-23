@@ -166,7 +166,7 @@ myApp.controller('ModalInstanceCtrl', function ($uibModalInstance, items, Remove
 
   $ctrl.ok = function () {
       console.log("CLicked");
-      close(RemoveService.remove(trip));
+      RemoveService.remove(trip);
     $uibModalInstance.close($ctrl.selected.item);
   };
 
@@ -205,4 +205,3 @@ angular.module('ui.bootstrap.demo').component('modalComponent', {
 //    End of Javascript for Modal
 
   });
-

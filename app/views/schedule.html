@@ -16,26 +16,16 @@
                    ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                 <label>Origin </label>
                 <input id="autocomplete" name="originCity" ng-model="originCity" type="text" class="form-control" ng-click="newVal()" placeholder="Starting Location"
-                       required/> {{originCity}}
+                       required/>
               </div>
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
                 <label>Destination</label>
                 <input id="autocomplete1" type="text" class="form-control" name="destinationCity"
-                       placeholder="Where would you like to visit?" ng-model="destinationCity" ng-click="newVal()" required/> {{destinationCity}}
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" ng-click="newVal()" required/>
               </div>
             </div>
 
-            <!--Hidden Div for Place ID's -->
-            <div class="form-group col-md-12" style="display: none;">
-              <div class="col-md-6">
-                <input id="id1" type="text" class="form-control" placeholder="ID 1" ng-model="org_id"/>
-              </div>
-              <div class="col-md-6">
-                <input id="id2" type="text" class="form-control" placeholder="ID 2" ng-model="des_id"/>
-              </div>
-            </div>
-S
             <div class="form-group col-md-12">
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.startDate.$invalid && !createTripForm.startDate.$pristine)}">

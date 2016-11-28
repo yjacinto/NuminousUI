@@ -152,7 +152,7 @@ angular.module('numinousUiApp', [
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
-    $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
         if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
@@ -160,7 +160,14 @@ angular.module('numinousUiApp', [
           $state.go('login');
         }
       }
-    });
+    })
+  })
 
+  .filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
   });
+
+
 

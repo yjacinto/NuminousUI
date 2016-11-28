@@ -75,7 +75,6 @@ angular.module('numinousUiApp')
     };
 
     $scope.addCompanion= function(companion_id){
-
       console.log('companion_id: ' + companion_id);
       var data = {
         trip_id : $scope.trip_id,
@@ -85,8 +84,14 @@ angular.module('numinousUiApp')
         .then(function(res){
           console.log('added friend');
         });
+      $http.post(API_ENDPOINT.url + '/trip/getTravelCompanionsById', data)
+        .then(function(res){
+          console.log(res.data);
+        });
 
     };
+
+
 
     //working on displaying get users  and get user friends.
     getUsers();

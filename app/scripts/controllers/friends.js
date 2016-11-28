@@ -75,8 +75,7 @@ angular.module('numinousUiApp')
         trip_id : trip_id,
         companion_id : companion_id
       };
-      var command = encodeURI(API_ENDPOINT.url + '/travelCompanion/addCompanion');
-      $http.post(command, data)
+      $http.post(API_ENDPOINT.url + '/travelCompanion/addCompanion', data)
         .then(function(res){
           console.log('added friend');
         });
@@ -86,4 +85,5 @@ angular.module('numinousUiApp')
     //working on displaying get users  and get user friends.
     getUsers();
     getFriends();
+
   })

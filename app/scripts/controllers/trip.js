@@ -22,6 +22,7 @@ var myApp = angular.module('numinousUiApp')
         '&endDate=' + endDate);
       $http.post(command)
         .success(function(response) {
+          console.log(response.data);
         })
         .error(function (response) {
           console.log("Error notification");

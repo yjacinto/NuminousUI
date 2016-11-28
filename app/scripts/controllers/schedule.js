@@ -11,15 +11,11 @@ angular.module('numinousUiApp')
       $scope.startDate = '';
       $scope.endDate = '';
       $scope.trips = '';
-      $scope.org_id = '';
-      $scope.des_id = '';
     };
 
     $scope.newVal = function () {
       $scope.originCity = document.getElementById('autocomplete').value;
-      $scope.org_id = document.getElementById('id1').value;
       $scope.destinationCity = document.getElementById('autocomplete1').value;
-      $scope.des_id = document.getElementById('id2').value;
     };
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {

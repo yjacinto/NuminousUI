@@ -5,7 +5,7 @@
     <h2>Your Trips</h2>
   </header>
 <div ng-controller="TripCtrl">
-  <div ng-repeat="trip in trips">
+  <div ng-repeat="trip in trips" >
     <div class="col-md-6">
       <div class="panel panel-default">
         <div class="panel-heading">
@@ -23,9 +23,9 @@
                 <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
               </button>
               <div class="profile-icons">
-                <span><i class="fa fa-users"></i> 4 people</span>
-                <span><i class="fa fa-photo"></i> 43</span>
-                <span><i class="fa fa-video-camera"></i> 3</span>
+                <span><i class="fa fa-users"></i> {{trip.travelers.length}}</span>
+                <span><i class="fa fa-photo"></i> XX</span>
+                <span><i class="fa fa-video-camera"></i> XX</span>
               </div>
             </div>
           </div>
@@ -33,7 +33,10 @@
         <div class="panel-body">
           <p class="common-friends">Travel Companions</p>
           <div class="user-friend-list">
-            <a href="#">
+            <div ng-repeat ="people in trip.travelers">
+              <h4>{{people.first_name| capitalize}} {{people.last_name|capitalize}}</h4>
+            </div>
+            <!--<a href="#">
               <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="people" class="img-circle">
             </a>
             <a href="#">
@@ -44,7 +47,7 @@
             </a>
             <a href="#">
               <img src="http://bootdey.com/img/Content/avatar/avatar4.png" alt="people" class="img-circle">
-            </a>
+            </a>-->
           </div>
         </div>
         <div class="panel-footer">

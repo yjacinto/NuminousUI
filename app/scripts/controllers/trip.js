@@ -3,7 +3,9 @@
 var myApp = angular.module('numinousUiApp')
   .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
 
-    $scope.friends = '';/*
+    $scope.friends = '';
+    //$scope.trips = '';
+    /*
     var init = function () {
       //Declaring Signup Form variables
       $scope.originCity = '';
@@ -44,16 +46,41 @@ var myApp = angular.module('numinousUiApp')
       console.log($scope.id);
     };
 
-    var getTrips = function (){
+    var getTrips = (function (){
+      console.log('firing getTrips');
       var command = encodeURI(API_ENDPOINT.url + '/user/getUserTrips');
       $http.post(command)
         .then(function(res){
-          console.log(res.data[0].trips);
+          console.log('trips: ' + JSON.stringify(res.data[0]));
+          //console.log('travelers: ' + res.data[0].travelers);
           $scope.trips = res.data[0].trips;
         });
-    };
+    });
 
-    var getFriends = function(){
+    /*var getTrips = (function (){
+      console.log('firing getTrips');
+      var command = encodeURI(API_ENDPOINT.url + '/user/getUserTrips');
+      $http.post(command)
+        .then(function(res){
+          console.log('trips: ' + JSON.stringify(res.data[0]));
+          //console.log('travelers: ' + res.data[0].travelers);
+          //$scope.trips = res.data[0].trips;
+        });
+    });*/
+
+    var getTripsAndTravelers = (function (){
+      var command = encodeURI(API_ENDPOINT.url + '/user/getUserTripsAndTravelers');
+      $http.post(command)
+        .then(function(res){
+          //console.log('trips: ' + JSON.stringify(res.data[0]));
+          //console.log('travelers: ' + res.data[0].travelers);
+          $scope.trips = res.data;
+          console.log(res.data);
+          console.log(res.data.travelers);
+        });
+    });
+
+    var getFriends = (function(){
       $http.get(API_ENDPOINT.url + '/user/getFriends')
         .then(function (result) {
           if (result.status) {
@@ -63,9 +90,9 @@ var myApp = angular.module('numinousUiApp')
             reject(result.data.msg);
           }
       });
-    };
-    getTrips();
-    getFriends();
+    });
+
+    getTripsAndTravelers();
 
   });
 

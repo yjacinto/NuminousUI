@@ -33,7 +33,7 @@ angular.module('numinousUiApp', [
       url:'/',
       templateUrl:'/views/home.html',
       controller: 'HomeCtrl',
-      controllerAs: 'home'
+      controllerAs: 'home',
     };
 
     var loginState = {
@@ -65,7 +65,7 @@ angular.module('numinousUiApp', [
       url: '/dashboard',
       templateUrl:'/views/dashboard.html',
       controller: 'DashboardCtrl',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
     };
 
     var scheduleState = {
@@ -137,7 +137,7 @@ angular.module('numinousUiApp', [
         console.log(next.name);
         if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
           event.preventDefault();
-          $state.go('login');
+          $state.go('login', {reload: true});
         }
       }
     });

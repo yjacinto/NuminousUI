@@ -99,7 +99,9 @@ angular.module('numinousUiApp', [
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
-      templateUrl:'/views/googlePlace.html'
+      templateUrl:'/views/googlePlace.html',
+      controller: 'googlePlaceCtrl',
+      controllerAs: 'googlePlace'
 
     };
     var googleDrawState = {

@@ -1,20 +1,12 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name numinousUiApp.controller:AboutCtrl
- * @description
- * # AboutCtrl
- * Controller of the numinousUiApp
- */
+
 angular.module('numinousUiApp')
-  .controller('googlePlaceCtrl', function () {
+  .controller('googlePlaceCtrl', function ($scope) {
 
 
-
-  
-
-
-
+    $scope.addMe = function () {
+      console.log('test');
+    };
 
   });

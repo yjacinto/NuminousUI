@@ -1,5 +1,9 @@
-<style>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ0jzoI27mjDnk2dLBAhq0QbYA0Zx9P4U&libraries=places&callback=initMap"
+  async defer>
+</script>
 
+<style>
   #map-outer {
     height: 500px;
 
@@ -88,7 +92,6 @@
   .iw_table_icon {
     text-align: right;
   }
-
 </style>
 
 <!-- Content -->
@@ -137,7 +140,7 @@
         </table>
       </div>
 
-      <div style="display: none">
+      <div style="display: none" ng-controller="googlePlaceCtrl">
         <div id="info-content">
           <table>
             <tr id="iw-url-row" class="iw_table_row">
@@ -161,7 +164,12 @@
               <td id="iw-website"></td>
             </tr>
             <tr class="iw_table_row">
-              <button type="button"> Add Event </button>
+              <td class="iw_attribute_name">Place ID:</td>
+              <td id="iw-place-id"></td>
+            </tr>
+            <tr class="iw_table_row">
+              <td><button type="button"ng-click="addMe()"> Add Event </button></td>
+
             </tr>
           </table>
         </div>
@@ -174,17 +182,11 @@
 
 </section>
 
-
-<script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQ0jzoI27mjDnk2dLBAhq0QbYA0Zx9P4U&libraries=places&callback=initMap"
-  async defer></script>
-
 <script>
 
   // This example requires the Places library. Include the libraries=places
   // parameter when you first load the API. For example:
   // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
 
   var map, places, infowindow;
   var markers = [];
@@ -407,6 +409,9 @@
     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
     document.getElementById('iw-address').textContent = place.vicinity;
+    document.getElementById('iw-place-id').textContent = place.place_id;
+
+
 
     if (place.formatted_phone_number) {
       document.getElementById('iw-phone-row').style.display = '';
@@ -449,11 +454,11 @@
       document.getElementById('iw-website-row').style.display = 'none';
     }
 
-
   }
-
-
 </script>
+
+
+
 
 
 

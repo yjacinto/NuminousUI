@@ -147,6 +147,10 @@
               <td id="iw-icon" class="iw_table_icon"></td>
               <td id="iw-url"></td>
             </tr>
+            <!--Added for the place name-->
+            <tr style="display: none;">
+              <td id="iw-name"></td>
+            </tr>
             <tr id="iw-address-row" class="iw_table_row">
               <td class="iw_attribute_name">Address:</td>
               <td id="iw-address"></td>
@@ -409,7 +413,10 @@
     document.getElementById('iw-url').innerHTML = '<b><a href="' + place.url +
       '">' + place.name + '</a></b>';
     document.getElementById('iw-address').textContent = place.vicinity;
+
+    //For place name and place_id
     document.getElementById('iw-place-id').textContent = place.place_id;
+    document.getElementById('iw-name').textContent = place.name;
 
 
 

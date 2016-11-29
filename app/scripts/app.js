@@ -137,7 +137,7 @@ angular.module('numinousUiApp', [
         console.log(next.name);
         if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
           event.preventDefault();
-          $state.go('login', {reload: true});
+          $state.go('login');
         }
       }
     });

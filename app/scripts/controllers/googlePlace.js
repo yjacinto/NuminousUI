@@ -9,4 +9,12 @@
  */
 angular.module('numinousUiApp')
   .controller('googlePlaceCtrl', function () {
+
+
+
+  
+
+
+
+
   });

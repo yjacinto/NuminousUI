@@ -17,12 +17,12 @@
     font-size: 12px;
   }
   #map {
-    width: 440px;
+    width: 700px;
   }
   #listing {
 
-    width: 300px;
-    height: 470px;
+    width: 500px;
+    height: 370px;
     overflow: auto;
     left: 442px;
     top: 0px;
@@ -72,7 +72,7 @@
   }
   #resultsTable {
     border-collapse: collapse;
-    width: 240px;
+    width: 500px;
   }
   #rating {
     font-size: 13px;
@@ -98,15 +98,15 @@
   </header>
 
   <div class="row">
-    <div id="findhotels" class="col-md-4">
+    <div id="findhotels">
       Find hotels in:
     </div>
 
-    <div id="locationField" class="col-md-4">
+    <div id="locationField">
       <input id="autocomplete" placeholder="Enter a city" type="text" />
     </div>
 
-    <div id="controls" class="col-md-4">
+    <div id="controls">
       <select id="country">
         <option value="all">All</option>
         <option value="au">Australia</option>
@@ -126,7 +126,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="col-md-12" >
     <div id="map-outer">
 
       <div id="map"></div>
@@ -159,6 +159,9 @@
             <tr id="iw-website-row" class="iw_table_row">
               <td class="iw_attribute_name">Website:</td>
               <td id="iw-website"></td>
+            </tr>
+            <tr class="iw_table_row">
+              <button type="button"> Add Event </button>
             </tr>
           </table>
         </div>
@@ -292,7 +295,7 @@
   function search() {
     var search = {
       bounds: map.getBounds(),
-      types: ['lodging']
+      types: ['lodging', 'establishment']
     };
 
     places.nearbySearch(search, function(results, status) {
@@ -445,6 +448,8 @@
     } else {
       document.getElementById('iw-website-row').style.display = 'none';
     }
+
+
   }
 
 

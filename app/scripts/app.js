@@ -22,6 +22,7 @@ angular.module('numinousUiApp', [
     'angular-jwt',
     'ui.calendar',
     'ui.bootstrap',
+    //'btford.socket-io',
     'jtt_openweathermap'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -117,18 +118,26 @@ angular.module('numinousUiApp', [
       params: {trip_id : null}
     };
 
+    var chatboxState = {
+      name: 'chatbox',
+      url: '/chat',
+      controller: 'ChatCtrl',
+      templateUrl:'/views/chatbox.html',
+      params: {trip_id : null}
+    };
+
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
       templateUrl:'/views/googlePlace.html'
-
     };
+
     var googleDrawState = {
       name: 'googleDraw',
       url: '/googleDraw',
       templateUrl:'/views/googleDraw.html'
-
     };
+
     var directionsState = {
       name: 'directions',
       url: '/directions',
@@ -147,6 +156,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
     $stateProvider.state(createTravelCompanion);
+    $stateProvider.state(chatboxState);
     $stateProvider.state(listTripState);
 
   })

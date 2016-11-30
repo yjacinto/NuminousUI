@@ -15,6 +15,11 @@ angular.module('numinousUiApp')
      $scope.trips = '';
      };*/
 
+    $scope.newVal = function () {
+      $scope.originCity = document.getElementById('autocomplete').value;
+      $scope.destinationCity = document.getElementById('autocomplete1').value;
+    };
+
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
       //change to post
       var command = encodeURI(API_ENDPOINT.url + '/trip/create?' +

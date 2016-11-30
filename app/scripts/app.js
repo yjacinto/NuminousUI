@@ -68,14 +68,25 @@ angular.module('numinousUiApp', [
       controllerAs: 'dashboard',
     };
 
-    var scheduleState = {
-      name: 'schedule',
-      url: '/schedule',
-      controller:'ScheduleCtrl',
-      controllerAs:'schedule',
-      templateUrl:'/views/schedule.html',
+    var createTripState = {
+      name: 'createTrip',
+      url: '/createTrip',
+      controller:'TripCtrl',
+      controllerAs:'Trip',
+      templateUrl:'/views/createTrip.html',
       data:{
-        css:'/styles/schedule.css'
+        css:'/styles/createTrip.css'
+      }
+    };
+
+    var listTripState = {
+      name: 'listTrip',
+      url: '/listTrip',
+      controller:'TripCtrl',
+      controllerAs:'trip',
+      templateUrl:'/views/listTrip.html',
+      data:{
+        css:'/styles/createTrip.css'
       }
     };
 
@@ -90,10 +101,20 @@ angular.module('numinousUiApp', [
 
     var createEventState = {
       name: 'calendar.event',
-      url: '',
+      url: '/addEvent',
       controller: 'calendarCtrl',
       controllerAs:'event',
-      templateUrl:'/views/event.html'
+      templateUrl:'/views/event.html',
+      params: {trip_id : null}
+    };
+
+    var createTravelCompanion = {
+      name: 'calendar.companion',
+      url: '/addCompanion',
+      controller: 'CompanionCtrl',
+      controllerAs:'companion',
+      templateUrl:'/views/companion.html',
+      params: {trip_id : null}
     };
 
     var googlePlaceState = {
@@ -116,12 +137,10 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/directions.html'
     };
 
-
-
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
-    $stateProvider.state(scheduleState);
+    $stateProvider.state(createTripState);
     $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
@@ -129,10 +148,13 @@ angular.module('numinousUiApp', [
     $stateProvider.state(homeState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
+    $stateProvider.state(createTravelCompanion);
+    $stateProvider.state(listTripState);
+
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
-    $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
         if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
@@ -140,7 +162,14 @@ angular.module('numinousUiApp', [
           $state.go('login');
         }
       }
-    });
+    })
+  })
 
+  .filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
   });
+
+
 

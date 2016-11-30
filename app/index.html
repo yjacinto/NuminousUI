@@ -16,7 +16,6 @@
   <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
   <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZ6StPZT73Q2lDnsxdpoN8VXj2OSTGRE&libraries=places"></script>
 
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="assets/css/main.css" />
@@ -77,10 +76,10 @@
           <li><a ui-sref="dashboard">Dashboard</a></li>
           <li><a ui-sref="friend">Friends</a></li>
           <li>
-            <span class="opener">Plan a Trip</span>
+            <span class="opener">Trips</span>
             <ul>
-              <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
-              <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
+              <li><a ui-sref="createTrip">Create</a></li> <!--schedule-->
+              <li><a ui-sref="listTrip">View Trips</a></li> <!--list all trips with modify button-->
               <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
             </ul>
           </li>
@@ -184,17 +183,16 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
+
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
-<script src="scripts/controllers/home.js"></script>
-<script src="scripts/controllers/login.js"></script>
-<script src="scripts/controllers/signup.js"></script>
-<script src="scripts/controllers/googlePlace.js"></script>s
 <script src="scripts/controllers/dashboard.js"></script>
-<script src="scripts/controllers/schedule.js"></script>
+<script src="scripts/controllers/dashboard.js"></script>
+<script src="scripts/controllers/trip.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
 <script src="scripts/controllers/services.js"></script>
 <script src="scripts/controllers/friends.js"></script>
+<script src="scripts/controllers/googlePlace.js"></script>
 <script src="scripts/controllers/auth_controllers.js"></script>
 <script src="scripts/constants.js"></script>
 

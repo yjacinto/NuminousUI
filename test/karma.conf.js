@@ -42,6 +42,7 @@ module.exports = function(config) {
       'bower_components/bootstrap-validator/dist/validator.js',
       'bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js',
       'bower_components/ngPlacesAutocomplete/ngPlacesAutocomplete.min.js',
+      'bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -7,9 +7,11 @@
                   </div>
                   <div class="col-md-9">
                       <div style="text-align: left">
+<!--
                           <button type="friendrequest" class="btn" ng-click="friendrequest">Send Friend Request</button>
                           <button type="message" class="btn" ng-click="message">Send Message</button>
-                          <button class="pull-right"ui-sref="editprofile" type="edit" class="btn" ng-click="edit" >Edit</button>
+-->
+                          <button class="pull-right"ui-sref="editprofile" type="edit" class="btn" ng-click="edit">Edit</button>
                       </div>
                   </div>
               </div>
@@ -22,7 +24,7 @@
                   <div class="col-md-3">
                       <ul class="list-group">
                           <li class="list-group-item text-muted">Profile</li>
-                          <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> joinedDate</li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> {{ userprofile.createdAt | date : "MMMM d y"}} </li>
                           <li class="list-group-item text-right"><span class="pull-left"><strong>Last Online</strong></span> lastOnline </li>
                       </ul>
 
@@ -46,27 +48,7 @@
                           </div>
                           <div class="tab-pane" id="friends">
                               <p>friend tab</p>
-                              <div class="table-container">
-                                <table class="table table-filter" >
-                                    <tbody>
-                                    <tr ng-repeat = " user in users | filter : user_filter">
-                                    <td>
-                                    </td>
-                                    <td>
-                                    <div class="media">
-                                        <div class="media-body">
-                                            <h4 class="title">
-                                                {{user.first_name}} {{user.last_name}}
-                                                <span class="pull-right">{{user.email}}</span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    </td>
-                                    </tr>
-                                    </br>
-                                    </tbody>
-                                </table>
-                                </div>
+                              
                             </div>
                           <div class="tab-pane" id="trips">
                               <p>trip tab</p>

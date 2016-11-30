@@ -130,6 +130,18 @@ angular.module('numinousUiApp', [
       url: '/directions',
       templateUrl:'/views/directions.html'
     };
+    var profileState = {
+        name: 'profile',
+        url: '/profile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/profile.html'
+    };
+    var editprofileState = {
+        name: 'editprofile',
+        url: '/editprofile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/editprofile.html'
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
@@ -142,6 +154,8 @@ angular.module('numinousUiApp', [
     $stateProvider.state(homeState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
+    $stateProvider.state(profileState);
+    $stateProvider.state(editprofileState);
     $stateProvider.state(createTravelCompanion);
     $stateProvider.state(listTripState);
 

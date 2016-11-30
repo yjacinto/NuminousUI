@@ -4,6 +4,7 @@
     <br>
     <h2>Create a New Trip</h2>
   </header>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -46,57 +47,6 @@
               </div>
             </div>
 
-            <!--s
-
-            <div class = "row">
-              <div class="col-md-12">
-
-                  <div class="panel-body">
-                    <div class="pull-right">
-                    </div>
-                    <div class="table-container">
-                      <table class="table" >
-                        <tbody>
-                        <p><input type="text" ng-model="friends_filter"></p>
-                        <tr ng-repeat = " friend in friends | filter : friends_filter">
-                          <td>
-
-                            <button ng-click = "">
-                              Add to Trip
-                            </button>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <button>
-                              Message!
-                            </button>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <div class="media-body">
-                                <h4 class="title">
-                                  {{friend.first_name}} {{friend.last_name}}
-                                  <span class="pull-right">{{friend.email}}</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        </br>
-                        </tbody>
-
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-            </div>-->
-
-
             <div class="form-group col-md-12">
               <div style="text-align: center">
                 <button type="submit" class="btn"
@@ -110,44 +60,22 @@
         </div>
       </div>
 
-
-
-        <!--
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <h3 class="panel-title pull-left">{{trip.originCity}}
-              <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-              <b>{{trip.destinationCity}}</b>
-            </h3>
-            <button class="btn btn-sm pull-right" ng-click="remove(trip)">
-              <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-            </button>
-          </div>
-          <div class="panel-body">
-            <button type="submit" class="btn btn-primary btn-sm pull-right planNow">Plan Now!</button>
-            <p class="text-middle destinationCity pull-left"></p>
-            {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-
-          </div>
-          <div>
-          </div>
-        </div>-->
-      </div>
-
-      <script>
-
-        $(document).ready(function () {
-          var date = moment(new Date());
-          $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-          var endDate = date.add(1, 'weeks');
-
-          $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-        });
-      </script>
     </div>
+
+    <script>
+
+      $(document).ready(function () {
+        var date = moment(new Date());
+        $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+        var endDate = date.add(1, 'weeks');
+
+        $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+      });
+    </script>
   </div>
+
 </section>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"

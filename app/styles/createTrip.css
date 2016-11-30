@@ -1,9 +1,10 @@
+
 .destinationCity{
   font-size: 25px
 }
 
 
-body{margin-top:20px;}
+/*body{margin-top:20px;}*/
 
 .panel-default > .panel-heading {
   color: #333333;
@@ -23,3 +24,4 @@ body{margin-top:20px;}
   height:50px;
   width:50px;
 }
+

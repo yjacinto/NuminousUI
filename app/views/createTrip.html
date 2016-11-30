@@ -1,3 +1,4 @@
+
 <section>
   <header class="main">
     <br>
@@ -14,14 +15,14 @@
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                 <label>Origin </label>
-                <input type="text" class="form-control" name="originCity" placeholder="Starting Location"
-                       ng-model="originCity" required/>
+                <input id="autocomplete" name="originCity" ng-model="originCity" type="text" class="form-control" ng-click="newVal()" placeholder="Starting Location"
+                       required/>
               </div>
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
                 <label>Destination</label>
-                <input type="text" class="form-control" name="destinationCity"
-                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
+                <input id="autocomplete1" type="text" class="form-control" name="destinationCity"
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" ng-click="newVal()" required/>
               </div>
             </div>
 
@@ -145,9 +146,38 @@
 
         });
       </script>
-
-
     </div>
-
+  </div>
 </section>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<script>
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+
+    var autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['(cities)']});
+    var autocomplete1 = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete1')),
+      {types: ['(cities)']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      document.getElementById('id1').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+    autocomplete1.addListener('place_changed', function () {
+      var place = autocomplete1.getPlace();
+      document.getElementById('id2').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+  }
+</script>

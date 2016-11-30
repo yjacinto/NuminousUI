@@ -1,6 +1,6 @@
 'use strict';
 
-var myApp = angular.module('numinousUiApp')
+angular.module('numinousUiApp')
   .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
 
     $scope.friends = '';/*
@@ -12,6 +12,11 @@ var myApp = angular.module('numinousUiApp')
       $scope.endDate = '';
       $scope.trips = '';
     };*/
+
+    $scope.newVal = function () {
+      $scope.originCity = document.getElementById('autocomplete').value;
+      $scope.destinationCity = document.getElementById('autocomplete1').value;
+    };
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
       //change to post
@@ -30,7 +35,7 @@ var myApp = angular.module('numinousUiApp')
       getTrips();
     };
 
-    $scope.remove = function(item){
+    $scope.remove = function (item) {
       var index = $scope.trips.indexOf(item);
       $scope.trips.splice(index, 1);
       $http.delete(API_ENDPOINT.url + '/trip/'+ item.id)
@@ -40,7 +45,7 @@ var myApp = angular.module('numinousUiApp')
       getTrips();
     };
 
-    $scope.getInfo = function(){
+    $scope.getInfo = function () {
       console.log($scope.id);
     };
 

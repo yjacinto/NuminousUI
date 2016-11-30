@@ -9,7 +9,7 @@ angular.module('numinousUiApp')
     $scope.numberOfTrips = 'user.numberOfTrips';
     $scope.about = "user.about";
         
-    $scope.about = 'user.about';
+    $scope.about = '';
     $scope.profileimage = 'user.image';
         
     };
@@ -17,6 +17,20 @@ angular.module('numinousUiApp')
     
     $scope.isEditVisible = true;
     
+    $scope.getUserProfile = function() {
+        var command = encodeURI('http://localhost:1337/userprofile/getUserProfile')
+        $http.get(command)
+            .success(function(response) {
+            $scope.about = response.bio;
+            console.log(response.bio);
+            
+        })
+            .error(function(response) {
+            console.log("Error notification");
+        });
+    };
+    
+    $scope.getUserProfile();
     
     $scope.save = function(about) {
         

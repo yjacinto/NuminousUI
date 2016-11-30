@@ -116,11 +116,13 @@ angular.module('numinousUiApp', [
     var profileState = {
         name: 'profile',
         url: '/profile',
+        controller: 'ProfileCtrl',
         templateUrl:'/views/profile.html'
     };
     var editprofileState = {
         name: 'editprofile',
         url: '/editprofile',
+        controller: 'ProfileCtrl',
         templateUrl:'/views/editprofile.html'
     };
 

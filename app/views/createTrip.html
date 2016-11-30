@@ -1,5 +1,5 @@
 
-<section ng-controller="ScheduleCtrl">
+<section>
   <header class="main">
     <br>
     <h2>Create a New Trip</h2>
@@ -46,6 +46,57 @@
               </div>
             </div>
 
+            <!--s
+
+            <div class = "row">
+              <div class="col-md-12">
+
+                  <div class="panel-body">
+                    <div class="pull-right">
+                    </div>
+                    <div class="table-container">
+                      <table class="table" >
+                        <tbody>
+                        <p><input type="text" ng-model="friends_filter"></p>
+                        <tr ng-repeat = " friend in friends | filter : friends_filter">
+                          <td>
+
+                            <button ng-click = "">
+                              Add to Trip
+                            </button>
+                            <div class="checkbox">
+                              <label>
+                                <input type="checkbox">
+                              </label>
+                            </div>
+                          </td>
+                          <td>
+                            <button>
+                              Message!
+                            </button>
+                          </td>
+                          <td>
+                            <div class="media">
+                              <div class="media-body">
+                                <h4 class="title">
+                                  {{friend.first_name}} {{friend.last_name}}
+                                  <span class="pull-right">{{friend.email}}</span>
+                                </h4>
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        </br>
+                        </tbody>
+
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+            </div>-->
+
+
             <div class="form-group col-md-12">
               <div style="text-align: center">
                 <button type="submit" class="btn"
@@ -59,57 +110,7 @@
         </div>
       </div>
 
-      <!--List the trips here-->
 
-      <div ng-controller="ScheduleCtrl">
-        <div ng-repeat="trip in trips">
-          <div class="col-md-6">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <div class="media">
-                  <div class="pull-left">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="people" class="media-object img-circle">
-                  </div>
-                  <div class="media-body">
-                    <h3 class="panel-title pull-left">{{trip.originCity}}
-                      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-                      <b>{{trip.destinationCity}}</b><br>
-                      {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-                    </h3>
-                    <button class="btn btn-sm pull-right" ng-click="remove(trip)">
-                      <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-                    </button>
-                    <div class="profile-icons">
-                      <span><i class="fa fa-users"></i> 4 people</span>
-                      <span><i class="fa fa-photo"></i> 43</span>
-                      <span><i class="fa fa-video-camera"></i> 3</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="panel-body">
-                <p class="common-friends">Travel Companions</p>
-                <div class="user-friend-list">
-                  <a href="#">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="people" class="img-circle">
-                  </a>
-                  <a href="#">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="people" class="img-circle">
-                  </a>
-                  <a href="#">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar3.png" alt="people" class="img-circle">
-                  </a>
-                  <a href="#">
-                    <img src="http://bootdey.com/img/Content/avatar/avatar4.png" alt="people" class="img-circle">
-                  </a>
-                </div>
-              </div>
-              <div class="panel-footer">
-                <a ui-sref="calendar({trip_id : trip.id})" class="btn btn-default btn-sm"> <i class="fa fa-plane" aria-hidden="true"></i> Plan Now!</a>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!--
         <div class="panel panel-default">

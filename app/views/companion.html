@@ -1,0 +1,41 @@
+<div class = "row">
+  <div class="col-md-12">
+
+    <div class="panel-body" ng-controller="CompanionCtrl">
+      <div class="pull-right">
+      </div>
+      <div class="table-container">
+        <table class="table" >
+          <tbody>
+          <h3>Add Travel Companions</h3>
+          <p><input type="text" ng-model="friends_filter"></p>
+          <tr ng-repeat = " friend in friends | filter : friends_filter">
+            <td>
+              <button ng-click = "addCompanion(friend.id)">
+                Add to Trip
+              </button>
+            </td>
+            <td>
+              <button>
+                Message!
+              </button>
+            </td>
+            <td>
+              <div class="media">
+                <div class="media-body">
+                  <h4 class="title">
+                    {{friend.first_name}} {{friend.last_name}}
+                    <span class="pull-right">{{friend.email}}</span>
+                  </h4>
+                </div>
+              </div>
+            </td>
+          </tr>
+          </br>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

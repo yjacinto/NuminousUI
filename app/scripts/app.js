@@ -113,6 +113,16 @@ angular.module('numinousUiApp', [
       url: '/directions',
       templateUrl:'/views/directions.html'
     };
+    var profileState = {
+        name: 'profile',
+        url: '/profile',
+        templateUrl:'/views/profile.html'
+    };
+    var editprofileState = {
+        name: 'editprofile',
+        url: '/editprofile',
+        templateUrl:'/views/editprofile.html'
+    };
 
 
 
@@ -127,6 +137,8 @@ angular.module('numinousUiApp', [
     $stateProvider.state(homeState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
+    $stateProvider.state(profileState);
+    $stateProvider.state(editprofileState);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

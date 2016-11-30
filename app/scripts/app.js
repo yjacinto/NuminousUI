@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name numinousUiApp
- * @description
- * # numinousUiApp
- *
- * Main module of the application.
- */
 angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
@@ -162,13 +154,13 @@ angular.module('numinousUiApp', [
           $state.go('login');
         }
       }
-    })
+    });
   })
 
   .filter('capitalize', function() {
     return function(input) {
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
-    }
+    };
   });
 
 

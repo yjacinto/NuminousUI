@@ -1,3 +1,4 @@
+'use strict';
 
 angular.module('numinousUiApp')
   .controller('FriendCtrl', function (AuthService, API_ENDPOINT, $http, $scope) {

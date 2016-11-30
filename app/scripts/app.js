@@ -14,7 +14,8 @@ angular.module('numinousUiApp', [
     'angular-jwt',
     'ui.calendar',
     'ui.bootstrap',
-    'jtt_openweathermap'
+    'jtt_openweathermap',
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
 

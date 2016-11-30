@@ -1,5 +1,6 @@
 <!-- Content -->
 <section>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
@@ -32,9 +33,13 @@
             </div>
 
             <div class="btn-group calTools">
-              <a ui-sref = "calendar.event">
+              <a ui-sref = "calendar.event({trip_id : trip_id})">
                 <button type="button" class="button special small"> <!--ng-click="addEvent()"-->Add Event</button>
               </a>
+              <a ui-sref = "calendar.companion({trip_id : trip_id})">
+                <button type="button" class="button special small"> <!--ng-click="addEvent()"-->Add Companions</button>
+              </a>
+
             </div>
 
             <br>
@@ -54,6 +59,8 @@
     </div>
   </div>
 </section>
+
+
 
 
 <script type="text/javascript">

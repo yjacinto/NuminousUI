@@ -1,0 +1,59 @@
+<!--List the trips here-->
+<section>
+  <header class="main">
+    <br>
+    <h2>Your Trips</h2>
+  </header>
+
+  <div ng-controller="TripCtrl">
+    <div ng-repeat="trip in trips">
+      <div class="col-md-6">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="media">
+              <div class="pull-left">
+                <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="people" class="media-object img-circle">
+              </div>
+              <div class="media-body">
+                <h3 class="panel-title pull-left">{{trip.originCity}}
+                  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                  <b>{{trip.destinationCity}}</b><br>
+                  {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
+                </h3>
+                <button class="btn btn-sm pull-right" ng-click="remove(trip)">
+                  <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
+                </button>
+                <div class="profile-icons">
+                  <span><i class="fa fa-users"></i> 4 people</span>
+                  <span><i class="fa fa-photo"></i> 43</span>
+                  <span><i class="fa fa-video-camera"></i> 3</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <p class="common-friends">Travel Companions</p>
+            <div class="user-friend-list">
+              <a href="#">
+                <img src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="people" class="img-circle">
+              </a>
+              <a href="#">
+                <img src="http://bootdey.com/img/Content/avatar/avatar2.png" alt="people" class="img-circle">
+              </a>
+              <a href="#">
+                <img src="http://bootdey.com/img/Content/avatar/avatar3.png" alt="people" class="img-circle">
+              </a>
+              <a href="#">
+                <img src="http://bootdey.com/img/Content/avatar/avatar4.png" alt="people" class="img-circle">
+              </a>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <a ui-sref="calendar({trip_id : trip.id})" class="btn btn-default btn-sm"> <i class="fa fa-plane" aria-hidden="true"></i> Plan Now!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

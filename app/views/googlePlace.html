@@ -79,31 +79,31 @@
 </style>
 
 <!-- Content -->
-<section ng-controller="googlePlaceCtrl as ctrl">
+<section ng-controller="googlePlaceCtrl">
   <header class="main">
     <h2>Add Events</h2>
   </header>
 
   <div class="row">
     <div class="col-md-12">
-      <form name="addEventForm" class="form-horizontal" novalidate>
+      <form id="addEventForm" name="addEventForm" class="form-horizontal" novalidate>
         <div class="form-group col-md-12">
           <div class="col-md-6">
             <label><font color="red">*</font> Event Start Date / Start Time</label>
             <p class="input-group">
-              <input id="start" type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="ctrl.picker3.date" is-open="ctrl.picker3.open" />
+              <input id="start" type="text" class="form-control" datetime-picker="short" ng-model="picker3.date" is-open="picker3.open" />
               <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'picker3')"><i class="fa fa-calendar"></i></button>
-              </span>
+                  <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'picker3')"><i class="fa fa-calendar"></i></button>
+              </span> {{picker3.date}}
             </p>
           </div>
 
           <div class="col-md-6">
             <label><font color="red">*</font> Event End Date / End Time</label>
             <p class="input-group">
-              <input id="end" type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="ctrl.picker2.date" is-open="ctrl.picker2.open" />
+              <input id="end" type="text" class="form-control" datetime-picker="short" ng-model="picker2.date" is-open="picker2.open" />
               <span class="input-group-btn">
-                  <button type="button" class="btn btn-default" ng-click="ctrl.openCalendar($event, 'picker2')"><i class="fa fa-calendar"></i></button>
+                  <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'picker2')"><i class="fa fa-calendar"></i></button>
               </span>
             </p>
           </div>
@@ -111,7 +111,6 @@
       </form>
     </div>
   </div>
-  <!--{{ ctrl.picker3.date }} {{ctrl.start.date}}-->
 
   <div class="row">
     <div class="col-md-12">

@@ -115,7 +115,8 @@ angular.module('numinousUiApp', [
       url: '/googlePlace',
       templateUrl:'/views/googlePlace.html',
       controller: 'googlePlaceCtrl',
-      controllerAs: 'googlePlace'
+      controllerAs: 'googlePlace',
+      params: {trip_id : null}
 
     };
     var googleDrawState = {

@@ -16,6 +16,7 @@ angular.module('numinousUiApp')
     $scope.login = function() {
       AuthService.login($scope.user).then(function(msg) {
         $state.go('dashboard');
+
       }, function(err) {
         console.log(err);
         console.log('Login failed');

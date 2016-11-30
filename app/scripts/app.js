@@ -33,7 +33,7 @@ angular.module('numinousUiApp', [
       url:'/',
       templateUrl:'/views/home.html',
       controller: 'HomeCtrl',
-      controllerAs: 'home'
+      controllerAs: 'home',
     };
 
     var loginState = {
@@ -65,7 +65,7 @@ angular.module('numinousUiApp', [
       url: '/dashboard',
       templateUrl:'/views/dashboard.html',
       controller: 'DashboardCtrl',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
     };
 
     var createTripState = {
@@ -120,7 +120,9 @@ angular.module('numinousUiApp', [
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
-      templateUrl:'/views/googlePlace.html'
+      templateUrl:'/views/googlePlace.html',
+      controller: 'googlePlaceCtrl',
+      controllerAs: 'googlePlace'
 
     };
     var googleDrawState = {

@@ -22,6 +22,7 @@ angular.module('numinousUiApp')
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
       //change to post
+      alert("Success! Create has been created!");
       var command = encodeURI(API_ENDPOINT.url + '/trip/create?' +
         'originCity=' + originCity +
         '&destinationCity=' + destinationCity +
@@ -35,6 +36,7 @@ angular.module('numinousUiApp')
           console.log("Error notification");
         });
       getTrips();
+      document.getElementById('createTripForm').reset();
     };
 
     $scope.remove = function(item){

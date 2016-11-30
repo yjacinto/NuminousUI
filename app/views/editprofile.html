@@ -2,11 +2,11 @@
           <div class="container">
               <div class="row">
                   <div class="col-md-3">
-                      <h1>{{user.first_name}} {{user.last_name}}</h1>
+                      <h1>{{userprofile.first_name}} {{userprofile.last_name}}</h1>
                   </div>
                   <div class="col-md-9">
                       <div style="text-align: left">
-                          <button ui-sref="profile" type="save" class="btn" ng-click="save()">Save</button>
+                          <button ui-sref="profile" class="pull-right" type="save" class="btn" ng-click="save()">Save</button>
                       </div>
                   </div>
               </div>
@@ -42,7 +42,7 @@
                       <div class="tab-content">
                           <div class="tab-pane active" id="about">
                               <div class="form-group">
-                                  <textarea class="form-control" rows="5" id="about" ng-model="about"></textarea>
+                                  <textarea class="form-control" rows="5" ng-model="bio"></textarea>
                               </div>
                           </div>
                           <div class="tab-pane" id="friends">

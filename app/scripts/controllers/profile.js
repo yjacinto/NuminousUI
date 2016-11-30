@@ -30,11 +30,13 @@ angular.module('numinousUiApp')
 
 
     $scope.save = function() {
-
+      console.log($scope.bio);
+      console.log('firing save');
         var command = encodeURI('http://localhost:1337/userprofile/editprofile');
-        $http.post(command, {bio: $scope.userprofile.bio})
+        $http.post(command, {bio: $scope.bio})
             .success(function(response) {
-              $scope.userprofile.bio = response.bio;
+              console.log(response);
+              $scope.bio = response.bio;
         })
             .error(function(response) {
             console.log("Error notification");

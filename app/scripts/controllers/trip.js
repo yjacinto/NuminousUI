@@ -4,16 +4,6 @@ angular.module('numinousUiApp')
   .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
 
     $scope.friends = '';
-    //$scope.trips = '';
-    /*
-     var init = function () {
-     //Declaring Signup Form variables
-     $scope.originCity = '';
-     $scope.destinationCity = '';
-     $scope.startDate = '';
-     $scope.endDate = '';
-     $scope.trips = '';
-     };*/
 
     $scope.newVal = function () {
       $scope.originCity = document.getElementById('autocomplete').value;

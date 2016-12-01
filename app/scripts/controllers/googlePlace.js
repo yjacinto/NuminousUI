@@ -14,31 +14,29 @@ angular.module('numinousUiApp')
     $scope.trip_id = $stateParams.trip_id;
     console.log('scope trip id: ' + $scope.trip_id);
 
-    var that = this;
+    $scope.picker2 = {
+      date: new Date()
+    };
     $scope.picker3 = {
       date: new Date()
     };
 
-    $scope.picker2 = {
-      date: new Date()
-    };
+    $scope.openCalendar = function (e, picker) {
 
-    $scope.openCalendar = function (e, picker2) {
-      $scope.picker2.open = true;
-
-    };
-    $scope.openCalendar = function (e, picker3) {
-      $scope.picker3.open = true;
-
+      if(picker == 'picker2'){
+        $scope.picker2.open = true;
+      }
+      if(picker == 'picker3'){
+        $scope.picker3.open = true;
+      }
     };
 
     $scope.addMe = function () {
       $scope.name = document.getElementById('iw-name').textContent;
+      $scope.startTime = moment(($scope.picker2.date), 'short').format("YYYY-MM-DD HH:mm");
+      $scope.endTime = moment(($scope.picker3.date), 'short').format("YYYY-MM-DD HH:mm");
       $scope.location = document.getElementById('iw-address').textContent;
       $scope.place_id = document.getElementById('iw-place-id').textContent;
-
-      $scope.startTime = moment(($scope.picker2.date), 'short').format("YYYY-MM-DD HH:mm");
-      $scope.endTime = moment(($scope.picker2.date), 'short').format("YYYY-MM-DD HH:mm");
 
       createEvent($scope.name, $scope.startTime, $scope.endTime, $scope.location, $scope.place_id);
 

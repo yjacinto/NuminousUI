@@ -23,7 +23,8 @@ angular.module('numinousUiApp', [
     'ui.calendar',
     'ui.bootstrap',
     'btford.socket-io',
-    'jtt_openweathermap'
+    'jtt_openweathermap',
+    'irontec.simpleChat'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 

@@ -88,4 +88,10 @@ angular.module('numinousUiApp')
 
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-  });
+  })
+
+  .service("trip", function Trip(){
+    var trip = this;
+    trip.trip_id = "";
+  })
+;

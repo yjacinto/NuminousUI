@@ -42,9 +42,9 @@
  */
 angular.module('numinousUiApp')
     .controller('calendarCtrl',
-   function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams) {
+   function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams, trip) {
      //console.log($stateParams);
-     $scope.trip_id = $stateParams.trip_id;
+     $scope.trip_id = trip.trip_id;
      console.log('scope trip id: ' + $scope.trip_id);
     var date = new Date();
     var d = date.getDate();

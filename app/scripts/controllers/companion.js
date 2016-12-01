@@ -1,21 +1,10 @@
 
 angular.module('numinousUiApp')
-  .controller('CompanionCtrl', function (AuthService, API_ENDPOINT, $http, $scope, $stateParams) {
+  .controller('CompanionCtrl', function (AuthService, API_ENDPOINT, $http, $scope, $stateParams, trip) {
 
     $scope.users = '';
     $scope.friends = '';
-    $scope.trip_id = $stateParams.trip_id;
-    //console.log('inside companion.js' + $scope.trip_id);
-    //may delete
-    /*var getUserFriends = function () {
-     $http.get(API_ENDPOINT.url + '/user/getUserFriends').then(function (result) {
-     if (result.status) {
-     console.log(result.data.msg);
-     } else {
-     reject(result.data.msg);
-     }
-     });
-     };*/
+    $scope.trip_id = trip.trip_id;
 
     //gets all users that have been registered in the database.
     var getUsers = function(){
@@ -84,14 +73,12 @@ angular.module('numinousUiApp')
         .then(function(res){
           console.log('added friend');
         });
-      $http.post(API_ENDPOINT.url + '/trip/getTravelCompanionsById', data)
+      $http.post(API_ENDPOINT.url + '/trip/getTravelersById', data)
         .then(function(res){
           console.log(res.data);
         });
 
     };
-
-
 
     //working on displaying get users  and get user friends.
     getUsers();

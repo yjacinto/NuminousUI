@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="panel-footer">
-          <a ui-sref="calendar({trip_id : trip.id})" class="btn btn-default btn-sm"> <i class="fa fa-plane" aria-hidden="true"></i> Plan Now!</a>
+          <a ui-sref="calendar({trip_id : trip.id})" ng-click="assignTripId(trip.id)" class="btn btn-default btn-sm"> <i class="fa fa-plane" aria-hidden="true"></i> Plan Now!</a>
         </div>
       </div>
     </div>

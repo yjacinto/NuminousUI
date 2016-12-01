@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp = angular.module('numinousUiApp')
-  .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
+  .controller('TripCtrl', function($scope, $http, API_ENDPOINT, trip){
 
     $scope.friends = '';
     //$scope.trips = '';
@@ -91,6 +91,11 @@ var myApp = angular.module('numinousUiApp')
           }
       });
     });
+
+    $scope.assignTripId = function(id){
+      trip.trip_id = id;
+      console.log(trip.trip_id);
+    };
 
     getTripsAndTravelers();
 

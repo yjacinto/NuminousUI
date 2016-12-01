@@ -22,10 +22,10 @@ angular.module('numinousUiApp', [
     'angular-jwt',
     'ui.calendar',
     'ui.bootstrap',
-    //'btford.socket-io',
+    'btford.socket-io',
     'jtt_openweathermap'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
 
@@ -33,7 +33,7 @@ angular.module('numinousUiApp', [
       name:'home',
       url:'/',
       templateUrl:'/views/home.html',
-      controller: 'HomeCtrl',
+      //controller: 'HomeCtrl',
       controllerAs: 'home'
     };
 
@@ -159,6 +159,8 @@ angular.module('numinousUiApp', [
     $stateProvider.state(chatboxState);
     $stateProvider.state(listTripState);
 
+
+    //$locationProvider.html5Mode(true);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

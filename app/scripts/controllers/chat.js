@@ -6,15 +6,20 @@
 
 angular.module('numinousUiApp')
   .controller('ChatCtrl', function ($scope, $log, $http, API_ENDPOINT, $stateParams) {
+
+    $scope.predicate = '-id';
+    $scope.reverse = false;
+    $scope.chatList = [];
     $scope.trip_id = $stateParams.trip_id;
+
+    console.log($scope.trip_id);
 
     $scope.getAllChat= function() {
       //establish socket connection
-      io.socket.get(API_ENDPOINT + '/chatroom/addControllerToChat');
-
-      $http.get(API_ENDPOINT + '/chatroom/addControllerToChat')
-        .success(function (success_data) {
-
+      console.log('inside getAllChat');
+      io.socket.post(API_ENDPOINT.url + '/chatroom/addUserToChat',{
+        trip_id : $scope.trip_id
+      },function (success_data, jwRes) {
           $scope.chatList = success_data;
           $log.info(success_data);
         });
@@ -22,11 +27,13 @@ angular.module('numinousUiApp')
 
     $scope.getAllChat();
 
-    io.socket.on('new_message',function(obj){
+    io.socket.on('chatroom',function(event){
       //Check whether the verb is created or not
-      if(obj.verb === 'new_message'){
-        $log.info(obj)
-        $scope.chatList.push(obj.data);
+      if(event.verb === 'messaged'){
+        $log.info(event);
+        console.log(event);
+        $scope.chatList.push(event.data);
+        console.log('afterpush');
         // Add the data to current chatList
         // Call $scope.$digest to make the changes in UI
         $scope.$digest();
@@ -35,7 +42,7 @@ angular.module('numinousUiApp')
 
     $scope.sendMsg = function(){
       $log.info($scope.chatMessage);
-      io.socket.post(API_ENDPOINT + '/chatroom/sendMessage', {
+      io.socket.post(API_ENDPOINT.url + '/chatroom/sendMessage', {
         message: $scope.chatMessage,
         trip_id: $scope.trip_id
       });

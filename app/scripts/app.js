@@ -15,12 +15,19 @@ angular.module('numinousUiApp', [
     'ui.calendar',
     'ui.bootstrap',
     'jtt_openweathermap',
-    'ui.bootstrap.datetimepicker',
-    'appService'
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
+
+    var homeState={
+      name: 'home',
+      url:'/',
+      templateUrl:'/views/home.html',
+      controller: 'HomeCtrl',
+      controllerAs: 'home'
+    }
 
     var loginState = {
       name:'login',
@@ -151,6 +158,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
+    $stateProvider.state(homeState);
     $stateProvider.state(directionsState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);

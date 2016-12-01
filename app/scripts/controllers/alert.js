@@ -3,15 +3,15 @@
 /* services.js */
 
 // don't forget to declare this service module as a dependency in your main app constructor!
-var appServices = angular.module('numinousUiApp.services', []);
+angular.module('numinousUiApp')
 
-appServices.factory('alertService', function($rootScope) {
-  var alertService = {};
+  .factory('alertService', function($rootScope) {
+    var alertService = {};
 
   // create an array of alerts available globally
-  $rootScope.alerts = [];
+    $rootScope.alerts = [];
 
-  alertService.add = function(type, msg) {
+    alertService.add = function(type, msg) {
     $rootScope.alerts.push({'type': type, 'msg': msg});
   };
 
@@ -20,7 +20,7 @@ appServices.factory('alertService', function($rootScope) {
   };
 
   return alertService;
-});
+  });
 
 function RootCtrl($rootScope, $location, alertService) {
   $rootScope.changeView = function(view) {

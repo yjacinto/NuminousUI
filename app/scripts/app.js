@@ -25,7 +25,7 @@ angular.module('numinousUiApp', [
       name: 'home',
       url:'/',
       templateUrl:'/views/home.html',
-      controller: 'HomeCtrl',
+      //controller: 'HomeCtrl',
       controllerAs: 'home'
     }
 

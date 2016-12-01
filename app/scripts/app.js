@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name numinousUiApp
- * @description
- * # numinousUiApp
- *
- * Main module of the application.
- */
 angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
@@ -22,21 +14,12 @@ angular.module('numinousUiApp', [
     'angular-jwt',
     'ui.calendar',
     'ui.bootstrap',
-    'btford.socket-io',
     'jtt_openweathermap',
-    'irontec.simpleChat'
+    'ui.bootstrap.datetimepicker'
   ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
-
-    var homeState = {
-      name:'home',
-      url:'/',
-      templateUrl:'/views/home.html',
-      //controller: 'HomeCtrl',
-      controllerAs: 'home'
-    };
 
     var loginState = {
       name:'login',
@@ -67,7 +50,7 @@ angular.module('numinousUiApp', [
       url: '/dashboard',
       templateUrl:'/views/dashboard.html',
       controller: 'DashboardCtrl',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
     };
 
     var createTripState = {
@@ -130,7 +113,10 @@ angular.module('numinousUiApp', [
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
-      templateUrl:'/views/googlePlace.html'
+      templateUrl:'/views/googlePlace.html',
+      controller: 'googlePlaceCtrl',
+      controllerAs: 'googlePlace',
+      params: {trip_id : null}
     };
 
     var googleDrawState = {
@@ -144,6 +130,18 @@ angular.module('numinousUiApp', [
       url: '/directions',
       templateUrl:'/views/directions.html'
     };
+    var profileState = {
+        name: 'profile',
+        url: '/profile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/profile.html'
+    };
+    var editprofileState = {
+        name: 'editprofile',
+        url: '/editprofile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/editprofile.html'
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
@@ -153,9 +151,10 @@ angular.module('numinousUiApp', [
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
     $stateProvider.state(directionsState);
-    $stateProvider.state(homeState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
+    $stateProvider.state(profileState);
+    $stateProvider.state(editprofileState);
     $stateProvider.state(createTravelCompanion);
     $stateProvider.state(chatboxState);
     $stateProvider.state(listTripState);
@@ -173,13 +172,13 @@ angular.module('numinousUiApp', [
           $state.go('login');
         }
       }
-    })
+    });
   })
 
   .filter('capitalize', function() {
     return function(input) {
       return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
-    }
+    };
   });
 
 

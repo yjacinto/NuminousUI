@@ -1,27 +1,29 @@
+
 <section>
   <header class="main">
     <br>
     <h2>Create a New Trip</h2>
   </header>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel panel-default">
 
         <div class="panel-body">
-          <form name="createTripForm" class="form-horizontal" novalidate>
+          <form id="createTripForm" name="createTripForm" class="form-horizontal" novalidate>
 
             <div class="form-group col-md-12">
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
                 <label>Origin </label>
-                <input type="text" class="form-control" name="originCity" placeholder="Starting Location"
-                       ng-model="originCity" required/>
+                <input id="autocomplete" name="originCity" ng-model="originCity" type="text" class="form-control" ng-click="newVal()" placeholder="Starting Location"
+                       required/>
               </div>
               <div class="col-md-6"
                    ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
                 <label>Destination</label>
-                <input type="text" class="form-control" name="destinationCity"
-                       placeholder="Where would you like to visit?" ng-model="destinationCity" required/>
+                <input id="autocomplete1" type="text" class="form-control" name="destinationCity"
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" ng-click="newVal()" required/>
               </div>
             </div>
 
@@ -45,57 +47,6 @@
               </div>
             </div>
 
-            <!--s
-
-            <div class = "row">
-              <div class="col-md-12">
-
-                  <div class="panel-body">
-                    <div class="pull-right">
-                    </div>
-                    <div class="table-container">
-                      <table class="table" >
-                        <tbody>
-                        <p><input type="text" ng-model="friends_filter"></p>
-                        <tr ng-repeat = " friend in friends | filter : friends_filter">
-                          <td>
-
-                            <button ng-click = "">
-                              Add to Trip
-                            </button>
-                            <div class="checkbox">
-                              <label>
-                                <input type="checkbox">
-                              </label>
-                            </div>
-                          </td>
-                          <td>
-                            <button>
-                              Message!
-                            </button>
-                          </td>
-                          <td>
-                            <div class="media">
-                              <div class="media-body">
-                                <h4 class="title">
-                                  {{friend.first_name}} {{friend.last_name}}
-                                  <span class="pull-right">{{friend.email}}</span>
-                                </h4>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                        </br>
-                        </tbody>
-
-                      </table>
-                    </div>
-                  </div>
-                </div>
-
-            </div>-->
-
-
             <div class="form-group col-md-12">
               <div style="text-align: center">
                 <button type="submit" class="btn"
@@ -109,45 +60,52 @@
         </div>
       </div>
 
-
-
-        <!--
-        <div class="panel panel-default">
-          <div class="panel-heading clearfix">
-            <h3 class="panel-title pull-left">{{trip.originCity}}
-              <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
-              <b>{{trip.destinationCity}}</b>
-            </h3>
-            <button class="btn btn-sm pull-right" ng-click="remove(trip)">
-              <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
-            </button>
-          </div>
-          <div class="panel-body">
-            <button type="submit" class="btn btn-primary btn-sm pull-right planNow">Plan Now!</button>
-            <p class="text-middle destinationCity pull-left"></p>
-            {{trip.startDate|date: 'EEE MMM dd'}} - {{trip.endDate| date: 'EEE MMM dd'}}
-
-          </div>
-          <div>
-          </div>
-        </div>-->
-      </div>
-
-      <script>
-
-        $(document).ready(function () {
-          var date = moment(new Date());
-          $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-          var endDate = date.add(1, 'weeks');
-
-          $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
-
-        });
-      </script>
-
-
     </div>
+
+    <script>
+
+      $(document).ready(function () {
+        var date = moment(new Date());
+        $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+        var endDate = date.add(1, 'weeks');
+
+        $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+      });
+    </script>
+  </div>
 
 </section>
 
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<script>
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+
+    var autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['(cities)']});
+    var autocomplete1 = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete1')),
+      {types: ['(cities)']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      document.getElementById('id1').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+    autocomplete1.addListener('place_changed', function () {
+      var place = autocomplete1.getPlace();
+      document.getElementById('id2').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+  }
+</script>

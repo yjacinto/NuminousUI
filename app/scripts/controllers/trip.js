@@ -1,11 +1,17 @@
 'use strict';
 
+<<<<<<< HEAD
 var myApp = angular.module('numinousUiApp')
   .controller('TripCtrl', function($scope, $http, API_ENDPOINT, trip){
+=======
+angular.module('numinousUiApp')
+  .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
+>>>>>>> dev3
 
     $scope.friends = '';
     //$scope.trips = '';
     /*
+<<<<<<< HEAD
     var init = function () {
       //Declaring Signup Form variables
       $scope.originCity = '';
@@ -14,6 +20,21 @@ var myApp = angular.module('numinousUiApp')
       $scope.endDate = '';
       $scope.trips = '';
     };*/
+=======
+     var init = function () {
+     //Declaring Signup Form variables
+     $scope.originCity = '';
+     $scope.destinationCity = '';
+     $scope.startDate = '';
+     $scope.endDate = '';
+     $scope.trips = '';
+     };*/
+
+    $scope.newVal = function () {
+      $scope.originCity = document.getElementById('autocomplete').value;
+      $scope.destinationCity = document.getElementById('autocomplete1').value;
+    };
+>>>>>>> dev3
 
     $scope.createTrip = function (originCity, destinationCity, startDate, endDate) {
       //change to post
@@ -30,6 +51,7 @@ var myApp = angular.module('numinousUiApp')
           console.log("Error notification");
         });
       getTrips();
+      document.getElementById('createTripForm').reset();
     };
 
     $scope.remove = function(item){
@@ -56,6 +78,7 @@ var myApp = angular.module('numinousUiApp')
           $scope.trips = res.data[0].trips;
         });
     });
+<<<<<<< HEAD
 
     /*var getTrips = (function (){
       console.log('firing getTrips');
@@ -68,6 +91,20 @@ var myApp = angular.module('numinousUiApp')
         });
     });*/
 
+=======
+
+    /*var getTrips = (function (){
+     console.log('firing getTrips');
+     var command = encodeURI(API_ENDPOINT.url + '/user/getUserTrips');
+     $http.post(command)
+     .then(function(res){
+     console.log('trips: ' + JSON.stringify(res.data[0]));
+     //console.log('travelers: ' + res.data[0].travelers);
+     //$scope.trips = res.data[0].trips;
+     });
+     });*/
+
+>>>>>>> dev3
     var getTripsAndTravelers = (function (){
       var command = encodeURI(API_ENDPOINT.url + '/user/getUserTripsAndTravelers');
       $http.post(command)
@@ -89,6 +126,7 @@ var myApp = angular.module('numinousUiApp')
           } else {
             reject(result.data.msg);
           }
+<<<<<<< HEAD
       });
     });
 
@@ -97,6 +135,11 @@ var myApp = angular.module('numinousUiApp')
       console.log(trip.trip_id);
     };
 
+=======
+        });
+    });
+
+>>>>>>> dev3
     getTripsAndTravelers();
 
   });

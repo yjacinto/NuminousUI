@@ -1,0 +1,61 @@
+ <section>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3">
+                      <h1>{{userprofile.first_name}} {{userprofile.last_name}}</h1>
+                  </div>
+                  <div class="col-md-9">
+                      <div style="text-align: left">
+                          <button ui-sref="profile" class="pull-right" type="save" class="btn" ng-click="save()">Save</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3">
+                      <img src="//placehold.it/100" class="avatar img-circle" alt="image">
+                      <h6>Change profile picture</h6>
+                      <input type="file" class="form-control">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3">
+                      <ul class="list-group">
+                          <li class="list-group-item text-muted">Profile</li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> user.joinedDate </li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Last Online</strong></span> user.lastOnline </li>
+                      </ul>
+
+                      <ul class="list-group">
+                          <li class="list-group-item text-muted">Activity<i class="fa fa-dashboard fa-1x"></i></li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Friends</strong></span>#</li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Trips</strong></span>#</li>
+                      </ul>
+                  </div>
+
+                  <div class="col-md-9">
+                      <ul class="nav nav-tabs" id="myTab">
+                          <li class="active"><a href="editprofile/#home" data-toggle="tab">About</a></li>
+                          <li><a href="editprofile/#friends" data-toggle="tab">Friends</a></li>
+                          <li><a href="editprofile/#trips" data-toggle="tab">Trips</a></li>
+                      </ul>
+
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="about">
+                              <div class="form-group">
+                                  <textarea class="form-control" rows="5" ng-model="bio"></textarea>
+                              </div>
+                          </div>
+                          <div class="tab-pane" id="friends">
+                              <p>friend tab</p>
+                          </div>
+                          <div class="tab-pane" id="trips">
+                              <p>trip tab</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+        <hr class="major"/>
+      </section>

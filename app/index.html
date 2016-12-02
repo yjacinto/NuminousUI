@@ -15,11 +15,8 @@
   <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
   <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
-  <script type="text/javascript" src="assets/js/dependencies/sails.io.js"></script>
-  <script type="text/javascript">
-  io.sails.url = "http://localhost:1337";
-  </script>
 
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoZ6StPZT73Q2lDnsxdpoN8VXj2OSTGRE&libraries=places"></script>
 
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
   <link rel="stylesheet" href="assets/css/main.css" />
@@ -35,16 +32,18 @@
   <div id="main">
     <div class="inner">
       <header id="header">
+
         <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
         <ul class="icons">
-          <li><a href="https://twitter.com" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-          <li><a href="http://www.facebook.com" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-          <li><a href="https://www.snapchat.com" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
-          <li><a href="https://www.instagram.com" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+          <li><a href="#" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+          <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+          <li><a href="#" class="icon fa-medium"><span class="label">Medium</span></a></li>
         </ul>
       </header>
-      <ui-view>
-      </ui-view>
+
+      <ui-view></ui-view>
     </div>
   </div>
 
@@ -79,10 +78,10 @@
           <li><a ui-sref="dashboard">Dashboard</a></li>
           <li><a ui-sref="friend">Friends</a></li>
           <li>
-            <span class="opener">Trips</span>
+            <span class="opener">Plan a Trip</span>
             <ul>
-              <li><a ui-sref="createTrip">Create</a></li> <!--schedule-->
-              <li><a ui-sref="listTrip">View Trips</a></li> <!--list all trips with modify button-->
+              <li><a ui-sref="schedule">Create</a></li> <!--schedule-->
+              <li><a href="#">Modify</a></li> <!--list all trips with modify button-->
               <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
             </ul>
           </li>
@@ -99,7 +98,7 @@
       </nav>
 
       <!-- Section -->
-<!--      <section ng-show="isAuthenticated()">
+      <section ng-show="isAuthenticated()">
         <header class="major">
           <h2>Ante interdum</h2>
         </header>
@@ -120,25 +119,25 @@
         <ul class="actions">
           <li><a href="#" class="button">More</a></li>
         </ul>
-      </section>-->
+      </section>
 
       <!-- Section -->
       <section>
         <header class="major">
           <h2>Get in touch</h2>
         </header>
-        <p>For any questions or concerns, please feel free to contact us: </p>
+        <p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
         <ul class="contact">
-          <li class="fa-envelope-o"><a href="#">Numinous@gmail.com</a></li>
+          <li class="fa-envelope-o"><a href="#">information@untitled.tld</a></li>
           <li class="fa-phone">(000) 000-0000</li>
-          <li class="fa-home">One Washington Square<br />
-            San Jose, CA 95192-0180</li>
+          <li class="fa-home">1234 Somewhere Road #8254<br />
+            Nashville, TN 00000-0000</li>
         </ul>
       </section>
 
       <!-- Footer -->
       <footer id="footer">
-        <p class="copyright">&copy; Numinous. All rights reserved. San Jose State University</p>
+        <p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
       </footer>
 
     </div>
@@ -175,12 +174,10 @@
 <script src="bower_components/angular-lock/angular-lock.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
 <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
-<script src="bower_components/angular-socket-io/socket.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/bootstrap-validator/dist/validator.js"></script>
 <script src="bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js"></script>
 <script src="bower_components/ngPlacesAutocomplete/ngPlacesAutocomplete.min.js"></script>
-<script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
 <!-- endbower -->
 
 <script src="assets/js/jquery.min.js"></script>
@@ -188,21 +185,17 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
-
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
+<script src="scripts/controllers/home.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/signup.js"></script>
 <script src="scripts/controllers/dashboard.js"></script>
-<script src="scripts/controllers/dashboard.js"></script>
-<script src="scripts/controllers/trip.js"></script>
+<script src="scripts/controllers/schedule.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
-<script src="scripts/controllers/companion.js"></script>
 <script src="scripts/controllers/services.js"></script>
 <script src="scripts/controllers/friends.js"></script>
-<script src="scripts/controllers/alert.js"></script>
-<script src="scripts/controllers/googlePlace.js"></script>
 <script src="scripts/controllers/auth_controllers.js"></script>
-<script src="scripts/controllers/chat.js"></script>
-<script src="scripts/controllers/profile.js"></script>
 <script src="scripts/constants.js"></script>
 
 </body>

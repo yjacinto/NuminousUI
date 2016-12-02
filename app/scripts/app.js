@@ -27,7 +27,7 @@ angular.module('numinousUiApp', [
       templateUrl:'/views/home.html',
       //controller: 'HomeCtrl',
       controllerAs: 'home'
-    }
+    };
 
     var loginState = {
       name:'login',

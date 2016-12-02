@@ -44,9 +44,9 @@
           <li><a href="https://www.instagram.com" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         </ul>
       </header>
-
-      <div>
-        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{ alert.msg }}</alert>
+      <br>
+      <div uib-alert dismiss-on-timeout="3000" ng-if="show" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+        {{alert.msg}}
       </div>
       <ui-view>
       </ui-view>

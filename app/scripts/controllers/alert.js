@@ -6,23 +6,26 @@
 angular.module('numinousUiApp')
 
   .factory('alertService', function($rootScope) {
+
+    $rootScope.show = true;
     var alertService = {};
 
   // create an array of alerts available globally
     $rootScope.alerts = [];
 
     alertService.add = function(type, msg) {
-    $rootScope.alerts.push({'type': type, 'msg': msg});
-  };
+      $rootScope.alerts.push({'type': type, 'msg': msg});
+    };
 
-  alertService.closeAlert = function(index) {
-    $rootScope.alerts.splice(index, 1);
-  };
+    alertService.closeAlert = function(index) {
+      $rootScope.show = false;
+      $rootScope.alerts.splice(index, 1);
+    };
 
-  return alertService;
+    return alertService;
   });
 
-function RootCtrl($rootScope, $location, alertService) {
+/*function RootCtrl($rootScope, $location, alertService) {
   $rootScope.changeView = function(view) {
     $location.path(view);
   }
@@ -30,6 +33,6 @@ function RootCtrl($rootScope, $location, alertService) {
   // root binding for alertService
   $rootScope.closeAlert = alertService.closeAlert;
 }
-RootCtrl.$inject = ['$scope', '$location', 'alertService'];
+RootCtrl.$inject = ['$scope', '$location', 'alertService'];*/
 
 

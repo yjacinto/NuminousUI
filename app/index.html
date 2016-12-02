@@ -15,6 +15,10 @@
   <script type="text/javascript" src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <script type="text/javascript" src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
   <script type="text/javascript" src="bower_components/fullcalendar/dist/gcal.js"></script>
+  <script type="text/javascript" src="assets/js/dependencies/sails.io.js"></script>
+  <script type="text/javascript">
+  io.sails.url = "http://localhost:1337";
+  </script>
 
 
   <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -40,8 +44,12 @@
           <li><a href="https://www.instagram.com" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         </ul>
       </header>
-
-      <ui-view></ui-view>
+      <br>
+      <div uib-alert dismiss-on-timeout="3000" ng-if="show" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+        {{alert.msg}}
+      </div>
+      <ui-view>
+      </ui-view>
     </div>
   </div>
 
@@ -172,6 +180,7 @@
 <script src="bower_components/angular-lock/angular-lock.js"></script>
 <script src="bower_components/angular-jwt/dist/angular-jwt.js"></script>
 <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+<script src="bower_components/angular-socket-io/socket.js"></script>
 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="bower_components/bootstrap-validator/dist/validator.js"></script>
 <script src="bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js"></script>
@@ -191,10 +200,13 @@
 <script src="scripts/controllers/dashboard.js"></script>
 <script src="scripts/controllers/trip.js"></script>
 <script src="scripts/controllers/calendar.js"></script>
+<script src="scripts/controllers/companion.js"></script>
 <script src="scripts/controllers/services.js"></script>
 <script src="scripts/controllers/friends.js"></script>
+<script src="scripts/controllers/alert.js"></script>
 <script src="scripts/controllers/googlePlace.js"></script>
 <script src="scripts/controllers/auth_controllers.js"></script>
+<script src="scripts/controllers/chat.js"></script>
 <script src="scripts/controllers/profile.js"></script>
 <script src="scripts/constants.js"></script>
 

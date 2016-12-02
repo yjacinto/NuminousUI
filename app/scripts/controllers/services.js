@@ -2,7 +2,7 @@
 
 angular.module('numinousUiApp')
 
-  .service('AuthService', function($q, $http, API_ENDPOINT) {
+  .service('AuthService', function($q, $http, API_ENDPOINT, alertService) {
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
     var isAuthenticated = false;
     var authToken;
@@ -55,6 +55,7 @@ angular.module('numinousUiApp')
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
           } else {
+            alertService.add("warning", result.data.msg);
             reject(result.data.msg);
           }
         });
@@ -88,4 +89,10 @@ angular.module('numinousUiApp')
 
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-  });
+  })
+
+  .service("trip", function Trip(){
+    var trip = this;
+    trip.trip_id = "";
+  })
+;

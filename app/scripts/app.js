@@ -17,16 +17,16 @@ angular.module('numinousUiApp', [
     'jtt_openweathermap',
     'ui.bootstrap.datetimepicker'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
 
-    var homeState = {
-      name:'home',
+    var homeState={
+      name: 'home',
       url:'/',
       templateUrl:'/views/home.html',
-      controller: 'HomeCtrl',
-      controllerAs: 'home',
+      //controller: 'HomeCtrl',
+      controllerAs: 'home'
     };
 
     var loginState = {
@@ -110,6 +110,14 @@ angular.module('numinousUiApp', [
       params: {trip_id : null}
     };
 
+    var chatboxState = {
+      name: 'chatbox',
+      url: '/chat',
+      controller: 'ChatCtrl',
+      templateUrl:'/views/chatbox.html',
+      params: {trip_id : null}
+    };
+
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
@@ -117,14 +125,14 @@ angular.module('numinousUiApp', [
       controller: 'googlePlaceCtrl',
       controllerAs: 'googlePlace',
       params: {trip_id : null}
-
     };
+
     var googleDrawState = {
       name: 'googleDraw',
       url: '/googleDraw',
       templateUrl:'/views/googleDraw.html'
-
     };
+
     var directionsState = {
       name: 'directions',
       url: '/directions',
@@ -150,15 +158,18 @@ angular.module('numinousUiApp', [
     $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
-    $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
+    $stateProvider.state(directionsState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
     $stateProvider.state(profileState);
     $stateProvider.state(editprofileState);
     $stateProvider.state(createTravelCompanion);
+    $stateProvider.state(chatboxState);
     $stateProvider.state(listTripState);
 
+
+    //$locationProvider.html5Mode(true);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

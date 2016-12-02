@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('numinousUiApp')
-  .controller('TripCtrl', function($scope, $http, API_ENDPOINT){
+var myApp = angular.module('numinousUiApp')
+  .controller('TripCtrl', function($scope, $http, API_ENDPOINT, trip){
+
 
     $scope.friends = '';
 
@@ -54,15 +55,15 @@ angular.module('numinousUiApp')
     });
 
     /*var getTrips = (function (){
-     console.log('firing getTrips');
-     var command = encodeURI(API_ENDPOINT.url + '/user/getUserTrips');
-     $http.post(command)
-     .then(function(res){
-     console.log('trips: ' + JSON.stringify(res.data[0]));
-     //console.log('travelers: ' + res.data[0].travelers);
-     //$scope.trips = res.data[0].trips;
-     });
-     });*/
+      console.log('firing getTrips');
+      var command = encodeURI(API_ENDPOINT.url + '/user/getUserTrips');
+      $http.post(command)
+        .then(function(res){
+          console.log('trips: ' + JSON.stringify(res.data[0]));
+          //console.log('travelers: ' + res.data[0].travelers);
+          //$scope.trips = res.data[0].trips;
+        });
+    });*/
 
     var getTripsAndTravelers = (function (){
       var command = encodeURI(API_ENDPOINT.url + '/user/getUserTripsAndTravelers');
@@ -85,10 +86,14 @@ angular.module('numinousUiApp')
           } else {
             reject(result.data.msg);
           }
-        });
+      });
     });
 
-    getTripsAndTravelers();
+    $scope.assignTripId = function(id){
+      trip.trip_id = id;
+      console.log(trip.trip_id);
+    };
 
+    getTripsAndTravelers();
   });
 

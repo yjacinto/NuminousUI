@@ -1,0 +1,61 @@
+ <!-- Content -->
+      <section>
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-3">
+                      <h1> {{userprofile.first_name}} {{userprofile.last_name}}</h1>
+                  </div>
+                  <div class="col-md-9">
+                      <div style="text-align: left">
+<!--
+                          <button type="friendrequest" class="btn" ng-click="friendrequest">Send Friend Request</button>
+                          <button type="message" class="btn" ng-click="message">Send Message</button>
+-->
+                          <button class="pull-right"ui-sref="editprofile" type="edit" class="btn" ng-click="edit">Edit</button>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3>
+                    <a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive center-block" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-3">
+                      <ul class="list-group">
+                          <li class="list-group-item text-muted">Profile</li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> {{ userprofile.createdAt | date : "MMMM d y"}} </li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Last Online</strong></span> lastOnline </li>
+                      </ul>
+
+                      <ul class="list-group">
+                          <li class="list-group-item text-muted">Activity<i class="fa fa-dashboard fa-1x"></i></li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Friends</strong></span> numberOfFriends </li>
+                          <li class="list-group-item text-right"><span class="pull-left"><strong>Trips</strong></span> numberOfTrips </li>
+                      </ul>
+                  </div>
+
+                  <div class="col-md-9">
+                      <ul class="nav nav-tabs" id="myTab">
+                          <li class="active"><a href="profile/#home" data-toggle="tab">About</a></li>
+                          <li><a href="profile/#friends" data-toggle="tab">Friends</a></li>
+                          <li><a href="profile/#trips" data-toggle="tab">Trips</a></li>
+                      </ul>
+
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="home">
+                              <p> {{userprofile.bio}}</p>
+                          </div>
+                          <div class="tab-pane" id="friends">
+                              <p>friend tab</p>
+
+                            </div>
+                          <div class="tab-pane" id="trips">
+                              <p>trip tab</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        <hr class="major"/>
+      </section>

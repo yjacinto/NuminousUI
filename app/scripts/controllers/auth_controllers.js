@@ -3,7 +3,7 @@
 
 angular.module('numinousUiApp')
 
-  .controller('LoginCtrl', function($scope, AuthService, $state) {
+  .controller('LoginCtrl', function($rootScope, $scope, AuthService, $state, alertService) {
 
     $scope.user = {
       id:'',
@@ -15,8 +15,15 @@ angular.module('numinousUiApp')
 
     $scope.login = function() {
       AuthService.login($scope.user).then(function(msg) {
+        console.log('add alertService');
+        alertService.add("warning", 'logged in');
+        console.log($rootScope.alerts);
         $state.go('dashboard');
+
       }, function(err) {
+        console.log('add alertService');
+        console.log($rootScope.alerts);
+        alertService.add("warning", err);
         console.log(err);
         console.log('Login failed');
       });

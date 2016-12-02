@@ -38,10 +38,12 @@ module.exports = function(config) {
       'bower_components/angular-jwt/dist/angular-jwt.js',
       'bower_components/fullcalendar/dist/fullcalendar.js',
       'bower_components/angular-ui-calendar/src/calendar.js',
+      'bower_components/angular-socket-io/socket.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/bootstrap-validator/dist/validator.js',
       'bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js',
       'bower_components/ngPlacesAutocomplete/ngPlacesAutocomplete.min.js',
+      'bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

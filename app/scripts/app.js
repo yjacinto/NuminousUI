@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name numinousUiApp
- * @description
- * # numinousUiApp
- *
- * Main module of the application.
- */
 angular.module('numinousUiApp', [
     'ngAnimate',
     'ngCookies',
@@ -22,17 +14,18 @@ angular.module('numinousUiApp', [
     'angular-jwt',
     'ui.calendar',
     'ui.bootstrap',
-    'jtt_openweathermap'
+    'jtt_openweathermap',
+    'ui.bootstrap.datetimepicker'
   ])
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/');
 
-    var homeState = {
-      name:'home',
+    var homeState={
+      name: 'home',
       url:'/',
       templateUrl:'/views/home.html',
-      controller: 'HomeCtrl',
+      //controller: 'HomeCtrl',
       controllerAs: 'home'
     };
 
@@ -65,17 +58,28 @@ angular.module('numinousUiApp', [
       url: '/dashboard',
       templateUrl:'/views/dashboard.html',
       controller: 'DashboardCtrl',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
     };
 
-    var scheduleState = {
-      name: 'schedule',
-      url: '/schedule',
-      controller:'ScheduleCtrl',
-      controllerAs:'schedule',
-      templateUrl:'/views/schedule.html',
+    var createTripState = {
+      name: 'createTrip',
+      url: '/createTrip',
+      controller:'TripCtrl',
+      controllerAs:'Trip',
+      templateUrl:'/views/createTrip.html',
       data:{
-        css:'/styles/schedule.css'
+        css:'/styles/createTrip.css'
+      }
+    };
+
+    var listTripState = {
+      name: 'listTrip',
+      url: '/listTrip',
+      controller:'TripCtrl',
+      controllerAs:'trip',
+      templateUrl:'/views/listTrip.html',
+      data:{
+        css:'/styles/createTrip.css'
       }
     };
 
@@ -90,47 +94,86 @@ angular.module('numinousUiApp', [
 
     var createEventState = {
       name: 'calendar.event',
-      url: '',
+      url: '/addEvent',
       controller: 'calendarCtrl',
       controllerAs:'event',
-      templateUrl:'/views/event.html'
+      templateUrl:'/views/event.html',
+      params: {trip_id : null}
+    };
+
+    var createTravelCompanion = {
+      name: 'calendar.companion',
+      url: '/addCompanion',
+      controller: 'CompanionCtrl',
+      controllerAs:'companion',
+      templateUrl:'/views/companion.html',
+      params: {trip_id : null}
+    };
+
+    var chatboxState = {
+      name: 'chatbox',
+      url: '/chat',
+      controller: 'ChatCtrl',
+      templateUrl:'/views/chatbox.html',
+      params: {trip_id : null}
     };
 
     var googlePlaceState = {
       name: 'googlePlace',
       url: '/googlePlace',
-      templateUrl:'/views/googlePlace.html'
-
+      templateUrl:'/views/googlePlace.html',
+      controller: 'googlePlaceCtrl',
+      controllerAs: 'googlePlace',
+      params: {trip_id : null}
     };
+
     var googleDrawState = {
       name: 'googleDraw',
       url: '/googleDraw',
       templateUrl:'/views/googleDraw.html'
-
     };
+
     var directionsState = {
       name: 'directions',
       url: '/directions',
       templateUrl:'/views/directions.html'
     };
-
-
+    var profileState = {
+        name: 'profile',
+        url: '/profile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/profile.html'
+    };
+    var editprofileState = {
+        name: 'editprofile',
+        url: '/editprofile',
+        controller: 'ProfileCtrl',
+        templateUrl:'/views/editprofile.html'
+    };
 
     $stateProvider.state(dashboardState);
     $stateProvider.state(loginState);
     $stateProvider.state(signState);
-    $stateProvider.state(scheduleState);
+    $stateProvider.state(createTripState);
     $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
-    $stateProvider.state(directionsState);
     $stateProvider.state(homeState);
+    $stateProvider.state(directionsState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);
+    $stateProvider.state(profileState);
+    $stateProvider.state(editprofileState);
+    $stateProvider.state(createTravelCompanion);
+    $stateProvider.state(chatboxState);
+    $stateProvider.state(listTripState);
+
+
+    //$locationProvider.html5Mode(true);
   })
 
   .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {
-    $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
+    $rootScope.$on('$stateChangeStart', function (event, next, nextParams, fromState) {
       if (!AuthService.isAuthenticated()) {
         console.log(next.name);
         if (next.name !== 'login' && next.name !== 'signup' && next.name !== 'home') {
@@ -139,6 +182,13 @@ angular.module('numinousUiApp', [
         }
       }
     });
+  })
 
+  .filter('capitalize', function() {
+    return function(input) {
+      return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    };
   });
+
+
 

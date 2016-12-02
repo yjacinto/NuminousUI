@@ -1,0 +1,111 @@
+
+<section>
+  <header class="main">
+    <br>
+    <h2>Create a New Trip</h2>
+  </header>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+
+        <div class="panel-body">
+          <form id="createTripForm" name="createTripForm" class="form-horizontal" novalidate>
+
+            <div class="form-group col-md-12">
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.originCity.$invalid && !createTripForm.originCity.$pristine)}">
+                <label>Origin </label>
+                <input id="autocomplete" name="originCity" ng-model="originCity" type="text" class="form-control" ng-click="newVal()" placeholder="Starting Location"
+                       required/>
+              </div>
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.destinationCity.$invalid && !createTripForm.destinationCity.$pristine)}">
+                <label>Destination</label>
+                <input id="autocomplete1" type="text" class="form-control" name="destinationCity"
+                       placeholder="Where would you like to visit?" ng-model="destinationCity" ng-click="newVal()" required/>
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.startDate.$invalid && !createTripForm.startDate.$pristine)}">
+                <label><font color="red">*</font> Trip Start Date</label>
+                <datepicker date-format="EEE MM-dd-yyyy">
+                  <input class="form-control" id="startDate" name="startDate" placeholder ng-model="startDate"
+                         required/>
+                </datepicker>
+              </div>
+
+              <div class="col-md-6"
+                   ng-class="{'has-error' : (createTripForm.endDate.$invalid && !createTripForm.endDate.$pristine)}">
+                <label><font color="red">*</font> Trip End Date</label>
+                <datepicker date-format="EEE MM-dd-yyyy">
+                  <input class="form-control" id="endDate" name="endDate" placeholder ng-model="endDate"
+                         required/>
+                </datepicker>
+              </div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <div style="text-align: center">
+                <button type="submit" class="btn"
+                        ng-click="createTrip(originCity, destinationCity,startDate,endDate)">Submit
+                </button>
+                <a ui-sref="login" type="submit" class="btn"> Cancel </a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+
+      $(document).ready(function () {
+        var date = moment(new Date());
+        $('#startDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+        var endDate = date.add(1, 'weeks');
+
+        $('#endDate').attr("placeholder", moment(date).format("ddd MM-DD-YYYY"));
+
+      });
+    </script>
+  </div>
+
+</section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDKG3TOqRwc0GVsuJ7ISE8s6U3dkq6lvFg&libraries=places&callback=initAutocomplete"
+        async defer></script>
+
+<script>
+  function initAutocomplete() {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
+
+    var autocomplete = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+      {types: ['(cities)']});
+    var autocomplete1 = new google.maps.places.Autocomplete(
+      /** @type {!HTMLInputElement} */(document.getElementById('autocomplete1')),
+      {types: ['(cities)']});
+
+    // When the user selects an address from the dropdown, populate the address
+    // fields in the form.
+    autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      document.getElementById('id1').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+    autocomplete1.addListener('place_changed', function () {
+      var place = autocomplete1.getPlace();
+      document.getElementById('id2').value = place.place_id;
+      //console.log(place.place_id);
+      //console.log(place.formatted_address);
+    });
+  }
+</script>

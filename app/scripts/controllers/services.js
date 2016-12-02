@@ -1,8 +1,6 @@
-'use strict';
-
 angular.module('numinousUiApp')
 
-  .service('AuthService', function($q, $http, API_ENDPOINT, alertService) {
+  .service('AuthService', function($q, $http, API_ENDPOINT) {
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
     var isAuthenticated = false;
     var authToken;
@@ -88,10 +86,4 @@ angular.module('numinousUiApp')
 
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
-  })
-
-  .service("trip", function Trip(){
-    var trip = this;
-    trip.trip_id = "";
-  })
-;
+  });

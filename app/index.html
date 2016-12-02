@@ -44,8 +44,12 @@
           <li><a href="https://www.instagram.com" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         </ul>
       </header>
-
-      <ui-view></ui-view>
+      <br>
+      <div uib-alert dismiss-on-timeout="3000" ng-if="show" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+        {{alert.msg}}
+      </div>
+      <ui-view>
+      </ui-view>
     </div>
   </div>
 
@@ -181,9 +185,6 @@
 <script src="bower_components/bootstrap-validator/dist/validator.js"></script>
 <script src="bower_components/angular-openweathermap-api-factory/dist/angular-openweathermap-api-factory.js"></script>
 <script src="bower_components/ngPlacesAutocomplete/ngPlacesAutocomplete.min.js"></script>
-<script src="bower_components/angularjs-scroll-glue/src/scrollglue.js"></script>
-<script src="bower_components/angular-simple-chat/dist/angular-simple-chat.min.js"></script>
-<script src="bower_components/lodash/dist/lodash.compat.js"></script>
 <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.js"></script>
 <!-- endbower -->
 
@@ -192,11 +193,6 @@
 <script src="assets/js/util.js"></script>
 <script src="assets/js/main.js"></script>
 
-<<<<<<< HEAD
-<--socket-->
-
-=======
->>>>>>> dev3
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
@@ -207,6 +203,7 @@
 <script src="scripts/controllers/companion.js"></script>
 <script src="scripts/controllers/services.js"></script>
 <script src="scripts/controllers/friends.js"></script>
+<script src="scripts/controllers/alert.js"></script>
 <script src="scripts/controllers/googlePlace.js"></script>
 <script src="scripts/controllers/auth_controllers.js"></script>
 <script src="scripts/controllers/chat.js"></script>

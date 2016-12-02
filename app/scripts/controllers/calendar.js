@@ -10,24 +10,7 @@ angular.module('numinousUiApp')
 
       $scope.events = [];
       $scope.eventSources = [$scope.events];
-      /*
-       var getAllEvents = function(){
-       var data = {
-       trip_id : $scope.trip_id
-       };
-       $http.post(API_ENDPOINT.url + '/trip/getEventsById', data )
-       .then(function(result){
-       if (result.status) {
-       $scope.events = result.data.events;
-       console.log($scope.events);
-       } else {
-       reject(result.data.msg);
-       }
-       });
-       };
 
-
-       getAllEvents();*/
       var getAllEvents = function(){
         var data = {
           trip_id : $scope.trip_id
@@ -41,8 +24,8 @@ angular.module('numinousUiApp')
               $scope.events.push({
                 title: value.name,
                 description: value.location,
-                start: new Date(parseInt(value.startTime.substr(6))),
-                end:  new Date(parseInt(value.endTime.substr(6))),
+                start: value.startTime,
+                end:  value.endTime,
                 allDay : value.allDay,
                 stick: true
               });
@@ -124,5 +107,24 @@ angular.module('numinousUiApp')
 
 
     });
+
+/*
+ var getAllEvents = function(){
+ var data = {
+ trip_id : $scope.trip_id
+ };
+ $http.post(API_ENDPOINT.url + '/trip/getEventsById', data )
+ .then(function(result){
+ if (result.status) {
+ $scope.events = result.data.events;
+ console.log($scope.events);
+ } else {
+ reject(result.data.msg);
+ }
+ });
+ };
+
+
+ getAllEvents();*/
 
 

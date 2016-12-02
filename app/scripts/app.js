@@ -21,6 +21,14 @@ angular.module('numinousUiApp', [
 
     $urlRouterProvider.otherwise('/');
 
+    var homeState={
+      name: 'home',
+      url:'/',
+      templateUrl:'/views/home.html',
+      //controller: 'HomeCtrl',
+      controllerAs: 'home'
+    };
+
     var loginState = {
       name:'login',
       url:'/login',
@@ -150,6 +158,7 @@ angular.module('numinousUiApp', [
     $stateProvider.state(googlePlaceState);
     $stateProvider.state(calendarState);
     $stateProvider.state(googleDrawState);
+    $stateProvider.state(homeState);
     $stateProvider.state(directionsState);
     $stateProvider.state(friendState);
     $stateProvider.state(createEventState);

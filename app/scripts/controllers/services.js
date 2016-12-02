@@ -55,7 +55,6 @@ angular.module('numinousUiApp')
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
           } else {
-            alertService.add("warning", result.data.msg);
             reject(result.data.msg);
           }
         });

@@ -1,6 +1,9 @@
 <!-- Content -->
 <section>
-
+  <br>
+  <div uib-alert ng-if="show" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+    {{alert.msg}}
+  </div>
   <div ng-controller = LoginCtrl>
     <form name = loginForm class="form-horizontal">
       <header class="main">

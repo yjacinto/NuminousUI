@@ -129,14 +129,20 @@
     <div class="col-md-12" style="text-align: center">
 
       <div  class="controls">
-        <input type="radio" name="type" id="changemode-walking" checked="checked">
-        <label for="changemode-walking">Walking</label>
+
+        <input type="radio" name="type" id="changemode-driving" checked="checked">
+        <label for="changemode-driving">Driving</label>
 
         <input type="radio" name="type" id="changemode-transit">
         <label for="changemode-transit">Transit</label>
 
-        <input type="radio" name="type" id="changemode-driving">
-        <label for="changemode-driving">Driving</label>
+        <input type="radio" name="type" id="changemode-walking">
+        <label for="changemode-walking">Walking</label>
+
+        <input type="radio" name="type" id="changemode-bicycling">
+        <label for="changemode-bicycling">Bicycling</label>
+
+
       </div>
     </div>
   </div>
@@ -177,10 +183,10 @@
   function initMap() {
     var origin_place_id = null;
     var destination_place_id = null;
-    var travel_mode = 'WALKING';
+    var travel_mode = 'DRIVING';
     var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeControl: false,
-      center: {lat: -33.8688, lng: 151.2195},
+      center: {lat: 37.3382, lng: -121.8863}, //setting san jose as default
       zoom: 13
     });
     var directionsService = new google.maps.DirectionsService;
@@ -213,6 +219,7 @@
     setupClickListener('changemode-walking', 'WALKING');
     setupClickListener('changemode-transit', 'TRANSIT');
     setupClickListener('changemode-driving', 'DRIVING');
+    setupClickListener('changemode-bicycling', 'BICYCLING');
 
     function expandViewportToFitPlace(map, place) {
       if (place.geometry.viewport) {

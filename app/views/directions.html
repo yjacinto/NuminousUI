@@ -7,18 +7,18 @@
 
   #map {
     height: 100%;
+    width: 100%;
   }
 
-  .controls {
-    margin-top: 10px;
-    border: 1px solid transparent;
-    border-radius: 2px 0 0 2px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 32px;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  }
+  /*  .controls {
+      margin-top: 10px;
+      border: 1px solid transparent;
+      border-radius: 2px 0 0 2px;
+      box-sizing: border-box;
+      height: 32px;
+      outline: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    }*/
 
   #map-outer {
     height: 500px;
@@ -41,12 +41,12 @@
     border-color: #4d90fe;
   }
 
-  #mode-selector {
-    color: #fff;
-    background-color: #4d90fe;
-    margin-left: 12px;
-    padding: 5px 11px 0px 11px;
-  }
+  /* #mode-selector {
+     color: #fff;
+     background-color: lightseagreen;
+    !* margin-left: 12px;
+     padding: 5px 11px 0px 11px;*!
+   }*/
 
   #mode-selector label {
     font-family: Roboto;
@@ -89,8 +89,8 @@
 
   #right-panel {
     height: 100%;
-    float: right;
-    width: 300px;
+    /*  float: right;*/
+    width: 100%;
     overflow: auto;
   }
 
@@ -98,15 +98,6 @@
     margin-right: 0px;
   }
 
-  #floating-panel {
-    background: #fff;
-    padding: 5px;
-    font-size: 14px;
-    font-family: Arial;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
-    display: none;
-  }
 
   @media print {
     #map {
@@ -114,10 +105,10 @@
       margin: 0;
     }
 
-    #right-panel {
-      float: none;
-      width: auto;
-    }
+    /*    #right-panel {
+          float: none;
+          width: auto;
+        }*/
   }
 
 </style>
@@ -125,26 +116,19 @@
 
 <!-- Content -->
 <section>
+  <br>
   <header class="main">
     <h2>Directions</h2>
+    <blockquote>
+      To get an estimate time of arrival between two destinations, please use this feature.<br>
+      Using Google Map's API we offer walking, transit, and driving options available for your use.
+    </blockquote>
   </header>
 
   <div class="row">
-    <div id="map-outer" class="col-md-12">
+    <div class="col-md-12" style="text-align: center">
 
-      <div id="map" class="col-md-8"></div>
-
-      <div class="input-group col-md-4">
-        <input id="origin-input" class="controls form-control" type="text"
-               placeholder="Enter an origin location">
-      </div>
-
-      <div class="input-group col-md-4">
-        <input id="destination-input" class="controls form-control" type="text"
-               placeholder="Enter a destination location">
-      </div>
-
-      <div id="mode-selector" class="controls">
+      <div  class="controls">
         <input type="radio" name="type" id="changemode-walking" checked="checked">
         <label for="changemode-walking">Walking</label>
 
@@ -154,8 +138,27 @@
         <input type="radio" name="type" id="changemode-driving">
         <label for="changemode-driving">Driving</label>
       </div>
-      <div id="right-panel" class="col-md-4"></div>
+    </div>
+  </div>
+  </div>
 
+  <div class="row">
+    <div id="map-outer" class="col-md-12">
+
+      <div id="map" class="col-md-8"></div>
+
+      <div class="input-group col-md-">
+        <input id="origin-input" class="controls form-control" type="text"
+               placeholder="Enter an origin location">
+      </div>
+      <div class="input-group col-md-">
+        <input id="destination-input" class="controls form-control" type="text"
+               placeholder="Enter a destination location">
+      </div>
+      <!--<div id="right-panel" class="col-md-4"></div>-->
+      <div class="col-md-12">
+        <div id="right-panel"></div>
+      </div>
     </div>
   </div>
 

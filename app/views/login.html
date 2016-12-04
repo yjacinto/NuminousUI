@@ -1,7 +1,13 @@
-<!-- Content -->
+<style>
+  button.close {
+    height: 5px;
+    visibility: hidden;
+  }
+</style>
+
 <section>
   <br>
-  <div uib-alert ng-if="show" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert($index)">
+  <div uib-alert ng-if="show" style="font-size: smaller" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert()">
     {{alert.msg}}
   </div>
   <div ng-controller = LoginCtrl>

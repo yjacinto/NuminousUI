@@ -2,10 +2,10 @@
 
 angular.module('numinousUiApp')
   .controller('calendarCtrl',
-    function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams) {
+    function($scope, $compile, $timeout, uiCalendarConfig, $http, API_ENDPOINT, $stateParams, trip) {
 
 
-      $scope.trip_id = $stateParams.trip_id;
+      $scope.trip_id = trip.trip_id;
       var isFirstTime = true;
 
       $scope.events = [];
@@ -52,20 +52,24 @@ angular.module('numinousUiApp')
             center: '',
             right: 'today prev,next'
           },
-          eventClick: $scope.alertOnEventClick,
-          eventRender: function () {
-            if ($scope.events.length > 0 && isFirstTime) {
-              //Focus first event
-              uiCalendarConfig.calendars.myCalendar.fullCalendar('gotoDate', $scope.events[0].start);
-              isFirstTime = false;
-            }
-          }
+          eventClick: $scope.alertOnEventClick
         }
       };
 
       /* alert on eventClick */
       $scope.alertOnEventClick = function( date, jsEvent, view){
         $scope.alertMessage = (date.title + ' was clicked ');
+      };
+
+      /* Change View */
+      $scope.changeView = function(view,calendar) {
+        uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
+      };
+      /* Change View */
+      $scope.renderCalender = function(calendar) {
+        if(uiCalendarConfig.calendars[calendar]){
+          uiCalendarConfig.calendars[calendar].fullCalendar('render');
+        }
       };
 
 

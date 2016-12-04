@@ -1,16 +1,17 @@
 <style>
   button.close {
-    height: 5px;
+   /* height: 5px;*/
     visibility: hidden;
   }
 </style>
 
 <section>
-  <br>
-  <div uib-alert ng-if="show" style="font-size: smaller" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert()">
-    {{alert.msg}}
-  </div>
   <div ng-controller = LoginCtrl>
+    <br>
+    <div uib-alert ng-if="show" style="font-size: smaller" ng-repeat="alert in alerts" ng-class="'alert-' + (alert.type || 'warning')" close="closeAlert()">
+      {{alert.msg}}
+    </div>
+
     <form name = loginForm class="form-horizontal">
       <header class="main">
         <h2>Login - Returning User</h2>

@@ -24,8 +24,8 @@ angular.module('numinousUiApp')
               $scope.events.push({
                 title: value.name,
                 description: value.location,
-                start: value.startTime,
-                end:  value.endTime,
+                start: new Date(value.startTime),
+                end:  new Date(value.endTime),
                 allDay : value.allDay,
                 stick: true
               });

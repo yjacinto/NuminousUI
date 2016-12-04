@@ -16,7 +16,7 @@ angular.module('numinousUiApp')
       $rootScope.alerts.push({'type': type, 'msg': msg});
 
     };
-    alertService.closeAlert = function(index) {
+   alertService.closeAlert = function(index) {
       $rootScope.show = false;
       $rootScope.alerts.splice(index, 1);
     };

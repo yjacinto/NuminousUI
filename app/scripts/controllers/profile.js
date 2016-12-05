@@ -1,6 +1,6 @@
 'use strict';
 angular.module('numinousUiApp')
-  .controller('ProfileCtrl', function ($scope, $http) {
+  .controller('ProfileCtrl', function ($scope, $http, API_ENDPOINT) {
     var init = function () {
       $scope.userprofile ='';
 
@@ -16,7 +16,7 @@ angular.module('numinousUiApp')
 
     $scope.getUserProfile = function() {
       console.log('firing getuserprofile');
-        var command = encodeURI('http://localhost:1337/userprofile/getUserProfile');
+        var command = encodeURI(API_ENDPOINT.url + '/userprofile/getUserProfile');
         $http.get(command)
             .success(function(response) {
             $scope.userprofile = response;
@@ -32,7 +32,7 @@ angular.module('numinousUiApp')
     $scope.save = function() {
       console.log($scope.bio);
       console.log('firing save');
-        var command = encodeURI('http://localhost:1337/userprofile/editprofile');
+        var command = encodeURI(API_ENDPOINT.url +'/userprofile/editprofile');
         $http.post(command, {bio: $scope.bio})
             .success(function(response) {
               console.log(response);
@@ -43,8 +43,6 @@ angular.module('numinousUiApp')
         });
       $scope.getUserProfile();
     };
-
-
     $scope.friendrequest = function() {
 
     };

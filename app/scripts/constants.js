@@ -8,5 +8,5 @@ angular.module('numinousUiApp')
   })
 
   .constant('API_ENDPOINT', {
-    url: 'http://localhost:1337'
+    url: 'https://intense-fortress-46684.herokuapp.com'
   });

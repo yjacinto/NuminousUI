@@ -95,6 +95,8 @@ var myApp = angular.module('numinousUiApp')
         .then(function (result) {
           if (result.status) {
             trip.destinationCity = result.data.destinationCity;
+            trip.startDate = result.data.startDate;
+            trip.endDate = result.data.endDate;
           } else {
             reject(result.data.msg);
           }

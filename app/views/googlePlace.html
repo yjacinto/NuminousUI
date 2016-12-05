@@ -81,7 +81,7 @@
 <!-- Content -->
 <section ng-controller="googlePlaceCtrl">
   <header class="main">
-    <h2>Add Events</h2>
+    <h2>Add Events for {{startDate|date:'MMM dd'}} - {{endDate|date:'MMM dd'}}  </h2>
   </header>
 
   <div class="row">
@@ -192,7 +192,7 @@
               <td id="iw-place-id"></td>
             </tr>
             <tr class="iw_table_row">
-              <td><button type="button"ng-click="addMe()"> Add Event </button></td>
+              <td><button type="button"ng-click="addMe()"> Add Events</button></td>
 
             </tr>
           </table>

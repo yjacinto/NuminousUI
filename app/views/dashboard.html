@@ -1,188 +1,3 @@
-<!-- Content -->
-<section>
-
-  <header class="main">
-    <br>
-    <h3>Welcome, {{first}} {{last}}!</h3>
-  </header>
-
-  <div ng-controller=InsideCtrl>
-    <btn class=" btn btn-success btn-md" type="button" ng-click="getInfo()">
-      Get User Information
-    </btn>
-    <btn class="btn btn-success btn-md" type="button" aria-expanded="true" ng-click="logout()">
-      Logout
-    </btn>
-  </div>
-
-    <br>
-
-  <div class="row">
-          <div class="col-md-6">
-      <div class="panel panel-info">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather in {{w_city}} </h3>
-        </div>
-
-        <div class="panel-body">
-          <h2 class="weather" id="weather">
-            <img src="http://openweathermap.org/img/w/{{w_icon}}.png" align="left">
-            Temp: {{w_tempF}} &#8457;
-          </h2>
-          <p>Desciption: {{w_description}}</p>
-          <div class="row">
-            <div class="col-md-8">
-              <input type="text" class="form-control" ng-model="city_name" name="city_name" placeholder="Enter City"/>
-            </div>
-            <div class="col-md-3">
-              <button class="button" ng-click="updateWeather(city_name)"> Search</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-    <div class="col-md-6">
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered table-hover">
-          <thead>
-          <tr>
-            <th>Origin</th>
-            <th>Destination</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr ng-repeat="x in createTrip">
-            <td> {{x.originCity}}</td>
-            <td> {{x.destinationCity}}</td>
-            <td> {{x.startDate | date : "MMMM d, y"}}</td>
-            <td> {{x.endDate | date : "MMMM d, y"}}</td>
-          </tr>
-        </table>
-      </div>
-      </div>
-    </div>
- </div>
-
-
-    <section id="content" ng-controller="FriendCtrl">
-        <h3>Users and Friends</h3>
-
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="pull-right">
-                        <!--
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
-                            <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
-                            <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
-                            <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
-                        </div>-->
-                        </div>
-                        <div class="table-container">
-                        <table class="table table-filter" >
-                            <tbody>
-                            <p><input type="text" ng-model="user_filter"></p>
-                            <tr ng-repeat = " user in users | filter : user_filter">
-                                <td>
-                                </td>
-                                <td>
-                                <button ng-click = "addFriend(user, $index)">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                                </td>
-                                <td>
-                                <div class="media">
-                                    <div class="media-body">
-                                    <h4 class="title">
-                                        {{user.first_name | capitalize}} {{user.last_name | capitalize}}
-                                        <span class="pull-right">{{user.email}}</span>
-                                    </h4>
-                                    </div>
-                                </div>
-                                </td>
-                            </tr>
-                            <button class="btn btn-sm">
-                                Add Users
-                            </button>
-                            </br>
-                            </tbody>
-
-                        </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-                <div class="col-md-6">
-                    <div class="panel panel-default">
-                    <div class="panel-body">
-                        <div class="pull-right">
-                        <!--
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-success btn-filter" data-target="pagado">Pagado</button>
-                            <button type="button" class="btn btn-warning btn-filter" data-target="pendiente">Pendiente</button>
-                            <button type="button" class="btn btn-danger btn-filter" data-target="cancelado">Cancelado</button>
-                            <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
-                        </div>
-                        -->
-                        </div>
-                        <div class="table-container">
-                        <table class="table" >
-                            <tbody>
-                            <p><input type="text" ng-model="friends_filter"></p>
-                            <tr ng-repeat = " friend in friends | filter : friends_filter">
-                            <td>
-                                <!--<div class="ckbox">
-                                <input type="checkbox" id="checkbox">
-                                <label for="checkbox"></label>
-                                </div>-->
-                                <button ng-click = "deleteFriend(friend, $index)">
-                                Delete
-                                </button>
-                                <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                </label>
-                                </div>
-                            </td>
-                            <td>
-                                <button>
-                                Message!
-                                </button>
-                            </td>
-                            <td>
-                                <div class="media">
-                                <div class="media-body">
-                                    <h4 class="title">
-                                    {{friend.first_name}} {{friend.last_name}}
-                                    <span class="pull-right">{{friend.email}}</span>
-                                    </h4>
-                                </div>
-                                </div>
-                            </td>
-                            </tr>
-                            </br>
-                            </tbody>
-
-                        </table>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-
-            </section>
-
-            </section>
-
 <style>
   .weather {
     font-style: normal;
@@ -196,7 +11,69 @@
     margin-top: 6px;
     margin-bottom: 10px;
   }
-
 </style>
+
+
+<section>
+  <header class="main">
+    <br>
+    <h2>Welcome, {{first}} {{last}}!</h2>
+  </header>
+
+  <div class="col-md-12">
+    <blockquote>
+      This dashboard contains a overview of the trips you have created. A OpenWeatherMap feature is also included to help you quickly search the weather in any country or city.
+    </blockquote>
+  </div>
+
+  <div class="col-md-12">
+    <h3>{{first}}'s Trips</h3>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+        <tr>
+          <th>Origin</th>
+          <th>Destination</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="x in createTrip">
+          <td> {{x.originCity}}</td>
+          <td> {{x.destinationCity}}</td>
+          <td> {{x.startDate | date : "MMMM d, y"}}</td>
+          <td> {{x.endDate | date : "MMMM d, y"}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Weather in {{w_city}} </h3>
+        </div>
+        <div class="panel-body">
+          <h2 class="weather" id="weather">
+            <img src="http://openweathermap.org/img/w/{{w_icon}}.png" align="left">
+            Temp: {{w_tempF}} &#8457; / Description: {{w_description}}</p>
+          </h2>
+          <div class="col-md-12">
+            <div class="col-md-8">
+              <input type="text" class="form-control" ng-model="city_name" name="city_name" placeholder="Enter City"/>
+            </div>
+            <div class="col-md-4">
+              <btn class="btn btn-info btn-info" ng-click="updateWeather(city_name)"> Search</btn>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
 
 

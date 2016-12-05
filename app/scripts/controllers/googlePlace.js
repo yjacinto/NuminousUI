@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('numinousUiApp')
-  .controller('googlePlaceCtrl', function ($scope, $stateParams, $http, API_ENDPOINT) {
+  .controller('googlePlaceCtrl', function ($scope, $stateParams, $http, $state, API_ENDPOINT) {
 
     var init = function () {
       $scope.name = '';
@@ -39,6 +39,9 @@ angular.module('numinousUiApp')
       $scope.place_id = document.getElementById('iw-place-id').textContent;
 
       createEvent($scope.name, $scope.startTime, $scope.endTime, $scope.location, $scope.place_id);
+
+      console.log('before go');
+      $state.go('calendar');
 
     };
 

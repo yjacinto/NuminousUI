@@ -51,8 +51,7 @@
   <!-- Sidebar -->
   <div id="sidebar" class = "ng-cloak" ng-show="isAuthenticated()">
     <div class="inner">
-
-      <nav id="menu" ng-if="isAuthenticated()">
+      <nav id="menu">
         <header class="major">
           <h2>Menu</h2>
         </header>
@@ -62,10 +61,10 @@
           <li ng-show="hasTrip()">
             <span class="opener">{{trip_destinationCity}}</span>
             <ul>
-              <li><a ui-sref="calendar">Calendar/List View</a></li> <!--feature 2 -->
+              <li><a ui-sref="calendar">Calendar/List View/CHat</a></li> <!--feature 2 -->
               <li><a ui-sref="googleDraw">Map View</a></li> <!--feature 3 -->
               <li><a ui-sref="googlePlace">Add Event</a></li> <!--google places to add details for events-->
-              <li><a ui-sref="chatbox">Travel Chat</a></li>
+              <!--<li><a ui-sref="chatbox">Travel Chat</a></li>-->
             </ul>
           </li>
           <li><a ui-sref="directions">Directions and ETA</a></li>

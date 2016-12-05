@@ -13,87 +13,84 @@
 </section>
 
 <section>
+
   <div class="row">
-    <div class="col-md-3 pull-left">
-      <img title="profile image" class=" pull-left img-circle img-responsive center-block" src="images/spartan.png" style="height: 50% ;width: 50%">
-    </div>
-  </div>
+    <div class="col-md-12">
 
+      <!--Nav-->
+      <div class="col-md-9">
+        <ul class="nav nav-tabs nav-justified" id="myTab">
+          <li class="active"><a href="editprofile/#about" data-toggle="tab">About</a></li>
+          <li><a href="editprofile/#friends" data-toggle="tab">Friends</a></li>
+        </ul>
 
-
-  <div class="col-md-12">
-    <div class="col-md-9">
-      <ul class="nav nav-tabs nav-justified" id="myTab">
-        <li class="active"><a href="editprofile/#about" data-toggle="tab">About</a></li>
-        <li><a href="editprofile/#friends" data-toggle="tab">Friends</a></li>
-      </ul>
-
-      <div class="tab-content">
-        <div class="tab-pane active" id="about">
-          <div class="form-group">
-            <textarea class="form-control" rows="5" ng-model="bio"></textarea>
+        <div class="tab-content">
+          <div class="tab-pane active" id="about">
+            <div class="form-group">
+              <textarea class="form-control" rows="5" ng-model="bio"></textarea>
+            </div>
           </div>
-        </div>
-        <div class="tab-pane" id="friends" ng-controller="FriendCtrl">
-          <div class="row">
-            <div class="col-md-6">
-              <br>
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h4>Search Users & Add Friends</h4>
-                  <div class="table-container">
-                    <table class="table table-filter" >
-                      <tbody>
-                      <p><input type="text" ng-model="user_filter"></p>
-                      <tr ng-repeat = " user in users | filter : user_filter">
-                        <td>
-                          <btn class="btn btn-success btn-sm" ng-click = "addFriend(user, $index)"><i class="fa fa-plus"></i>
-                          </btn>
-                        </td>
-                        <td>
-                          <div class="media">
-                            <div class="media-body">
-                              <h4 class="title">
-                                {{user.first_name | capitalize}} {{user.last_name | capitalize}}
-                                <span class="pull-right">{{user.email}}</span>
-                              </h4>
+          <div class="tab-pane" id="friends" ng-controller="FriendCtrl">
+            <div class="row">
+              <div class="col-md-6">
+                <br>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4>Search Users & Add Friends</h4>
+                    <div class="table-container">
+                      <table class="table table-filter" >
+                        <tbody>
+                        <p><input type="text" ng-model="user_filter"></p>
+                        <tr ng-repeat = " user in users | filter : user_filter">
+                          <td>
+                            <btn class="btn btn-success btn-sm" ng-click = "addFriend(user, $index)"><i class="fa fa-plus"></i>
+                            </btn>
+                          </td>
+                          <td>
+                            <div class="media">
+                              <div class="media-body">
+                                <h4 class="title">
+                                  {{user.first_name | capitalize}} {{user.last_name | capitalize}}
+                                  <span class="pull-right">{{user.email}}</span>
+                                </h4>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="col-md-6">
-              <br>
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <h4>My Friends</h4>
-                  <div class="table-container">
-                    <table class="table" >
-                      <tbody>
-                      <p><input type="text" ng-model="friends_filter"></p>
-                      <tr ng-repeat = " friend in friends | filter : friends_filter">
-                        <td>
-                          <btn class="btn btn-danger btn-sm" ng-click= "deleteFriend(friend, $index)"> Delete </btn>
-                        </td>
-                        <td>
-                          <div class="media">
-                            <div class="media-body">
-                              <h4 class="title">
-                                {{friend.first_name}} {{friend.last_name}}
-                                <span class="pull-right">{{friend.email}}</span>
-                              </h4>
+              <div class="col-md-6">
+                <br>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <h4>My Friends</h4>
+                    <div class="table-container">
+                      <table class="table" >
+                        <tbody>
+                        <p><input type="text" ng-model="friends_filter"></p>
+                        <tr ng-repeat = " friend in friends | filter : friends_filter">
+                          <td>
+                            <btn class="btn btn-danger btn-sm" ng-click= "deleteFriend(friend, $index)"> Delete </btn>
+                          </td>
+                          <td>
+                            <div class="media">
+                              <div class="media-body">
+                                <h4 class="title">
+                                  {{friend.first_name}} {{friend.last_name}}
+                                  <span class="pull-right">{{friend.email}}</span>
+                                </h4>
+                              </div>
                             </div>
-                          </div>
-                        </td>
-                      </tr>
-                      </tbody>
-                    </table>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -101,12 +98,20 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-md-3">
-      <ul class="list-group">
-        <li class="list-group-item text-muted">Profile</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> {{ userprofile.createdAt | date : "MMMM d y"}} </li>
-      </ul>
+
+      <!--Side bar-->
+      <div class="col-md-3">
+        <div class="col-md-12 pull-right">
+          <img title="profile image" class=" pull-right img-circle img-responsive center-block" src="images/spartan.png" style="height: 50% ;width: 50%">
+        </div>
+        <div class="col-md-12">
+          <ul class="list-group">
+            <li class="list-group-item text-muted">Profile</li>
+            <li class="list-group-item text-right"><span class="pull-left"><strong>Joined</strong></span> {{ userprofile.createdAt | date : "MMMM d y"}} </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

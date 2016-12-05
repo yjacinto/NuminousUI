@@ -91,7 +91,14 @@ var myApp = angular.module('numinousUiApp')
 
     $scope.assignTripId = function(id){
       trip.trip_id = id;
-      console.log(trip.trip_id);
+      $http.post(API_ENDPOINT.url + '/trip/findById', {trip_id : id})
+        .then(function (result) {
+          if (result.status) {
+            trip.destinationCity = result.data.destinationCity;
+          } else {
+            reject(result.data.msg);
+          }
+        });
     };
 
     getTripsAndTravelers();

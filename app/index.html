@@ -54,49 +54,22 @@
   </div>
 
   <!-- Sidebar -->
-  <div id="sidebar">
+  <div id="sidebar" class = "ng-cloak" ng-show="isAuthenticated()">
     <div class="inner">
-
-      <!-- Search -->
-      <section id="search" class="alt">
-        <form method="post" action="#">
-          <input type="text" name="query" id="query" placeholder="Search" />
-        </form>
-      </section>
-
-      <!-- Menu -->
-      <nav id="menu" ng-if="!isAuthenticated()">
-        <header class="major">
-          <h2>Menu</h2>
-        </header>
-        <ul>
-          <li><a ui-sref="home">Homepage</a></li>
-          <li><a ui-sref="signup">SignUp</a></li>
-          <li><a ui-sref="login">Login</a></li>
-        </ul>
-      </nav>
-
-      <nav id="menu" ng-if="isAuthenticated()">
+      <nav id="menu">
         <header class="major">
           <h2>Menu</h2>
         </header>
         <ul>
           <li><a ui-sref="dashboard">Dashboard</a></li>
-          <li><a ui-sref="friend">Friends</a></li>
-          <li>
-            <span class="opener">Trips</span>
+          <li><a ui-sref="listTrip">Your Trips</a>
+          <li ng-show="hasTrip()">
+            <span class="opener">{{trip_destinationCity}}</span>
             <ul>
-              <li><a ui-sref="createTrip">Create</a></li> <!--schedule-->
-              <li><a ui-sref="listTrip">View Trips</a></li> <!--list all trips with modify button-->
-              <li><a ui-sref="googlePlace">Add Features</a></li> <!--google places to add details for events-->
-            </ul>
-          </li>
-          <li>
-            <span class="opener">Itinerary Options</span>
-            <ul>
-              <li><a href="#">List View</a></li>  <!--feature 1>-->
-              <li><a ui-sref="calendar">Calendar View</a></li> <!--feature 2 -->
-              <li><a ui-sref="googleDraw">Google Maps Draw</a></li> <!--feature 3 -->
+              <li><a ui-sref="calendar">Calendar/List View/CHat</a></li> <!--feature 2 -->
+              <li><a ui-sref="googleDraw">Map View</a></li> <!--feature 3 -->
+              <li><a ui-sref="googlePlace">Add Event</a></li> <!--google places to add details for events-->
+              <!--<li><a ui-sref="chatbox">Travel Chat</a></li>-->
             </ul>
           </li>
           <li><a ui-sref="directions">Directions and ETA</a></li>

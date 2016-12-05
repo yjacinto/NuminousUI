@@ -75,6 +75,16 @@ angular.module('numinousUiApp')
     };
   })
 
+  .factory('AlertInterceptor', function ($q) {
+    return {
+      responseError: function (rejection) {
+        console.log('inside response error');
+        console.log(rejection);
+        return $q.reject(rejection);
+      }
+    };
+  })
+
   .factory('AuthInterceptor', function ($rootScope, $q, AUTH_EVENTS) {
     return {
       responseError: function (response) {
@@ -88,10 +98,12 @@ angular.module('numinousUiApp')
 
   .config(function ($httpProvider) {
     $httpProvider.interceptors.push('AuthInterceptor');
+    $httpProvider.interceptors.push('AlertInterceptor');
   })
 
   .service("trip", function Trip(){
     var trip = this;
     trip.trip_id = "";
+    trip.destinationCity = "";
   })
 ;

@@ -36,13 +36,13 @@
     <div class="inner">
       <header id="header" ng-controller=InsideCtrl>
         <a ui-sref="home" class="logo"><img src="assets/img/item.png"><strong> Numinous</strong></a>
-        <ul class="icons" ng-if="!isAuthenticated()">
+        <ul class="icons ng-cloak" ng-if="!isAuthenticated()">
           <li><a href="https://twitter.com" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
           <li><a href="http://www.facebook.com" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
           <li><a href="https://www.snapchat.com" class="icon fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
           <li><a href="https://www.instagram.com" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
         </ul>
-        <ul class="icons" ng-if="isAuthenticated()">
+        <ul class="icons ng-cloak" ng-if="isAuthenticated()">
           <ul>
             <btn class="btn btn-danger btn-md" type="button" aria-expanded="true" ng-click="logout()">Logout</btn>
           </ul>

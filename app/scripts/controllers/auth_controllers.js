@@ -50,14 +50,14 @@ angular.module('numinousUiApp')
     $scope.getInfo = function() {
       $http.get(API_ENDPOINT.url + '/user/getInfo').then(function(result) {
         $scope.user = result.data;
-        console.log($scope.user);
+        //console.log($scope.user);
       });
     };
 
     $scope.getUserTrips = function(){
       $http.get(API_ENDPOINT.url + '/user/getUserTrips').then(function(result) {
         $scope.trips = result.data;
-        console.log($scope.trip);
+        //console.log($scope.trip);
       });
     };
 
@@ -74,7 +74,7 @@ angular.module('numinousUiApp')
     $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
       AuthService.logout();
       $state.go('home');
-      console.log('session lost');
+      //console.log('session lost');
     });
 
     $scope.isAuthenticated = function(){
@@ -82,7 +82,7 @@ angular.module('numinousUiApp')
     };
 
     $scope.hasTrip = function(){
-      console.log(trip);
+      //console.log(trip);
       $scope.trip_destinationCity = trip.destinationCity;
       return trip.trip_id !== "";
       }

@@ -12,7 +12,6 @@ angular.module('numinousUiApp')
       $http.get(API_ENDPOINT.url + '/user/getNonFriends')
         .then(function (result) {
           if (result.status) {
-            console.log(result.data);
             $scope.users = result.data;
           } else {
             reject(result.data.msg);
@@ -27,7 +26,7 @@ angular.module('numinousUiApp')
       $http.post(API_ENDPOINT.url + '/friend/addFriend', data )
         .then(function(result){
           if (result.status) {
-            console.log('added');
+            //console.log('added');
             $scope.users.splice(index, 1);
             $scope.friends.push(friend);
           } else {
@@ -40,7 +39,7 @@ angular.module('numinousUiApp')
       $http.get(API_ENDPOINT.url + '/user/getFriends')
         .then(function (result) {
           if (result.status) {
-            console.log(result.data);
+            //console.log(result.data);
             $scope.friends = result.data;
           } else {
             reject(result.data.msg);
@@ -55,7 +54,7 @@ angular.module('numinousUiApp')
       $http.post(API_ENDPOINT.url + '/friend/deleteFriend', data)
         .then(function (result) {
           if (result.status) {
-            console.log(result.data);
+            //console.log(result.data);
             $scope.friends.splice(index, 1);
             $scope.users.push(friend);
           } else {
@@ -65,14 +64,14 @@ angular.module('numinousUiApp')
     };
 
     $scope.addCompanion= function(companion_id){
-      console.log('companion_id: ' + companion_id);
+      //console.log('companion_id: ' + companion_id);
       var data = {
         trip_id : $scope.trip_id,
         companion_id : companion_id
       };
       $http.post(API_ENDPOINT.url + '/travelCompanion/addCompanion', data)
         .then(function(res){
-          console.log('added friend');
+          //console.log('added friend');
         });
       $http.post(API_ENDPOINT.url + '/trip/getTravelersById', data)
         .then(function(res){

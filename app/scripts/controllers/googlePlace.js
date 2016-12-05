@@ -43,7 +43,7 @@ angular.module('numinousUiApp')
       createEvent($scope.name, $scope.startTime, $scope.endTime, $scope.location, $scope.place_id);
 
       console.log('before go');
-      $state.go('calendar');
+
 
     };
 
@@ -61,6 +61,7 @@ angular.module('numinousUiApp')
       $http.post(API_ENDPOINT.url + '/event/create', data ).then(function(result){
         if (result.status) {
           console.log(result.data);
+          $state.go('calendar');
         } else {
           reject(result.data.msg);
         }

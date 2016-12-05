@@ -26,13 +26,11 @@ angular.module('numinousUiApp')
 
     $scope.getAllChat= function() {
       //establish socket connection
-      console.log('inside getAllChat');
       io.socket.post(API_ENDPOINT.url + '/chatroom/addUserToChat',{
         trip_id : trip.trip_id
       },function (success_data, jwRes) {
           //$scope.chatList.push(success_data);
           $scope.chatList = success_data;
-          console.log('chatlist: ' + Array.toString($scope.chatList));
           $scope.$digest();
 
         });
@@ -45,7 +43,6 @@ angular.module('numinousUiApp')
       if(event.verb === 'messaged'){
         $log.info('event ' + JSON.stringify(event));
         $scope.chatList.push(event.data);
-        console.log('afterpush');
         // Add the data to current chatList
         // Call $scope.$digest to make the changes in UI
         $scope.$digest();
@@ -65,7 +62,6 @@ angular.module('numinousUiApp')
     };
 
     $scope.fromUser = function(chat_user){
-      console.log($scope.user === chat_user);
       return $scope.user === chat_user;
     }
   });

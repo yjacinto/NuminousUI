@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('numinousUiApp')
-  .controller('googlePlaceCtrl', function ($scope, $stateParams, $http, $state, API_ENDPOINT) {
+  .controller('googlePlaceCtrl', function ($scope, $stateParams, $http, $state, API_ENDPOINT, trip) {
 
     var init = function () {
       $scope.name = '';
@@ -12,6 +12,8 @@ angular.module('numinousUiApp')
     };
 
     $scope.trip_id = $stateParams.trip_id;
+    $scope.startDate = trip.startDate;
+    $scope.endDate = trip.endDate;
     console.log('scope trip id: ' + $scope.trip_id);
 
     $scope.picker2 = {
@@ -55,6 +57,7 @@ angular.module('numinousUiApp')
         place_id: place_id,
         trip_id : $scope.trip_id
       };
+
       $http.post(API_ENDPOINT.url + '/event/create', data ).then(function(result){
         if (result.status) {
           console.log(result.data);

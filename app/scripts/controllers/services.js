@@ -105,5 +105,7 @@ angular.module('numinousUiApp')
     var trip = this;
     trip.trip_id = "";
     trip.destinationCity = "";
+    trip.startDate = "";
+    trip.endDate = "";
   })
 ;

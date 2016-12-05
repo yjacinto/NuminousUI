@@ -11,14 +11,9 @@
           <p><input type="text" ng-model="friends_filter"></p>
           <tr ng-repeat = " friend in friends | filter : friends_filter">
             <td>
-              <button ng-click = "addCompanion(friend.id)">
+              <btn class="btn btn-success btn-sm" ng-click = "addCompanion(friend.id)">
                 Add to Trip
-              </button>
-            </td>
-            <td>
-              <button>
-                Message!
-              </button>
+              </btn>
             </td>
             <td>
               <div class="media">
@@ -33,7 +28,6 @@
           </tr>
           </br>
           </tbody>
-
         </table>
       </div>
     </div>

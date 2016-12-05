@@ -15,17 +15,9 @@ angular.module('numinousUiApp')
 
     $scope.login = function() {
       AuthService.login($scope.user).then(function(msg) {
-        console.log('add alertService');
-        alertService.add("warning", 'logged in');
-        console.log($rootScope.alerts);
         $state.go('dashboard');
-
       }, function(err) {
-        console.log('add alertService');
-        console.log($rootScope.alerts);
-        alertService.add("warning", err);
-        console.log(err);
-        console.log('Login failed');
+        alertService.add("danger", err);
       });
     };
   })
@@ -50,7 +42,7 @@ angular.module('numinousUiApp')
     };
   })
 
-  .controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $state) {
+  .controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $state, trip) {
     $scope.destroySession = function() {
       AuthService.logout();
     };
@@ -71,11 +63,14 @@ angular.module('numinousUiApp')
 
     $scope.logout = function() {
       AuthService.logout();
+      trip.destinationCity = "";
+      trip.trip_id = "";
       $state.go('home');
     };
   })
 
-  .controller('AppCtrl', function($scope, $state, AuthService, AUTH_EVENTS) {
+  .controller('AppCtrl', function($scope, $state, AuthService, AUTH_EVENTS, trip) {
+    $scope.trip_destinationCity = "";
     $scope.$on(AUTH_EVENTS.notAuthenticated, function(event) {
       AuthService.logout();
       $state.go('home');
@@ -85,4 +80,10 @@ angular.module('numinousUiApp')
     $scope.isAuthenticated = function(){
       return AuthService.isAuthenticated();
     };
+
+    $scope.hasTrip = function(){
+      console.log(trip);
+      $scope.trip_destinationCity = trip.destinationCity;
+      return trip.trip_id !== "";
+      }
   });

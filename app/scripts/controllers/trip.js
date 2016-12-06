@@ -21,6 +21,7 @@ var myApp = angular.module('numinousUiApp')
       $http.post(command)
         .success(function(response) {
           console.log(response.data);
+          $state.go('listTrip');
         })
         .error(function (response) {
           console.log("Error notification");

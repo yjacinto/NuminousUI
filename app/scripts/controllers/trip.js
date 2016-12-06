@@ -1,7 +1,7 @@
 'use strict';
 
 var myApp = angular.module('numinousUiApp')
-  .controller('TripCtrl', function($scope, $http, API_ENDPOINT, trip){
+  .controller('TripCtrl', function($scope, $http, API_ENDPOINT, trip, $state){
 
 
     $scope.friends = '';

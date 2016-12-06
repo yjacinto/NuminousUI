@@ -1,8 +1,8 @@
 /**
-    @name: angular-openweathermap-api-factory 
-    @version: 0.6.0 (25-09-2016) 
-    @author: Jonathan Hornung 
-    @url: https://github.com/JohnnyTheTank/angular-openweathermap-api-factory#readme 
+    @name: angular-openweathermap-api-factory
+    @version: 0.6.0 (25-09-2016)
+    @author: Jonathan Hornung
+    @url: https://github.com/JohnnyTheTank/angular-openweathermap-api-factory#readme
     @license: MIT
 */
 "use strict";
@@ -88,7 +88,7 @@ angular.module("jtt_openweathermap", [])
     }])
     .service('openweathermapSearchDataService', function () {
         this.getApiBaseUrl = function (_params) {
-            return "http://api.openweathermap.org/data/2.5/";
+            return "https://api.openweathermap.org/data/2.5/";
         };
 
         this.fillDataInObjectByList = function (_object, _params, _list) {
